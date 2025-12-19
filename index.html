@@ -1,190 +1,1183 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIM3D Hub - Modelagem 3D e Serviços BIM</title>
+    <title>BIM3D Hub - Universal 3D Interoperability Platform</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --primary: #00f0ff;
+            --secondary: #7000ff;
+            --accent: #ff006e;
+            --dark: #0a0a0f;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
         }
-        
+
+        /* Animated background particles */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(100px, -100px) rotate(120deg); }
+            66% { transform: translate(-100px, 100px) rotate(240deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 15, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #00f0ff, #7000ff, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 5s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
         }
-        
-        header {
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 3rem;
             text-align: center;
-            padding: 60px 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        .logo {
-            max-width: 500px;
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
-            height: auto;
-            margin-bottom: 30px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
+            transition: left 0.6s;
         }
-        
-        h1 {
-            font-size: 2.5em;
-            color: #667eea;
-            margin-bottom: 15px;
+
+        .glass-card:hover::before {
+            left: 100%;
         }
-        
-        .tagline {
-            font-size: 1.3em;
-            color: #666;
-            margin-bottom: 30px;
-        }
-        
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .service-card:hover {
+
+        .glass-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(0, 240, 255, 0.2);
         }
-        
-        .service-card h3 {
-            color: #667eea;
-            font-size: 1.5em;
-            margin-bottom: 15px;
+
+        .glass-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
         }
-        
-        .service-card p {
-            color: #666;
-            font-size: 1.05em;
+
+        .glass-card p, .glass-card ul {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
         }
-        
-        .contact {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+
+        .glass-card ul {
+            list-style: none;
+            padding-left: 0;
         }
-        
-        .contact h2 {
-            color: #667eea;
-            font-size: 2em;
-            margin-bottom: 20px;
+
+        .glass-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
         }
-        
-        .contact-info {
-            font-size: 1.2em;
-            color: #666;
-            margin: 10px 0;
-        }
-        
-        .contact-info a {
-            color: #667eea;
-            text-decoration: none;
+
+        .glass-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
             font-weight: bold;
         }
-        
-        .contact-info a:hover {
-            text-decoration: underline;
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
-        
-        footer {
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(112, 0, 255, 0.05));
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
             text-align: center;
-            padding: 30px;
-            color: white;
-            font-size: 0.9em;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(0, 240, 255, 0.3);
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(112, 0, 255, 0.1));
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.2);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            border: 4px solid var(--dark);
+            z-index: 2;
+        }
+
+        .phase {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
+            .nav-links {
+                display: none;
             }
-            
-            .tagline {
-                font-size: 1.1em;
+
+            .timeline::before {
+                left: 20px;
             }
-            
-            .services {
+
+            .timeline-item {
+                flex-direction: column !important;
+                align-items: flex-start;
+                padding-left: 50px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .grid {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            z-index: 9999;
+            transform-origin: left;
+            transition: transform 0.1s ease;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--secondary), var(--accent));
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="logo.png" alt="BIM3D Hub Logo" class="logo">
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Animated Background -->
+    <div class="bg-particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">BIM3D Hub</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#market">Market</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#impact">Impact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
             <h1>BIM3D Hub</h1>
-            <p class="tagline">Soluções Profissionais em Modelagem 3D e BIM</p>
-        </header>
-        
-        <div class="services">
-            <div class="service-card">
-                <h3>🏗️ Modelagem BIM</h3>
-                <p>Desenvolvimento de modelos BIM completos para projetos de arquitetura, estrutura e instalações.</p>
+            <p class="subtitle">The Universal 3D Interoperability Platform<br>Transforming AEC & Industrial Design</p>
+            <a href="#solution" class="cta-button">Discover the Future</a>
+        </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section id="summary">
+        <div class="container">
+            <h2 class="section-title">Executive Summary</h2>
+            <div class="glass-card fade-in">
+                <p>The <strong>BIM3D Hub</strong> is a groundbreaking technology designed to address one of the most profound and costly challenges in the Architecture, Engineering, Construction (AEC) and Industrial Design industries: the enormous waste of time, money, and emotional energy that specialized professionals and manufacturers face daily trying to manually "fix" what decades of incompatible software have never resolved.</p>
+                <br>
+                <p>For years, the sector's productivity has been hampered not by lack of technical capability, but by the absence of an operational standard that would allow the same 3D object to function with quality and fidelity across any platform. The current pressure for integrated BIM workflows, faster processes, and cost reduction makes this problem even more urgent.</p>
+                <br>
+                <p><strong>BIM3D Hub</strong> responds precisely to this critical need by acting on the most sensitive point in the digital chain: the operational interchangeability of 3D objects, ensuring that a single block—complete with geometry (mesh), materials, attributes, and BIM metadata—functions consistently across any software, without rework or loss of consistency.</p>
             </div>
-            
-            <div class="service-card">
-                <h3>📐 Modelagem 3D</h3>
-                <p>Criação de modelos 3D detalhados em SketchUp e outras plataformas para visualização e apresentação.</p>
-            </div>
-            
-            <div class="service-card">
-                <h3>📋 Documentação Técnica</h3>
-                <p>Elaboração de plantas, cortes, elevações e detalhamentos técnicos a partir de modelos 3D.</p>
-            </div>
-            
-            <div class="service-card">
-                <h3>🔍 Revisão de Projetos</h3>
-                <p>Análise e revisão de desenhos CAD e modelos BIM para garantir qualidade e conformidade.</p>
-            </div>
-            
-            <div class="service-card">
-                <h3>🎓 Consultoria BIM</h3>
-                <p>Assessoria na implementação de metodologia BIM e treinamento de equipes.</p>
-            </div>
-            
-            <div class="service-card">
-                <h3>⚙️ Serviços Administrativos</h3>
-                <p>Suporte administrativo e gestão de projetos com integração de ferramentas de IA.</p>
+
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">📦</div>
+                    <h3>Universal Format</h3>
+                    <p>Intelligent .BIM3D Hub file format with complete geometry, PBR materials, and BIM metadata</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🔄</div>
+                    <h3>Multi-Platform Converter</h3>
+                    <p>Seamless conversion: FBX ↔ B3DO ↔ SKP and beyond</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🔌</div>
+                    <h3>Industry Plugins</h3>
+                    <p>SketchUp, Blender, Rhino, with Revit & ArchiCAD coming soon</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">☁️</div>
+                    <h3>Cloud Library</h3>
+                    <p>Centralized repository of interoperable 3D models</p>
+                </div>
             </div>
         </div>
-        
-        <div class="contact">
-            <h2>Entre em Contato</h2>
-            <p class="contact-info">📧 Email: <a href="mailto:contato@bim3dhub.com">contato@bim3dhub.com</a></p>
-            <p class="contact-info">🌐 Atendemos clientes no Canadá, EUA e Brasil</p>
+    </section>
+
+    <!-- The Problem -->
+    <section id="problem">
+        <div class="container">
+            <h2 class="section-title">The Problem</h2>
+            <p class="section-subtitle">The AEC industry operates in a fragmented environment with dozens of incompatible formats</p>
+            
+            <div class="glass-card fade-in">
+                <h3>Critical Consequences</h3>
+                <ul>
+                    <li>Continuous rework to generate multiple versions of the same object</li>
+                    <li>Loss of information during software conversions</n                    <li>Unstandardized projects and difficult collaboration</li>
+                    <li>High costs for modeling and library maintenance</li>
+                    <li>Low quality or visual inconsistency between platforms</li>
+                    <li>Limited BIM workflow adoption due to structural incompatibilities</li>
+                </ul>
+                <br>
+                <p><strong>The absence of a universal format slows down construction digitalization and creates significant costs for manufacturers, designers, and builders.</strong></p>
+            </div>
         </div>
+    </section>
+
+    <!-- The Solution -->
+    <section id="solution">
+        <div class="container">
+            <h2 class="section-title">The BIM3D Hub Solution</h2>
+            
+            <div class="glass-card fade-in">
+                <h3>Universal BIM3D Hub Format</h3>
+                <p>An intelligent 3D container that combines:</p>
+                <ul>
+                    <li><strong>Optimized Geometry:</strong> Clean, efficient mesh data</li>
+                    <li><strong>PBR Materials:</strong> Physically-based rendering materials</li>
+                    <li><strong>Object Hierarchies:</strong> Structured component organization</li>
+                    <li><strong>Levels of Detail (LOD):</strong> Multiple resolution options</li>
+                    <li><strong>IFC Metadata:</strong> Industry Foundation Classes integration</li>
+                    <li><strong>Parametric Properties:</strong> Manufacturer-specific attributes</li>
+                </ul>
+            </div>
+
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">✅</div>
+                    <h3>Convertible</h3>
+                    <p>Works with any software platform</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">⚡</div>
+                    <h3>Lightweight</h3>
+                    <p>Optimized for online use</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🔧</div>
+                    <h3>Expandable</h3>
+                    <p>Supports BIM, game engines, AR/VR</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🎯</div>
+                    <h3>Consistent</h3>
+                    <p>Guaranteed visual and technical standardization</p>
+                </div>
+            </div>
+
+            <div class="glass-card fade-in" style="margin-top: 3rem;">
+                <h3>Complete BIM3D Hub Ecosystem</h3>
+                <ul>
+                    <li><strong>Universal Converter:</strong> FBX ↔ B3DO ↔ SKP / OBJ / GLTF / IFC</li>
+                    <li><strong>Official Plugins:</strong> SketchUp, Blender, Rhino (Phase 1); ArchiCAD and Revit (Phase 2)</li>
+                    <li><strong>BIM3D Hub Cloud Library:</strong> Online catalog for downloads and automatic conversions</li>
+                    <li><strong>Public API:</strong> Integration with manufacturer websites</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Opportunity -->
+    <section id="market">
+        <div class="container">
+            <h2 class="section-title">Market Opportunity</h2>
+            <p class="section-subtitle">3D interoperability is a global technological trend, driven by growing BIM adoption, digital twins, and AEC workflow automation</p>
+            
+            <div class="stats">
+                <div class="stat-card fade-in">
+                    <div class="stat-number">$12B</div>
+                    <div class="stat-label">Global AEC Software Market (CAD/BIM) 2025</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">$8.1B</div>
+                    <div class="stat-label">Global BIM Market (Software + Services) 2024</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">$19B</div>
+                    <div class="stat-label">Design & Construction Software Projected by 2030</div>
+                </div>
+            </div>
+
+            <div class="glass-card fade-in" style="margin-top: 3rem;">
+                <h3>Why Now?</h3>
+                <ul>
+                    <li>Accelerated BIM growth at government level</li>
+                    <li>Pressure for international standardization</li>
+                    <li>Massive adoption of digital tools post-pandemic</li>
+                    <li>Growing fragmentation of proprietary formats</li>
+                    <li>New technologies depend on interoperability (VR/AR, digital twins, 3D AI)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section id="value">
+        <div class="container">
+            <h2 class="section-title">Value Proposition</h2>
+            
+            <div class="grid">
+                <div class="glass-card fade-in">
+                    <h3>🏭 For Manufacturers</h3>
+                    <ul>
+                        <li>Single modeling → multiple platforms</li>
+                        <li>Up to <strong>90% reduction</strong> in catalog creation costs</li>
+                        <li>Simplified distribution via API</li>
+                        <li>Automatic updates for all formats</li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card fade-in">
+                    <h3>🏢 For AEC Firms</h3>
+                    <ul>
+                        <li>Clean conversions without losses</li>
+                        <li>Standardized and reliable models</li>
+                        <li>Amplified productivity</li>
+                        <li>Guaranteed compatibility with BIM workflows</li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card fade-in">
+                    <h3>👨‍💻 For Developers</h3>
+                    <ul>
+                        <li>Open API for conversion</li>
+                        <li>Easy integration with catalog websites</li>
+                        <li>Ready-made plugins for multiple platforms</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Differentiators -->
+    <section id="tech">
+        <div class="container">
+            <h2 class="section-title">Technical Differentiators</h2>
+            
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">🧬</div>
+                    <h3>Hybrid Format</h3>
+                    <p>Mesh + parametric + metadata in one container</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🏗️</div>
+                    <h3>Modular Architecture</h3>
+                    <p>Flexible conversion pipeline</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">📐</div>
+                    <h3>IFC Compatible</h3>
+                    <p>Partial in MVP, complete in later phases</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🎮</div>
+                    <h3>Game Engine Ready</h3>
+                    <p>Compatible with AAA workflows (FBX → engines)</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🔒</div>
+                    <h3>Patent Potential</h3>
+                    <p>Internal container structure + pipeline</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🎨</div>
+                    <h3>Native LOD Support</h3>
+                    <p>Multiple detail levels & PBR materials</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MVP -->
+    <section id="mvp">
+        <div class="container">
+            <h2 class="section-title">MVP - First 3 Months</h2>
+            <p class="section-subtitle">Creating the B3DO ↔ FBX Converter (Version 1.0)</p>
+            
+            <div class="glass-card fade-in">
+                <h3>Core Deliverables</h3>
+                <ul>
+                    <li>BIM3D Hub format structure defined and documented</li>
+                    <li>Functional FBX → B3DO converter</li>
+                    <li>Functional B3DO → FBX converter</li>
+                    <li>CLI (command-line) tool for conversions</li>
+                    <li>Testing with real manufacturer models</li>
+                </ul>
+                <br>
+                <p><strong>Why FBX?</strong> FBX is the most stable and widely accepted format in the world for 3D interoperability. It serves as a reliable bridge between SKP, OBJ, GLTF, and others.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section id="roadmap">
+        <div class="container">
+            <h2 class="section-title">12-Month Roadmap</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="phase">Phase 1 - MVP</span>
+                        <h3>Months 0-3</h3>
+                        <ul>
+                            <li>B3DO format finalized</li>
+                            <li>FBX ↔ B3DO converter</li>
+                            <li>Quality and stability testing</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="phase">Phase 2 - Expansion</span>
+                        <h3>Months 4-6</h3>
+                        <ul>
+                            <li>SketchUp, Blender, and Rhino plugins</li>
+                            <li>GLTF and OBJ integration</li>
+                            <li>BIM3D Hub Cloud catalog prototype</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="phase">Phase 3 - Consolidation</span>
+                        <h3>Months 7-12</h3>
+                        <ul>
+                            <li>Public API launch</li>
+                            <li>Advanced converters with partial IFC</li>
+                            <li>First manufacturer partnership</li>
+                            <li>Expanded CAD/BIM integrations</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact for Gatineau -->
+    <section id="impact">
+        <div class="container">
+            <h2 class="section-title">Economic & Technological Impact for Gatineau</h2>
+            
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">💼</div>
+                    <h3>Local Job Creation</h3>
+                    <p>Qualified positions in C++, Python, and 3D artistry</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🌍</div>
+                    <h3>Global Export Platform</h3>
+                    <p>Technology platform with worldwide reach</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🚀</div>
+                    <h3>Digital Ecosystem</h3>
+                    <p>Strengthening Outaouais' digital sector</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🏗️</div>
+                    <h3>Strategic Sectors</h3>
+                    <p>Connection with AEC, manufacturing, digital twins</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">💰</div>
+                    <h3>Federal Investment</h3>
+                    <p>Potential to attract IRAP, SR&ED funding</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🎓</div>
+                    <h3>Academic Integration</h3>
+                    <p>Partnership with universities and technical centers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Mitigation -->
+    <section id="risks">
+        <div class="container">
+            <h2 class="section-title">Risk Mitigation Strategy</h2>
+            
+            <div class="glass-card fade-in">
+                <h3>🎯 Risk 1: Universal Format Structuring</h3>
+                <p><strong>Challenge:</strong> BIM3D Hub must be flexible and compatible with many formats.</p>
+                <p><strong>Mitigation:</strong> Comparative study + modular architecture + internal API.</p>
+            </div>
+
+            <div class="glass-card fade-in">
+                <h3>⚠️ Risk 2: Conversion Losses</h3>
+                <p><strong>Challenge:</strong> 3D conversions can generate inconsistencies.</p>
+                <p><strong>Mitigation:</strong> FBX pipeline as bridge + continuous testing.</p>
+            </div>
+
+            <div class="glass-card fade-in">
+                <h3>📈 Risk 3: Initial Adoption</h3>
+                <p><strong>Challenge:</strong> Market may take time to migrate to a new format.</p>
+                <p><strong>Mitigation:</strong> Free plugins + freemium model + manufacturer integration.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Barriers -->
+    <section id="barriers">
+        <div class="container">
+            <h2 class="section-title">Market Entry Barriers & Competitive Advantages</h2>
+            
+            <div class="glass-card fade-in">
+                <p>The 3D interoperability market has significant entry barriers that act as both risks and strategic advantages for BIM3D Hub. Below are the key factors shaping the competitive landscape and reinforcing the plausibility and defensibility of our proposition.</p>
+            </div>
+
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">🔬</div>
+                    <h3>High Technical Complexity</h3>
+                    <p>Startups focused exclusively on universal formats can overcome this challenge faster than large companies with rigid structures</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🆓</div>
+                    <h3>Independence Advantage</h3>
+                    <p>Major players have no incentive for full interoperability—their business models depend on closed ecosystems</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">⏱️</div>
+                    <h3>Difficult to Replicate</h3>
+                    <p>The structured BIM3D Hub pipeline would take years for any competitor to replicate stably</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🌐</div>
+                    <h3>Network Effect</h3>
+                    <p>When manufacturers use BIM3D Hub, software must support it. When software supports it, more manufacturers adopt it</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">⚖️</div>
+                    <h3>Patent Potential</h3>
+                    <p>Internal structure of BIM3D Hub container provides strong legal and technological defensibility</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🎯</div>
+                    <h3>Strategic Entry Points</h3>
+                    <p>Mid-size manufacturers, smaller firms, catalog platforms—segments where giants don't operate directly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Revenue Model -->
+    <section id="revenue">
+        <div class="container">
+            <h2 class="section-title">Revenue Model</h2>
+            
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">📅</div>
+                    <h3>Annual Subscriptions</h3>
+                    <p>For manufacturers</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🏢</div>
+                    <h3>Corporate Plans</h3>
+                    <p>For AEC firms</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🔌</div>
+                    <h3>API Licensing</h3>
+                    <p>For online catalogs</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🛠️</div>
+                    <h3>Premium Services</h3>
+                    <p>On-demand modeling & conversion</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🏪</div>
+                    <h3>Future Marketplace</h3>
+                    <p>Commission-based model</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Structure -->
+    <section id="team">
+        <div class="container">
+            <h2 class="section-title">Initial Startup Structure</h2>
+            
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">👨‍💼</div>
+                    <h3>CEO / Chief Architect</h3>
+                    <p>Technical and strategic vision</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">👨‍💻</div>
+                    <h3>C++ Developer</h3>
+                    <p>Core converter development</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🐍</div>
+                    <h3>Python Developer</h3>
+                    <p>Automation, plugins, API</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🎨</div>
+                    <h3>3D Artist (Blender)</h3>
+                    <p>Testing and object normalization</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">📐</div>
+                    <h3>BIM Consultant</h3>
+                    <p>IFC compatibility and AEC requirements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Incubation Needs -->
+    <section id="incubation">
+        <div class="container">
+            <h2 class="section-title">What We Seek from Incubation</h2>
+            
+            <div class="glass-card fade-in">
+                <ul>
+                    <li>Support in developing the MVP</li>
+                    <li>Access to technical mentors</li>
+                    <li>Networking with local companies</li>
+                    <li>Infrastructure for company creation</li>
+                    <li>Assistance in refining business model</li>
+                    <li>Preparation for IRAP funding</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section id="conclusion">
+        <div class="container">
+            <h2 class="section-title">Conclusion</h2>
+            
+            <div class="glass-card fade-in">
+                <h3>🚀 Global Innovation with Local Impact</h3>
+                <p><strong>BIM3D Hub</strong> represents a global impact innovation with the potential to become the universal standard for 3D and BIM files.</p>
+                <br>
+                <p>The <strong>Outaouais region</strong> is an ideal location for developing this technology, with support from dynamic incubators and access to federal innovation programs.</p>
+                <br>
+                <p>With incubation, the project will be able to take the initial leap necessary to become a reference in the 3D interoperability sector.</p>
+                <br>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#home" class="cta-button">Join the Revolution</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 BIM3D Hub - Universal 3D Interoperability Platform. All rights reserved.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Gatineau, Outaouais, Quebec</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.transform = `scaleX(${scrolled / 100})`;
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Generate background particles
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 30;
         
-        <footer>
-            <p>&copy; 2024 BIM3D Hub. Todos os direitos reservados.</p>
-        </footer>
-    </div>
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = `${Math.random() * 4 + 2}px`;
+            particle.style.height = particle.style.width;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animationDelay = `${Math.random() * 20}s`;
+            particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+            particlesContainer.appendChild(particle);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
-</html>
