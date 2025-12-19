@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIM3D Hub - Modelagem 3D e Serviços BIM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .tagline {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-card h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            color: #666;
+            font-size: 1.05em;
+        }
+        
+        .contact {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            font-size: 1.2em;
+            color: #666;
+            margin: 10px 0;
+        }
+        
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .tagline {
+                font-size: 1.1em;
+            }
+            
+            .services {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="BIM3D Hub Logo" class="logo">
+            <h1>BIM3D Hub</h1>
+            <p class="tagline">Soluções Profissionais em Modelagem 3D e BIM</p>
+        </header>
+        
+        <div class="services">
+            <div class="service-card">
+                <h3>🏗️ Modelagem BIM</h3>
+                <p>Desenvolvimento de modelos BIM completos para projetos de arquitetura, estrutura e instalações.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>📐 Modelagem 3D</h3>
+                <p>Criação de modelos 3D detalhados em SketchUp e outras plataformas para visualização e apresentação.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>📋 Documentação Técnica</h3>
+                <p>Elaboração de plantas, cortes, elevações e detalhamentos técnicos a partir de modelos 3D.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>🔍 Revisão de Projetos</h3>
+                <p>Análise e revisão de desenhos CAD e modelos BIM para garantir qualidade e conformidade.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>🎓 Consultoria BIM</h3>
+                <p>Assessoria na implementação de metodologia BIM e treinamento de equipes.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>⚙️ Serviços Administrativos</h3>
+                <p>Suporte administrativo e gestão de projetos com integração de ferramentas de IA.</p>
+            </div>
+        </div>
+        
+        <div class="contact">
+            <h2>Entre em Contato</h2>
+            <p class="contact-info">📧 Email: <a href="mailto:contato@bim3dhub.com">contato@bim3dhub.com</a></p>
+            <p class="contact-info">🌐 Atendemos clientes no Canadá, EUA e Brasil</p>
+        </div>
+        
+        <footer>
+            <p>&copy; 2024 BIM3D Hub. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
