@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BIM3D Hub - Universal 3D Interoperability Platform</title>
     <style>
         * {
@@ -10,7 +10,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         :root {
             --primary: #00f0ff;
             --secondary: #7000ff;
@@ -19,15 +18,13 @@
             --glass: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
+            color: #ffff;
             overflow-x: hidden;
             line-height: 1.6;
         }
-
         /* Animated background particles */
         .bg-particles {
             position: fixed;
@@ -38,7 +35,6 @@
             pointer-events: none;
             z-index: 0;
         }
-
         .particle {
             position: absolute;
             background: var(--primary);
@@ -46,13 +42,11 @@
             opacity: 0.3;
             animation: float 20s infinite;
         }
-
         @keyframes float {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
             33% { transform: translate(100px, -100px) rotate(120deg); }
             66% { transform: translate(-100px, 100px) rotate(240deg); }
         }
-
         /* Navigation */
         nav {
             position: fixed;
@@ -66,12 +60,10 @@
             padding: 1rem 2rem;
             transition: all 0.3s ease;
         }
-
         nav.scrolled {
             background: rgba(10, 10, 15, 0.95);
             box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
         }
-
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -79,30 +71,37 @@
             justify-content: space-between;
             align-items: center;
         }
-
+        /* Logo: imagem + texto */
         .logo {
-            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-img {
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+        .logo-text {
+            font-size: 1.25rem;
             font-weight: 800;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
         }
-
         .nav-links a {
-            color: #ffffff;
+            color: #ffff;
             text-decoration: none;
             transition: all 0.3s ease;
             font-weight: 500;
             position: relative;
         }
-
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -113,11 +112,9 @@
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             transition: width 0.3s ease;
         }
-
         .nav-links a:hover::after {
             width: 100%;
         }
-
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -128,7 +125,6 @@
             overflow: hidden;
             padding: 4rem 2rem;
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -139,19 +135,16 @@
             background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
             animation: pulse 8s ease-in-out infinite;
         }
-
         @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 0.3; }
             50% { transform: scale(1.2); opacity: 0.6; }
         }
-
         .hero-content {
             max-width: 1200px;
             text-align: center;
             position: relative;
             z-index: 2;
         }
-
         .hero h1 {
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 900;
@@ -163,19 +156,16 @@
             animation: gradient 5s ease infinite;
             background-size: 200% 200%;
         }
-
         @keyframes gradient {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
-
         .hero .subtitle {
             font-size: clamp(1.2rem, 3vw, 1.8rem);
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 3rem;
             line-height: 1.6;
         }
-
         .cta-button {
             display: inline-block;
             padding: 1.2rem 3rem;
@@ -191,7 +181,6 @@
             border: none;
             cursor: pointer;
         }
-
         .cta-button::before {
             content: '';
             position: absolute;
@@ -204,29 +193,24 @@
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
         }
-
         .cta-button:hover::before {
             width: 300px;
             height: 300px;
         }
-
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 20px 40px rgba(0, 240, 255, 0.4);
         }
-
         /* Section Styles */
         section {
             padding: 6rem 2rem;
             position: relative;
             z-index: 1;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .section-title {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
@@ -237,7 +221,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .section-subtitle {
             font-size: 1.3rem;
             color: rgba(255, 255, 255, 0.7);
@@ -247,7 +230,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         /* Glass Cards */
         .glass-card {
             background: var(--glass);
@@ -260,7 +242,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .glass-card::before {
             content: '';
             position: absolute;
@@ -271,39 +252,32 @@
             background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
             transition: left 0.6s;
         }
-
         .glass-card:hover::before {
             left: 100%;
         }
-
         .glass-card:hover {
             transform: translateY(-10px);
             border-color: var(--primary);
             box-shadow: 0 20px 60px rgba(0, 240, 255, 0.2);
         }
-
         .glass-card h3 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
             color: var(--primary);
         }
-
         .glass-card p, .glass-card ul {
             color: rgba(255, 255, 255, 0.8);
             font-size: 1.05rem;
         }
-
         .glass-card ul {
             list-style: none;
             padding-left: 0;
         }
-
         .glass-card li {
             padding: 0.5rem 0;
             padding-left: 1.5rem;
             position: relative;
         }
-
         .glass-card li::before {
             content: '▹';
             position: absolute;
@@ -311,7 +285,6 @@
             color: var(--primary);
             font-weight: bold;
         }
-
         /* Grid Layout */
         .grid {
             display: grid;
@@ -319,7 +292,6 @@
             gap: 2rem;
             margin-top: 3rem;
         }
-
         .feature-card {
             background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(112, 0, 255, 0.05));
             border: 1px solid var(--glass-border);
@@ -330,7 +302,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .feature-card::after {
             content: '';
             position: absolute;
@@ -342,17 +313,14 @@
             opacity: 0;
             transition: opacity 0.4s;
         }
-
         .feature-card:hover::after {
             opacity: 1;
         }
-
         .feature-card:hover {
             transform: translateY(-10px) scale(1.02);
             border-color: var(--primary);
             box-shadow: 0 20px 60px rgba(0, 240, 255, 0.3);
         }
-
         .icon {
             font-size: 3rem;
             margin-bottom: 1rem;
@@ -362,18 +330,15 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .feature-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #ffffff;
+            color: #ffff;
         }
-
         .feature-card p {
             color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
         }
-
         /* Stats Section */
         .stats {
             display: grid;
@@ -381,7 +346,6 @@
             gap: 2rem;
             margin-top: 3rem;
         }
-
         .stat-card {
             text-align: center;
             padding: 2rem;
@@ -390,12 +354,10 @@
             border: 1px solid var(--glass-border);
             transition: all 0.3s ease;
         }
-
         .stat-card:hover {
             transform: scale(1.05);
             border-color: var(--primary);
         }
-
         .stat-number {
             font-size: 3rem;
             font-weight: 900;
@@ -405,18 +367,15 @@
             background-clip: text;
             margin-bottom: 0.5rem;
         }
-
         .stat-label {
             color: rgba(255, 255, 255, 0.8);
             font-size: 1.1rem;
         }
-
         /* Timeline */
         .timeline {
             position: relative;
             padding: 2rem 0;
         }
-
         .timeline::before {
             content: '';
             position: absolute;
@@ -426,7 +385,6 @@
             height: 100%;
             background: linear-gradient(180deg, var(--primary), var(--secondary));
         }
-
         .timeline-item {
             display: flex;
             justify-content: space-between;
@@ -434,11 +392,9 @@
             margin-bottom: 3rem;
             position: relative;
         }
-
         .timeline-item:nth-child(even) {
             flex-direction: row-reverse;
         }
-
         .timeline-content {
             width: 45%;
             background: var(--glass);
@@ -448,13 +404,11 @@
             padding: 2rem;
             transition: all 0.4s ease;
         }
-
         .timeline-content:hover {
             transform: translateY(-5px);
             border-color: var(--primary);
             box-shadow: 0 15px 40px rgba(0, 240, 255, 0.2);
         }
-
         .timeline-dot {
             position: absolute;
             left: 50%;
@@ -466,7 +420,6 @@
             border: 4px solid var(--dark);
             z-index: 2;
         }
-
         .phase {
             display: inline-block;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -477,7 +430,6 @@
             font-weight: 600;
             margin-bottom: 1rem;
         }
-
         /* Footer */
         footer {
             background: rgba(10, 10, 15, 0.8);
@@ -488,53 +440,43 @@
             position: relative;
             z-index: 1;
         }
-
         footer p {
             color: rgba(255, 255, 255, 0.6);
             font-size: 1rem;
         }
-
         /* Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
-
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-
             .timeline::before {
                 left: 20px;
             }
-
             .timeline-item {
                 flex-direction: column !important;
                 align-items: flex-start;
                 padding-left: 50px;
             }
-
             .timeline-content {
                 width: 100%;
             }
-
             .timeline-dot {
                 left: 20px;
             }
-
             .grid {
                 grid-template-columns: 1fr;
             }
         }
-
         /* Scroll Progress Bar */
         .progress-bar {
             position: fixed;
@@ -546,21 +488,17 @@
             transform-origin: left;
             transition: transform 0.1s ease;
         }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
-
         ::-webkit-scrollbar-track {
             background: var(--dark);
         }
-
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(180deg, var(--primary), var(--secondary));
             border-radius: 5px;
         }
-
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(180deg, var(--secondary), var(--accent));
         }
@@ -569,14 +507,15 @@
 <body>
     <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
-
     <!-- Animated Background -->
     <div class="bg-particles" id="particles"></div>
-
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">BIM3D Hub</div>
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/bim3dhub/main/Logo.png" alt="BIM3D Hub Logo" class="logo-img" />
+                <div class="logo-text">BIM3D Hub</div>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#problem">Problem</a></li>
@@ -587,7 +526,6 @@
             </ul>
         </div>
     </nav>
-
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
@@ -596,7 +534,6 @@
             <a href="#solution" class="cta-button">Discover the Future</a>
         </div>
     </section>
-
     <!-- Executive Summary -->
     <section id="summary">
         <div class="container">
@@ -608,17 +545,16 @@
                 <br>
                 <p><strong>BIM3D Hub</strong> responds precisely to this critical need by acting on the most sensitive point in the digital chain: the operational interchangeability of 3D objects, ensuring that a single block—complete with geometry (mesh), materials, attributes, and BIM metadata—functions consistently across any software, without rework or loss of consistency.</p>
             </div>
-
             <div class="grid">
                 <div class="feature-card fade-in">
                     <div class="icon">📦</div>
                     <h3>Universal Format</h3>
-                    <p>Intelligent .BIM3D Hub file format with complete geometry, PBR materials, and BIM metadata</p>
+                    <p>Intelligent .b3do file format with complete geometry, PBR materials, and BIM metadata</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="icon">🔄</div>
                     <h3>Multi-Platform Converter</h3>
-                    <p>Seamless conversion: FBX ↔ B3DO ↔ SKP and beyond</p>
+                    <p>Seamless conversion: FBX, B3DO, SKP and beyond</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="icon">🔌</div>
@@ -633,18 +569,17 @@
             </div>
         </div>
     </section>
-
     <!-- The Problem -->
     <section id="problem">
         <div class="container">
             <h2 class="section-title">The Problem</h2>
             <p class="section-subtitle">The AEC industry operates in a fragmented environment with dozens of incompatible formats</p>
-            
             <div class="glass-card fade-in">
                 <h3>Critical Consequences</h3>
                 <ul>
                     <li>Continuous rework to generate multiple versions of the same object</li>
-                    <li>Loss of information during software conversions</n                    <li>Unstandardized projects and difficult collaboration</li>
+                    <li>Loss of information during software conversions</li>
+                    <li>Unstandardized projects and difficult collaboration</li>
                     <li>High costs for modeling and library maintenance</li>
                     <li>Low quality or visual inconsistency between platforms</li>
                     <li>Limited BIM workflow adoption due to structural incompatibilities</li>
@@ -654,14 +589,12 @@
             </div>
         </div>
     </section>
-
     <!-- The Solution -->
     <section id="solution">
         <div class="container">
-            <h2 class="section-title">The BIM3D Hub Solution</h2>
-            
+            <h2 class="section-title">A Solução BIM3D Hub</h2>
             <div class="glass-card fade-in">
-                <h3>Universal BIM3D Hub Format</h3>
+                <h3>Universal .b3do Format</h3>
                 <p>An intelligent 3D container that combines:</p>
                 <ul>
                     <li><strong>Optimized Geometry:</strong> Clean, efficient mesh data</li>
@@ -672,7 +605,6 @@
                     <li><strong>Parametric Properties:</strong> Manufacturer-specific attributes</li>
                 </ul>
             </div>
-
             <div class="grid">
                 <div class="feature-card fade-in">
                     <div class="icon">✅</div>
@@ -695,11 +627,10 @@
                     <p>Guaranteed visual and technical standardization</p>
                 </div>
             </div>
-
             <div class="glass-card fade-in" style="margin-top: 3rem;">
                 <h3>Complete BIM3D Hub Ecosystem</h3>
                 <ul>
-                    <li><strong>Universal Converter:</strong> FBX ↔ B3DO ↔ SKP / OBJ / GLTF / IFC</li>
+                    <li><strong>Universal Converter:</strong> FBX, B3DO, SKP / OBJ / GLTF / IFC</li>
                     <li><strong>Official Plugins:</strong> SketchUp, Blender, Rhino (Phase 1); ArchiCAD and Revit (Phase 2)</li>
                     <li><strong>BIM3D Hub Cloud Library:</strong> Online catalog for downloads and automatic conversions</li>
                     <li><strong>Public API:</strong> Integration with manufacturer websites</li>
@@ -707,13 +638,11 @@
             </div>
         </div>
     </section>
-
     <!-- Market Opportunity -->
     <section id="market">
         <div class="container">
             <h2 class="section-title">Market Opportunity</h2>
             <p class="section-subtitle">3D interoperability is a global technological trend, driven by growing BIM adoption, digital twins, and AEC workflow automation</p>
-            
             <div class="stats">
                 <div class="stat-card fade-in">
                     <div class="stat-number">$12B</div>
@@ -728,7 +657,6 @@
                     <div class="stat-label">Design & Construction Software Projected by 2030</div>
                 </div>
             </div>
-
             <div class="glass-card fade-in" style="margin-top: 3rem;">
                 <h3>Why Now?</h3>
                 <ul>
@@ -741,12 +669,10 @@
             </div>
         </div>
     </section>
-
     <!-- Value Proposition -->
     <section id="value">
         <div class="container">
             <h2 class="section-title">Value Proposition</h2>
-            
             <div class="grid">
                 <div class="glass-card fade-in">
                     <h3>🏭 For Manufacturers</h3>
@@ -757,7 +683,6 @@
                         <li>Automatic updates for all formats</li>
                     </ul>
                 </div>
-                
                 <div class="glass-card fade-in">
                     <h3>🏢 For AEC Firms</h3>
                     <ul>
@@ -767,7 +692,6 @@
                         <li>Guaranteed compatibility with BIM workflows</li>
                     </ul>
                 </div>
-                
                 <div class="glass-card fade-in">
                     <h3>👨‍💻 For Developers</h3>
                     <ul>
@@ -779,12 +703,10 @@
             </div>
         </div>
     </section>
-
     <!-- Technical Differentiators -->
     <section id="tech">
         <div class="container">
             <h2 class="section-title">Technical Differentiators</h2>
-            
             <div class="grid">
                 <div class="feature-card fade-in">
                     <div class="icon">🧬</div>
@@ -804,7 +726,7 @@
                 <div class="feature-card fade-in">
                     <div class="icon">🎮</div>
                     <h3>Game Engine Ready</h3>
-                    <p>Compatible with AAA workflows (FBX → engines)</p>
+                    <p>Compatible with AAA workflows (FBX & game engines)</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="icon">🔒</div>
@@ -819,17 +741,15 @@
             </div>
         </div>
     </section>
-
     <!-- MVP -->
     <section id="mvp">
         <div class="container">
             <h2 class="section-title">MVP - First 3 Months</h2>
-            <p class="section-subtitle">Creating the B3DO ↔ FBX Converter (Version 1.0)</p>
-            
+            <p class="section-subtitle">Creating the BIM3D Hub B3DO & FBX Converter (Version 1.0)</p>
             <div class="glass-card fade-in">
                 <h3>Core Deliverables</h3>
                 <ul>
-                    <li>BIM3D Hub format structure defined and documented</li>
+                    <li>B3DO format structure defined and documented</li>
                     <li>Functional FBX → B3DO converter</li>
                     <li>Functional B3DO → FBX converter</li>
                     <li>CLI (command-line) tool for conversions</li>
@@ -840,12 +760,10 @@
             </div>
         </div>
     </section>
-
     <!-- Roadmap -->
     <section id="roadmap">
         <div class="container">
             <h2 class="section-title">12-Month Roadmap</h2>
-            
             <div class="timeline">
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
@@ -853,13 +771,12 @@
                         <h3>Months 0-3</h3>
                         <ul>
                             <li>B3DO format finalized</li>
-                            <li>FBX ↔ B3DO converter</li>
+                            <li>FBX → B3DO converter</li>
                             <li>Quality and stability testing</li>
                         </ul>
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
-
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <span class="phase">Phase 2 - Expansion</span>
@@ -872,7 +789,6 @@
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
-
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
                         <span class="phase">Phase 3 - Consolidation</span>
@@ -889,12 +805,10 @@
             </div>
         </div>
     </section>
-
     <!-- Impact for Gatineau -->
     <section id="impact">
         <div class="container">
             <h2 class="section-title">Economic & Technological Impact for Gatineau</h2>
-            
             <div class="grid">
                 <div class="feature-card fade-in">
                     <div class="icon">💼</div>
@@ -929,24 +843,20 @@
             </div>
         </div>
     </section>
-
     <!-- Risk Mitigation -->
     <section id="risks">
         <div class="container">
             <h2 class="section-title">Risk Mitigation Strategy</h2>
-            
             <div class="glass-card fade-in">
                 <h3>🎯 Risk 1: Universal Format Structuring</h3>
-                <p><strong>Challenge:</strong> BIM3D Hub must be flexible and compatible with many formats.</p>
+                <p><strong>Challenge:</strong> B3DO must be flexible and compatible with many formats.</p>
                 <p><strong>Mitigation:</strong> Comparative study + modular architecture + internal API.</p>
             </div>
-
             <div class="glass-card fade-in">
                 <h3>⚠️ Risk 2: Conversion Losses</h3>
                 <p><strong>Challenge:</strong> 3D conversions can generate inconsistencies.</p>
                 <p><strong>Mitigation:</strong> FBX pipeline as bridge + continuous testing.</p>
             </div>
-
             <div class="glass-card fade-in">
                 <h3>📈 Risk 3: Initial Adoption</h3>
                 <p><strong>Challenge:</strong> Market may take time to migrate to a new format.</p>
@@ -954,16 +864,13 @@
             </div>
         </div>
     </section>
-
     <!-- Competitive Barriers -->
     <section id="barriers">
         <div class="container">
             <h2 class="section-title">Market Entry Barriers & Competitive Advantages</h2>
-            
             <div class="glass-card fade-in">
                 <p>The 3D interoperability market has significant entry barriers that act as both risks and strategic advantages for BIM3D Hub. Below are the key factors shaping the competitive landscape and reinforcing the plausibility and defensibility of our proposition.</p>
             </div>
-
             <div class="grid">
                 <div class="feature-card fade-in">
                     <div class="icon">🔬</div>
@@ -978,17 +885,17 @@
                 <div class="feature-card fade-in">
                     <div class="icon">⏱️</div>
                     <h3>Difficult to Replicate</h3>
-                    <p>The structured BIM3D Hub pipeline would take years for any competitor to replicate stably</p>
+                    <p>The structured B3DO pipeline would take years for any competitor to replicate stably</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="icon">🌐</div>
                     <h3>Network Effect</h3>
-                    <p>When manufacturers use BIM3D Hub, software must support it. When software supports it, more manufacturers adopt it</p>
+                    <p>When manufacturers use B3DO, software must support it. When software supports it, more manufacturers adopt it</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="icon">⚖️</div>
                     <h3>Patent Potential</h3>
-                    <p>Internal structure of BIM3D Hub container provides strong legal and technological defensibility</p>
+                    <p>Internal structure of B3DO container provides strong legal and technological defensibility</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="icon">🎯</div>
@@ -998,12 +905,10 @@
             </div>
         </div>
     </section>
-
     <!-- Revenue Model -->
     <section id="revenue">
         <div class="container">
             <h2 class="section-title">Revenue Model</h2>
-            
             <div class="grid">
                 <div class="feature-card fade-in">
                     <div class="icon">📅</div>
@@ -1033,12 +938,10 @@
             </div>
         </div>
     </section>
-
     <!-- Team Structure -->
     <section id="team">
         <div class="container">
             <h2 class="section-title">Initial Startup Structure</h2>
-            
             <div class="grid">
                 <div class="feature-card fade-in">
                     <div class="icon">👨‍💼</div>
@@ -1068,12 +971,10 @@
             </div>
         </div>
     </section>
-
     <!-- Incubation Needs -->
     <section id="incubation">
         <div class="container">
             <h2 class="section-title">What We Seek from Incubation</h2>
-            
             <div class="glass-card fade-in">
                 <ul>
                     <li>Support in developing the MVP</li>
@@ -1086,12 +987,10 @@
             </div>
         </div>
     </section>
-
     <!-- Conclusion -->
     <section id="conclusion">
         <div class="container">
             <h2 class="section-title">Conclusion</h2>
-            
             <div class="glass-card fade-in">
                 <h3>🚀 Global Innovation with Local Impact</h3>
                 <p><strong>BIM3D Hub</strong> represents a global impact innovation with the potential to become the universal standard for 3D and BIM files.</p>
@@ -1106,11 +1005,10 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 BIM3D Hub - Universal 3D Interoperability Platform. All rights reserved.</p>
+            <p>&copy; 2024 BIM3D Hub - Universal 3D Interoperability Platform. All rights reserved.</p>
             <p style="margin-top: 1rem; font-size: 0.9rem;">Gatineau, Outaouais, Quebec</p>
         </div>
     </footer>
@@ -1123,7 +1021,6 @@
             const scrolled = (winScroll / height) * 100;
             document.getElementById('progressBar').style.transform = `scaleX(${scrolled / 100})`;
         });
-
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -1133,13 +1030,11 @@
                 navbar.classList.remove('scrolled');
             }
         });
-
         // Intersection Observer for fade-in animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
         };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1147,13 +1042,10 @@
                 }
             });
         }, observerOptions);
-
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
         // Generate background particles
         const particlesContainer = document.getElementById('particles');
         const particleCount = 30;
-        
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
@@ -1165,7 +1057,6 @@
             particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
             particlesContainer.appendChild(particle);
         }
-
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1181,3 +1072,4 @@
         });
     </script>
 </body>
+</html>
