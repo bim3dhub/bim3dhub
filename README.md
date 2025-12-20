@@ -1,6 +1,6 @@
 # BIM3D Hub
 
-![BIM3D Hub Logo](Logo.png)
+<img src="Logo.png" alt="BIM3D Hub Logo" width="384" />
 
 ## Overview
 
