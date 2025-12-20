@@ -82,14 +82,6 @@
             width: auto;
             display: block;
         }
-        .logo-text {
-            font-size: 1.25rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -513,8 +505,7 @@
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="https://raw.githubusercontent.com/bim3dhub/main/Logo.png" alt="BIM3D Hub Logo" class="logo-img" />
-                <div class="logo-text">BIM3D Hub</div>
+                <img src="/Logo.png" alt="BIM3D Hub Logo" class="logo-img" />
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -677,7 +668,7 @@
                 <div class="glass-card fade-in">
                     <h3>🏭 For Manufacturers</h3>
                     <ul>
-                        <li>Single modeling → multiple platforms</li>
+                        <li>Single modeling multiple platforms</li>
                         <li>Up to <strong>90% reduction</strong> in catalog creation costs</li>
                         <li>Simplified distribution via API</li>
                         <li>Automatic updates for all formats</li>
@@ -750,8 +741,8 @@
                 <h3>Core Deliverables</h3>
                 <ul>
                     <li>B3DO format structure defined and documented</li>
-                    <li>Functional FBX → B3DO converter</li>
-                    <li>Functional B3DO → FBX converter</li>
+                    <li>Functional FBX B3DO converter</li>
+                    <li>Functional B3DO FBX converter</li>
                     <li>CLI (command-line) tool for conversions</li>
                     <li>Testing with real manufacturer models</li>
                 </ul>
@@ -771,7 +762,7 @@
                         <h3>Months 0-3</h3>
                         <ul>
                             <li>B3DO format finalized</li>
-                            <li>FBX → B3DO converter</li>
+                            <li>FBX B3DO converter</li>
                             <li>Quality and stability testing</li>
                         </ul>
                     </div>
@@ -785,6 +776,7 @@
                             <li>SketchUp, Blender, and Rhino plugins</li>
                             <li>GLTF and OBJ integration</li>
                             <li>BIM3D Hub Cloud catalog prototype</li>
+                            <li>Public API launch</li>
                         </ul>
                     </div>
                     <div class="timeline-dot"></div>
@@ -794,9 +786,8 @@
                         <span class="phase">Phase 3 - Consolidation</span>
                         <h3>Months 7-12</h3>
                         <ul>
-                            <li>Public API launch</li>
-                            <li>Advanced converters with partial IFC</li>
                             <li>First manufacturer partnership</li>
+                            <li>Advanced converters with partial IFC</li>
                             <li>Expanded CAD/BIM integrations</li>
                         </ul>
                     </div>
@@ -824,21 +815,6 @@
                     <div class="icon">🚀</div>
                     <h3>Digital Ecosystem</h3>
                     <p>Strengthening Outaouais' digital sector</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="icon">🏗️</div>
-                    <h3>Strategic Sectors</h3>
-                    <p>Connection with AEC, manufacturing, digital twins</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="icon">💰</div>
-                    <h3>Federal Investment</h3>
-                    <p>Potential to attract IRAP, SR&ED funding</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="icon">🎓</div>
-                    <h3>Academic Integration</h3>
-                    <p>Partnership with universities and technical centers</p>
                 </div>
             </div>
         </div>
@@ -1012,7 +988,6 @@
             <p style="margin-top: 1rem; font-size: 0.9rem;">Gatineau, Outaouais, Quebec</p>
         </div>
     </footer>
-
     <script>
         // Scroll Progress Bar
         window.addEventListener('scroll', () => {
