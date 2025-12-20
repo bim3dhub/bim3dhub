@@ -1,6 +1,6 @@
 # BIM3D Hub
 
-![BIM3D Hub Logo](https://raw.githubusercontent.com/bim3dhub/main/Logo.png)
+![BIM3D Hub Logo](Logo.png)
 
 ## Overview
 
