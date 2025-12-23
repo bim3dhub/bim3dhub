@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,6 +17,8 @@
             --dark: #0a0a0f;
             --glass: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
+            --success: #00ff9d;
+            --error: #ff4d4d;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -191,6 +193,10 @@
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 20px 40px rgba(0, 240, 255, 0.4);
+        }
+        .cta-button:disabled {
+            opacity: 0.7;
+            cursor: wait;
         }
         /* Section Styles */
         section {
@@ -454,6 +460,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
         /* Form Styles */
         .form-group {
             margin-bottom: 1.5rem;
@@ -495,7 +502,15 @@
             line-height: 1.6;
             text-align: left;
         }
-        
+        #formResponse {
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+            min-height: 1.6rem;
+        }
+        .msg-success { color: var(--success); }
+        .msg-error { color: var(--error); }
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
@@ -561,7 +576,6 @@
                 <li><a href="#market">Market</a></li>
                 <li><a href="#roadmap">Roadmap</a></li>
                 <li><a href="#impact">Impact</a></li>
-                <!-- Updated Contact Link -->
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -1040,7 +1054,7 @@
         <div class="container">
             <h2 class="section-title">Contact Us</h2>
             <div class="glass-card fade-in" style="max-width: 800px; margin: 0 auto;">
-                <form action="mailto:contact@bim3dhub.com" method="post" enctype="text/plain">
+                <form id="contactForm">
                     <div class="form-group">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" id="name" name="name" class="form-input" required>
@@ -1065,6 +1079,7 @@
                         <button type="submit" class="cta-button">Send</button>
                     </div>
                 </form>
+                <div id="formResponse"></div>
             </div>
         </div>
     </section>
@@ -1134,6 +1149,48 @@
                     });
                 }
             });
+        });
+
+        // CLOUDFLARE WORKER FORM SUBMISSION
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const btn = this.querySelector('button');
+            const responseDiv = document.getElementById('formResponse');
+            const originalText = btn.innerText;
+            
+            // UI Feedback: Loading
+            btn.disabled = true;
+            btn.innerText = 'Sending...';
+            responseDiv.innerHTML = '';
+
+            // Capturar dados do formulário
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            try {
+                // ***** ATENÇÃO: SUBSTITUA PELA URL DO SEU CLOUDFLARE WORKER *****
+                const workerUrl = 'https://bim3dhub-contact.pschiarelli.workers.dev'; 
+                
+                const response = await fetch(workerUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    responseDiv.innerHTML = '<span class="msg-success">Message sent successfully! We will contact you shortly.</span>';
+                    this.reset();
+                } else {
+                    throw new Error('Server responded with error');
+                }
+            } catch (error) {
+                console.error(error);
+                responseDiv.innerHTML = '<span class="msg-error">Error sending message. Please try again or email us directly.</span>';
+            } finally {
+                btn.disabled = false;
+                btn.innerText = originalText;
+            }
         });
     </script>
 </body>
