@@ -4,455 +4,544 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BIM3D Hub - Universal 3D Interoperability Platform</title>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    :root {
-        --primary: #00f0ff;
-        --secondary: #7000ff;
-        --accent: #ff006e;
-        --dark: #0a0a0f;
-        --glass: rgba(255, 255, 255, 0.05);
-        --glass-border: rgba(255, 255, 255, 0.1);
-    }
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
-        color: #ffff;
-        overflow-x: hidden;
-        line-height: 1.6;
-    }
-    .logo-img {
-        height: 48px;  /* Ajuste a altura conforme preferir */
-        width: auto;   /* Mantém a proporção da imagem */
-        display: block;
-    }
-
-    /* ===== Novo: estilos do formulário de contato ===== */
-    #contact .contact-wrapper {
-        max-width: 900px;
-        margin: 0 auto;
-    }
-    #contact form.contact-form {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        background: var(--glass);
-        padding: 1.5rem;
-        border-radius: 12px;
-        border: 1px solid var(--glass-border);
-    }
-    #contact .contact-form .full {
-        grid-column: 1 / -1;
-    }
-    #contact input[type="text"],
-    #contact input[type="email"],
-    #contact textarea {
-        width: 100%;
-        padding: 0.6rem;
-        border-radius: 8px;
-        border: 1px solid rgba(255,255,255,0.06);
-        background: rgba(255,255,255,0.02);
-        color: #fff;
-        font-size: 1rem;
-        resize: vertical;
-    }
-    #contact button[type="submit"] {
-        grid-column: 1 / -1;
-        justify-self: start;
-        padding: 0.8rem 1.6rem;
-        border-radius: 8px;
-        border: none;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: white;
-        font-weight: 700;
-        cursor: pointer;
-    }
-    #contact .contact-meta {
-        margin-top: 1rem;
-        color: rgba(255,255,255,0.9);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-    #contact #contactPhone {
-        display: none; /* escondido por padrão; será exibido ao clicar em Contact */
-        font-weight: 600;
-    }
-    #contact .status {
-        color: rgba(255,255,255,0.9);
-        font-weight: 600;
-    }
-    /* ========================= */
-
-    /* Animated background particles */
-    .bg-particles {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 0;
-    }
-    .particle {
-        position: absolute;
-        background: var(--primary);
-        border-radius: 50%;
-        opacity: 0.3;
-        animation: float 20s infinite;
-    }
-    @keyframes float {
-        0%, 100% { transform: translate(0, 0) rotate(0deg); }
-        33% { transform: translate(100px, -100px) rotate(120deg); }
-        66% { transform: translate(-100px, 100px) rotate(240deg); }
-    }
-    /* Navigation */
-    nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        background: rgba(10, 10, 15, 0.8);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--glass-border);
-        padding: 1rem 2rem;
-        transition: all 0.3s ease;
-    }
-    nav.scrolled {
-        background: rgba(10, 10, 15, 0.95);
-        box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
-    }
-    .nav-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-    .nav-links {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-    }
-    .nav-links a {
-        color: #ffff;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        font-weight: 500;
-        position: relative;
-    }
-    .nav-links a::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, var(--primary), var(--secondary));
-        transition: width 0.3s ease;
-    }
-    .nav-links a:hover::after {
-        width: 100%;
-    }
-    /* Hero Section */
-    .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-        padding: 4rem 2rem;
-    }
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
-        animation: pulse 8s ease-in-out infinite;
-    }
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); opacity: 0.3; }
-        50% { transform: scale(1.2); opacity: 0.6; }
-    }
-    .hero-content {
-        max-width: 1200px;
-        text-align: center;
-        position: relative;
-        z-index: 2;
-    }
-    .hero h1 {
-        font-size: clamp(3rem, 8vw, 6rem);
-        font-weight: 900;
-        margin-bottom: 1.5rem;
-        background: linear-gradient(135deg, #00f0ff, #7000ff, #ff006e);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: gradient 5s ease infinite;
-        background-size: 200% 200%;
-    }
-    @keyframes gradient {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-    }
-    .hero .subtitle {
-        font-size: clamp(1.2rem, 3vw, 1.8rem);
-        color: rgba(255, 255, 255, 0.8);
-        margin-bottom: 3rem;
-        line-height: 1.6;
-    }
-    .cta-button {
-        display: inline-block;
-        padding: 1.2rem 3rem;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: white;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        border: none;
-        cursor: pointer;
-    }
-    .cta-button::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-    }
-    .cta-button:hover::before {
-        width: 300px;
-        height: 300px;
-    }
-    .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 20px 40px rgba(0, 240, 255, 0.4);
-    }
-    /* Section Styles */
-    section {
-        padding: 6rem 2rem;
-        position: relative;
-        z-index: 1;
-    }
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .section-title {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 800;
-        margin-bottom: 3rem;
-        text-align: center;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    .section-subtitle {
-        font-size: 1.3rem;
-        color: rgba(255, 255, 255, 0.7);
-        text-align: center;
-        margin-bottom: 4rem;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    /* Glass Cards */
-    .glass-card {
-        background: var(--glass);
-        backdrop-filter: blur(10px);
-        border: 1px solid var(--glass-border);
-        border-radius: 20px;
-        padding: 2.5rem;
-        margin-bottom: 2rem;
-        transition: all 0.4s ease;
-        position: relative;
-        overflow: hidden;
-    }
-    .glass-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
-        transition: left 0.6s;
-    }
-    .glass-card:hover::before {
-        left: 100%;
-    }
-    .glass-card:hover {
-        transform: translateY(-10px);
-        border-color: var(--primary);
-        box-shadow: 0 20px 60px rgba(0, 240, 255, 0.2);
-    }
-    .glass-card h3 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-        color: var(--primary);
-    }
-    .glass-card p, .glass-card ul {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 1.05rem;
-    }
-    .glass-card ul {
-        list-style: none;
-        padding-left: 0;
-    }
-    .glass-card li {
-        padding: 0.5rem 0;
-        padding-left: 1.5rem;
-        position: relative;
-    }
-    .glass-card li::before {
-        content: '▹';
-        position: absolute;
-        left: 0;
-        color: var(--primary);
-        font-weight: bold;
-    }
-    /* Grid Layout */
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas fixas */
-        gap: 2rem;
-        margin-top: 3rem;
-    }
-    /* Responsividade: 1 coluna em telas pequenas */
-    @media (max-width: 768px) {
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #00f0ff;
+            --secondary: #7000ff;
+            --accent: #ff006e;
+            --dark: #0a0a0f;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        .logo-img {
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+        /* Animated background particles */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 20s infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(100px, -100px) rotate(120deg); }
+            66% { transform: translate(-100px, 100px) rotate(240deg); }
+        }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+        nav.scrolled {
+            background: rgba(10, 10, 15, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #ffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 2rem;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+        }
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #00f0ff, #7000ff, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 5s ease infinite;
+            background-size: 200% 200%;
+        }
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.4);
+        }
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        .glass-card:hover::before {
+            left: 100%;
+        }
+        .glass-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(0, 240, 255, 0.2);
+        }
+        .glass-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .glass-card p, .glass-card ul {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
+        }
+        .glass-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .glass-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .glass-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        /* Grid Layout */
         .grid {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
         }
-        #contact form.contact-form {
-            grid-template-columns: 1fr;
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
-    }
-    .feature-card {
-        background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(112, 0, 255, 0.05));
-        border: 1px solid var(--glass-border);
-        border-radius: 20px;
-        padding: 2rem;
-        text-align: center;
-        transition: all 0.4s ease;
-        position: relative;
-        overflow: hidden;
-    }
-    .feature-card::after {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
-        opacity: 0;
-        transition: opacity 0.4s;
-    }
-    .feature-card:hover::after {
-        opacity: 1;
-    }
-    .feature-card:hover {
-        transform: translateY(-10px) scale(1.02);
-        border-color: var(--primary);
-        box-shadow: 0 20px 60px rgba(0, 240, 255, 0.3);
-    }
-    .icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        display: inline-block;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    .feature-card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: #ffff;
-    }
-    .feature-card p {
-        color: rgba(255, 255, 255, 0.7);
-        line-height: 1.6;
-    }
-    /* Footer */
-    footer {
-        background: rgba(10, 10, 15, 0.8);
-        backdrop-filter: blur(10px);
-        border-top: 1px solid var(--glass-border);
-        padding: 3rem 2rem;
-        text-align: center;
-        position: relative;
-        z-index: 1;
-    }
-    footer p {
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 1rem;
-    }
-    footer p:last-child {
-        margin-top: 1rem;
-        font-size: 0.9rem;
-    }
-    /* Animations */
-    .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    /* Scroll Progress Bar */
-    .progress-bar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-        z-index: 9999;
-        transform-origin: left;
-        transition: transform 0.1s ease;
-    }
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-        background: var(--dark);
-    }
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(180deg, var(--primary), var(--secondary));
-        border-radius: 5px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(180deg, var(--secondary), var(--accent));
-    }
-</style>
+        .feature-card {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(112, 0, 255, 0.05));
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(0, 240, 255, 0.3);
+        }
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffff;
+        }
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(112, 0, 255, 0.1));
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .timeline-content {
+            width: 45%;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+        }
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.2);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            border: 4px solid var(--dark);
+            z-index: 2;
+        }
+        .phase {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+        }
+        footer p:last-child {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        .contact-info-text {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            text-align: left;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                flex-direction: column !important;
+                align-items: flex-start;
+                padding-left: 50px;
+            }
+            .timeline-content {
+                width: 100%;
+            }
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            z-index: 9999;
+            transform-origin: left;
+            transition: transform 0.1s ease;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--secondary), var(--accent));
+        }
+    </style>
 </head>
 <body>
     <!-- Progress Bar -->
@@ -472,7 +561,8 @@
                 <li><a href="#market">Market</a></li>
                 <li><a href="#roadmap">Roadmap</a></li>
                 <li><a href="#impact">Impact</a></li>
-                <li><a href="#contact">Contact</a></li> <!-- agora aponta para a seção -->
+                <!-- Updated Contact Link -->
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -542,7 +632,7 @@
     <!-- The Solution -->
     <section id="solution">
         <div class="container">
-            <h2 class="section-title">The BIM3D Hub Solution</h2>
+            <h2 class="section-title">A Solução BIM3D Hub</h2>
             <div class="glass-card fade-in">
                 <h3>Universal .b3do Format</h3>
                 <p>An intelligent 3D container that combines:</p>
@@ -588,7 +678,6 @@
             </div>
         </div>
     </section>
-
     <!-- Market Opportunity -->
     <section id="market">
         <div class="container">
@@ -620,48 +709,365 @@
             </div>
         </div>
     </section>
-
-    <!-- ===== Contact Section (inserido aqui) ===== -->
-    <section id="contact">
-      <div class="contact-wrapper">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-subtitle">Send us a message or request more information. Your message will be sent to <strong>pschiarelli@gmail.com</strong>.</p>
-
-        <form class="contact-form" action="https://formsubmit.co/contact@bim3dhub.com" method="POST" >
-          <!-- Honeypot anti-spam (invisível) -->
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-          <!-- Disable FormSubmit captcha (optional) -->
-          <input type="hidden" name="_captcha" value="false">
-          <!-- Optional: if you want to redirect after submit, uncomment and set _next -->
-          <!-- <input type="hidden" name="_next" value="https://bim3dhub.com/#contact?sent=1"> -->
-
-          <label>
-            <input type="text" name="name" placeholder="Name" required>
-          </label>
-
-          <label>
-            <input type="email" name="email" placeholder="Email" required>
-          </label>
-
-          <label class="full">
-            <textarea name="message" rows="6" placeholder="Message" required></textarea>
-          </label>
-
-          <button type="submit">Send Message</button>
-        </form>
-
-        <div class="contact-meta">
-          <div id="contactPhone">
-            Phone: <a id="phoneLink" href="tel:+18739732220" style="color:var(--primary); text-decoration:none;">+1 (873) 973-2220</a>
-          </div>
-          <div class="status" id="contactStatus" aria-live="polite"></div>
+    <!-- Value Proposition -->
+    <section id="value">
+        <div class="container">
+            <h2 class="section-title">Value Proposition</h2>
+            <div class="grid">
+                <div class="glass-card fade-in">
+                    <h3>🏭 For Manufacturers</h3>
+                    <ul>
+                        <li>Single modeling multiple platforms</li>
+                        <li>Up to <strong>90% reduction</strong> in catalog creation costs</li>
+                        <li>Simplified distribution via API</li>
+                        <li>Automatic updates for all formats</li>
+                    </ul>
+                </div>
+                <div class="glass-card fade-in">
+                    <h3>🏢 For AEC Firms</h3>
+                    <ul>
+                        <li>Clean conversions without losses</li>
+                        <li>Standardized and reliable models</li>
+                        <li>Amplified productivity</li>
+                        <li>Guaranteed compatibility with BIM workflows</li>
+                    </ul>
+                </div>
+                <div class="glass-card fade-in">
+                    <h3>👨‍💻 For Developers</h3>
+                    <ul>
+                        <li>Open API for conversion</li>
+                        <li>Easy integration with catalog websites</li>
+                        <li>Ready-made plugins for multiple platforms</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-    <!-- ===== Fim Contact Section ===== -->
+    <!-- Technical Differentiators -->
+    <section id="tech">
+        <div class="container">
+            <h2 class="section-title">Technical Differentiators</h2>
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">🧬</div>
+                    <h3>Hybrid Format</h3>
+                    <p>Mesh + parametric + metadata in one container</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🏗️</div>
+                    <h3>Modular Architecture</h3>
+                    <p>Flexible conversion pipeline</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">📐</div>
+                    <h3>IFC Compatible</h3>
+                    <p>Partial in MVP, complete in later phases</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🎮</div>
+                    <h3>Game Engine Ready</h3>
+                    <p>Compatible with AAA workflows (FBX & game engines)</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🔒</div>
+                    <h3>Patent Potential</h3>
+                    <p>Internal container structure + pipeline</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🎨</div>
+                    <h3>Native LOD Support</h3>
+                    <p>Multiple detail levels & PBR materials</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- MVP -->
+    <section id="mvp">
+        <div class="container">
+            <h2 class="section-title">MVP - First 3 Months</h2>
+            <p class="section-subtitle">Creating the BIM3D Hub B3DO & FBX Converter (Version 1.0)</p>
+            <div class="glass-card fade-in">
+                <h3>Core Deliverables</h3>
+                <ul>
+                    <li>B3DO format structure defined and documented</li>
+                    <li>Functional FBX B3DO converter</li>
+                    <li>Functional B3DO FBX converter</li>
+                    <li>CLI (command-line) tool for conversions</li>
+                    <li>Testing with real manufacturer models</li>
+                </ul>
+                <br>
+                <p><strong>Why FBX?</strong> FBX is the most stable and widely accepted format in the world for 3D interoperability. It serves as a reliable bridge between SKP, OBJ, GLTF, and others.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Roadmap -->
+    <section id="roadmap">
+        <div class="container">
+            <h2 class="section-title">12-Month Roadmap</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="phase">Phase 1 - MVP</span>
+                        <h3>Months 0-3</h3>
+                        <ul>
+                            <li>B3DO format finalized</li>
+                            <li>FBX B3DO converter</li>
+                            <li>Quality and stability testing</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="phase">Phase 2 - Expansion</span>
+                        <h3>Months 4-6</h3>
+                        <ul>
+                            <li>SketchUp, Blender, and Rhino plugins</li>
+                            <li>GLTF and OBJ integration</li>
+                            <li>BIM3D Hub Cloud catalog prototype</li>
+                            <li>Public API launch</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="phase">Phase 3 - Consolidation</span>
+                        <h3>Months 7-12</h3>
+                        <ul>
+                            <li>First manufacturer partnership</li>
+                            <li>Advanced converters with partial IFC</li>
+                            <li>Expanded CAD/BIM integrations</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Impact for Gatineau -->
+    <section id="impact">
+        <div class="container">
+            <h2 class="section-title">
+                Impact for Gatineau<br />
+                Economic & Technological</h2>
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">💼</div>
+                    <h3>Local Job Creation</h3>
+                    <p>Qualified positions in C++, Python, and 3D artistry</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🌏</div>
+                    <h3>Global Export Platform</h3>
+                    <p>Technology platform with worldwide reach</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🚀</div>
+                    <h3>Digital Ecosystem</h3>
+                    <p>Strengthening Outaouais' digital sector</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Risk Mitigation -->
+    <section id="risks">
+        <div class="container">
+            <h2 class="section-title">Risk Mitigation Strategy</h2>
+            <div class="glass-card fade-in">
+                <h3>🎯 Risk 1: Universal Format Structuring</h3>
+                <p><strong>Challenge:</strong> B3DO must be flexible and compatible with many formats.</p>
+                <p><strong>Mitigation:</strong> Comparative study + modular architecture + internal API.</p>
+            </div>
+            <div class="glass-card fade-in">
+                <h3>⚠️ Risk 2: Conversion Losses</h3>
+                <p><strong>Challenge:</strong> 3D conversions can generate inconsistencies.</p>
+                <p><strong>Mitigation:</strong> FBX pipeline as bridge + continuous testing.</p>
+            </div>
+            <div class="glass-card fade-in">
+                <h3>📈 Risk 3: Initial Adoption</h3>
+                <p><strong>Challenge:</strong> Market may take time to migrate to a new format.</p>
+                <p><strong>Mitigation:</strong> Free plugins + freemium model + manufacturer integration.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Competitive Barriers -->
+    <section id="barriers">
+        <div class="container">
+            <h2 class="section-title">
+                Market Entry Barriers<br />
+                Competitive Advantages</h2>
+            <div class="glass-card fade-in">
+                <p>The 3D interoperability market has significant entry barriers that act as both risks and strategic advantages for BIM3D Hub. Below are the key factors shaping the competitive landscape and reinforcing the plausibility and defensibility of our proposition.</p>
+            </div>
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">🔬</div>
+                    <h3>High Technical Complexity</h3>
+                    <p>Startups focused exclusively on universal formats can overcome this challenge faster than large companies with rigid structures</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🆓</div>
+                    <h3>Independence Advantage</h3>
+                    <p>Major players have no incentive for full interoperability—their business models depend on closed ecosystems</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">⏱️</div>
+                    <h3>Difficult to Replicate</h3>
+                    <p>The structured B3DO pipeline would take years for any competitor to replicate stably</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🌐</div>
+                    <h3>Network Effect</h3>
+                    <p>When manufacturers use B3DO, software must support it. When software supports it, more manufacturers adopt it</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">⚖️</div>
+                    <h3>Patent Potential</h3>
+                    <p>Internal structure of B3DO container provides strong legal and technological defensibility</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🎯</div>
+                    <h3>Strategic Entry Points</h3>
+                    <p>Mid-size manufacturers, smaller firms, catalog platforms—segments where giants don't operate directly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Revenue Model -->
+    <section id="revenue">
+        <div class="container">
+            <h2 class="section-title">Revenue Model</h2>
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">🗓️</div>
+                    <h3>Annual Subscriptions</h3>
+                    <p>For manufacturers</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🏢</div>
+                    <h3>Corporate Plans</h3>
+                    <p>For AEC firms</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🕴️</div>
+                    <h3>API Licensing</h3>
+                    <p>For online catalogs</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🛠️</div>
+                    <h3>Premium Services</h3>
+                    <p>On-demand modeling & conversion</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🏪</div>
+                    <h3>Future Marketplace</h3>
+                    <p>Commission-based model</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Structure -->
+    <section id="team">
+        <div class="container">
+            <h2 class="section-title">Initial Startup Structure</h2>
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">👨‍💼</div>
+                    <h3>CEO / Chief Architect</h3>
+                    <p>Technical and strategic vision</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">👨‍💻</div>
+                    <h3>C++ Developer</h3>
+                    <p>Core converter development</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🐍</div>
+                    <h3>Python Developer</h3>
+                    <p>Automation, plugins, API</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🎨</div>
+                    <h3>3D Artist (Blender)</h3>
+                    <p>Testing and object normalization</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">📐</div>
+                    <h3>BIM Consultant</h3>
+                    <p>IFC compatibility and AEC requirements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Incubation Needs -->
+    <section id="incubation">
+        <div class="container">
+            <h2 class="section-title">What We Seek from Incubation</h2>
+            <div class="glass-card fade-in">
+                <ul>
+                    <li>Support in developing the MVP</li>
+                    <li>Access to technical mentors</li>
+                    <li>Networking with local companies</li>
+                    <li>Infrastructure for company creation</li>
+                    <li>Assistance in refining business model</li>
+                    <li>Preparation for IRAP funding</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Conclusion -->
+    <section id="conclusion">
+        <div class="container">
+            <h2 class="section-title">Conclusion</h2>
+            <div class="glass-card fade-in">
+                <h3>🚀 Global Innovation with Local Impact</h3>
+                <p><strong>BIM3D Hub</strong> represents a global impact innovation with the potential to become the universal standard for 3D and BIM files.</p>
+                <br>
+                <p>The <strong>Outaouais region</strong> is an ideal location for developing this technology, with support from dynamic incubators and access to federal innovation programs.</p>
+                <br>
+                <p>With incubation, the project will be able to take the initial leap necessary to become a reference in the 3D interoperability sector.</p>
+                <br>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#home" class="cta-button">Join the Revolution</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- (continuam as demais seções do site...) -->
-    <!-- ... Risk Mitigation, Barriers, Revenue, Team, etc. (mantidos como no arquivo original) -->
+    <!-- NEW CONTACT SECTION -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="glass-card fade-in" style="max-width: 800px; margin: 0 auto;">
+                <form action="mailto:contact@bim3dhub.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" required></textarea>
+                        
+                        <p class="contact-info-text">
+                            You can send messages directly to contact@bim3dhub.com or support@bim3dhub.ca.<br>
+                            (873) 973-2220.
+                        </p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button type="submit" class="cta-button">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -670,7 +1076,6 @@
             <p style="margin-top: 1rem; font-size: 0.9rem;">Gatineau, Outaouais, Québec, Canada</p>
         </div>
     </footer>
-
     <script>
         // Scroll Progress Bar
         window.addEventListener('scroll', () => {
@@ -679,7 +1084,6 @@
             const scrolled = (winScroll / height) * 100;
             document.getElementById('progressBar').style.transform = `scaleX(${scrolled / 100})`;
         });
-
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -689,7 +1093,6 @@
                 navbar.classList.remove('scrolled');
             }
         });
-
         // Intersection Observer for fade-in animations
         const observerOptions = {
             threshold: 0.1,
@@ -703,7 +1106,7 @@
             });
         }, observerOptions);
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
+        
         // Generate background particles
         const particlesContainer = document.getElementById('particles');
         const particleCount = 30;
@@ -718,13 +1121,8 @@
             particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
             particlesContainer.appendChild(particle);
         }
-
-        // Smooth scrolling for navigation links + reveal phone logic
-        function revealContactPhone() {
-            const phoneDiv = document.getElementById('contactPhone');
-            if (phoneDiv) phoneDiv.style.display = 'block';
-        }
-
+        
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -734,29 +1132,9 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // If the link points to #contact, reveal the phone after a short delay
-                    if (this.getAttribute('href') === '#contact') {
-                        setTimeout(revealContactPhone, 350);
-                    }
                 }
             });
         });
-
-        // If page loaded with #contact in the URL, reveal phone
-        if (window.location.hash && window.location.hash.startsWith('#contact')) {
-            // small delay to allow any automatic scrolling to occur
-            setTimeout(revealContactPhone, 300);
-        }
-
-        // Optional: show a short message if redirected by form (if you enable _next to append ?sent=1)
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('sent') === '1') {
-            const status = document.getElementById('contactStatus');
-            if (status) {
-                status.textContent = 'Message sent — thank you!';
-                setTimeout(()=> status.textContent = '', 7000);
-            }
-        }
     </script>
 </body>
 </html>
