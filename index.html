@@ -572,6 +572,8 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#problem">Problem</a></li>
+                <!-- NEW RESEARCH MENU ITEM -->
+                <li><a href="#research">Research</a></li>
                 <li><a href="#solution">Solution</a></li>
                 <li><a href="#market">Market</a></li>
                 <li><a href="#roadmap">Roadmap</a></li>
@@ -586,35 +588,6 @@
             <h1>BIM3D Hub</h1>
             <p class="subtitle">The Universal 3D Interoperability Platform<br>Making 3D Portable for the Future</p>
             <a href="#solution" class="cta-button">Discover the Future</a>
-        </div>
-    </section>
-    <!-- RESEARCH / SURVEY SECTION -->
-    <section id="research">
-        <div class="container">
-            <h2 class="section-title">Help Shape the Future</h2>
-            <p class="section-subtitle">We are gathering insights from industry leaders to refine BIM3D Hub.<br>Select your profile below to participate.</p>
-            
-            <div class="grid">
-                <!-- Card Arquitetos -->
-                <div class="glass-card fade-in" style="text-align: center; border-color: var(--primary);">
-                    <div class="icon">📐</div>
-                    <h3>For Architects & Designers</h3>
-                    <p>Tired of fixing broken 3D models? Help us define the perfect workflow for your daily needs.</p>
-                    <br>
-                    <!-- SUBSTITUA O # PELO LINK DO SEU FORMULÁRIO DE ARQUITETOS -->
-                    <a href="LINK_DO_FORM_ARQUITETOS_AQUI" target="_blank" class="cta-button">Take Survey (2 min)</a>
-                </div>
-
-                <!-- Card Fabricantes/Marketing -->
-                <div class="glass-card fade-in" style="text-align: center; border-color: var(--accent);">
-                    <div class="icon">🏭</div>
-                    <h3>For Manufacturers</h3>
-                    <p>Want your products specified more often? Share your challenges with digital catalogs and ROI.</p>
-                    <br>
-                    <!-- SUBSTITUA O # PELO LINK DO SEU FORMULÁRIO DE EMPRESAS -->
-                    <a href="LINK_DO_FORM_EMPRESAS_AQUI" target="_blank" class="cta-button">Take Survey (3 min)</a>
-                </div>
-            </div>
         </div>
     </section>
     <!-- Executive Summary -->
@@ -672,6 +645,37 @@
             </div>
         </div>
     </section>
+
+    <!-- NEW RESEARCH SECTION -->
+    <section id="research">
+        <div class="container">
+            <h2 class="section-title">Help Shape the Future</h2>
+            <p class="section-subtitle">We are gathering insights from industry leaders to refine BIM3D Hub.<br>Select your profile below to participate.</p>
+            
+            <div class="grid">
+                <!-- Architect Card -->
+                <div class="glass-card fade-in" style="text-align: center; border-color: var(--primary);">
+                    <div class="icon">📐</div>
+                    <h3>For Architects & Designers</h3>
+                    <p>Tired of fixing broken 3D models? Help us define the perfect workflow for your daily needs.</p>
+                    <br>
+                    <!-- REPLACE # WITH YOUR ARCHITECT SURVEY LINK -->
+                    <a href="LINK_DO_FORM_ARQUITETOS_AQUI" target="_blank" class="cta-button">Take Survey (2 min)</a>
+                </div>
+
+                <!-- Manufacturer Card -->
+                <div class="glass-card fade-in" style="text-align: center; border-color: var(--accent);">
+                    <div class="icon">🏭</div>
+                    <h3>For Manufacturers</h3>
+                    <p>Want your products specified more often? Share your challenges with digital catalogs and ROI.</p>
+                    <br>
+                    <!-- REPLACE # WITH YOUR MANUFACTURER SURVEY LINK -->
+                    <a href="LINK_DO_FORM_EMPRESAS_AQUI" target="_blank" class="cta-button">Take Survey (3 min)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- The Solution -->
     <section id="solution">
         <div class="container">
@@ -1078,7 +1082,7 @@
         </div>
     </section>
 
-    <!-- NEW CONTACT SECTION -->
+    <!-- CONTACT SECTION -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title">Contact Us</h2>
@@ -1198,7 +1202,7 @@
             const data = Object.fromEntries(formData);
 
             try {
-                // ***** ATENÇÃO: SUBSTITUA PELA URL DO SEU CLOUDFLARE WORKER *****
+                // URL do seu Worker configurado
                 const workerUrl = 'https://bim3dhub-contact.pschiarelli.workers.dev'; 
                 
                 const response = await fetch(workerUrl, {
@@ -1207,14 +1211,17 @@
                     body: JSON.stringify(data)
                 });
 
+                const result = await response.json();
+
                 if (response.ok) {
                     responseDiv.innerHTML = '<span class="msg-success">Message sent successfully! We will contact you shortly.</span>';
                     this.reset();
                 } else {
-                    throw new Error('Server responded with error');
+                    console.error('Worker error:', result);
+                    throw new Error(result.error || 'Server responded with error');
                 }
             } catch (error) {
-                console.error(error);
+                console.error('Fetch error:', error);
                 responseDiv.innerHTML = '<span class="msg-error">Error sending message. Please try again or email us directly.</span>';
             } finally {
                 btn.disabled = false;
