@@ -375,3 +375,29 @@ li::before {
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--dark); }
 ::-webkit-scrollbar-thumb { background: var(--green-subtitle); border-radius: 5px; }
+
+/* --- 14. AJUSTES FINOS DE CONTEÚDO --- */
+
+/* Estilo específico para a introdução da Solução */
+.solution-intro {
+    font-weight: 800 !important;    /* Negrito intenso solicitado */
+    font-size: 1.3rem !important;   /* Aumentado em 2 pontos (estava 1.1) */
+    margin-bottom: 2.5rem;          /* O "pulo de linha" até a lista abaixo */
+    text-align: center;             /* Centralização garantida */
+    color: #ffffff;                 /* Branco puro para destacar do esverdeado */
+    display: block;
+    width: 100%;
+}
+
+/* Centralização do bloco da lista dentro do card da solução */
+#solution .glass-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#solution ul {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+}
