@@ -187,6 +187,18 @@ nav.scrolled {
     line-height: 1.6;
 }
 
+/* --- SCROLL INDICATOR --- */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px; /* Fixa no fundo da dobra da tela */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 5;
+    color: var(--primary); /* Usa o tom pastel que definimos */
+    pointer-events: none; /* Garante que não bloqueie cliques acidentais */
+}
+
 /* --- SECTION GENERAL STYLES --- */
 section {
     padding: 6rem 2rem;
@@ -454,4 +466,22 @@ footer {
     .timeline-item { flex-direction: column !important; align-items: flex-start; padding-left: 50px; }
     .timeline-content { width: 100%; }
     .timeline-dot { left: 20px; }
+}
+/* --- ANIMATIONS --- */
+@keyframes grow {
+    0% { 
+        transform: scaleY(0); 
+        transform-origin: top; 
+        opacity: 0; 
+    }
+    50% { 
+        transform: scaleY(1); 
+        transform-origin: top; 
+        opacity: 1; 
+    }
+    100% { 
+        transform: scaleY(0); 
+        transform-origin: bottom; 
+        opacity: 0; 
+    }
 }
