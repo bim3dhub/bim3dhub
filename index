@@ -3,30 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIM3D Hub | Global Gateway</title>
+    <title>BIM3D Hub | Select Language</title>
+    
+    <!-- Metadados de SEO Técnico - Impressiona Investidores -->
+    <link rel="alternate" hreflang="en" href="https://www.bim3dhub.com/en/" />
+    <link rel="alternate" hreflang="pt-br" href="https://www.bim3dhub.com/pt-br/" />
+    <link rel="alternate" hreflang="pt-pt" href="https://www.bim3dhub.com/pt-pt/" />
+    <link rel="alternate" hreflang="fr-ca" href="https://www.bim3dhub.com/fr-ca/" />
+    <link rel="alternate" hreflang="es-us" href="https://www.bim3dhub.com/es-us/" />
+    <link rel="alternate" hreflang="it" href="https://www.bim3dhub.com/it/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.bim3dhub.com/en/" />
+
     <style>
         :root {
-            --glass: rgba(255, 255, 255, 0.07);
-            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.12);
             --text: #ffffff;
+            --accent: #00f0ff;
         }
 
         body {
             margin: 0;
+            padding: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
-            font-family: 'Inter', 'Segoe UI', sans-serif;
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
             color: var(--text);
+            overflow: hidden;
         }
 
         .logo-top {
-            width: 120px;
-            margin-bottom: 40px;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+            width: 150px;
+            margin-bottom: 50px;
+            filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.2));
+            transition: transform 0.5s ease;
+        }
+        
+        .logo-top:hover {
+            transform: scale(1.05);
         }
 
         .language-container {
@@ -34,7 +52,8 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             width: 90%;
-            max-width: 600px;
+            max-width: 700px;
+            perspective: 1000px;
         }
 
         @media (min-width: 768px) {
@@ -43,26 +62,26 @@
 
         .lang-card {
             position: relative;
-            height: 100px;
+            height: 120px;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: 16px;
             border: 1px solid var(--glass-border);
             background: var(--glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
         }
 
         .lang-card:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.2);
         }
 
         .flag-bg {
@@ -71,64 +90,86 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            opacity: 0.1;
+            opacity: 0.08;
             z-index: 0;
-            transition: opacity 0.4s;
+            transition: opacity 0.4s, transform 0.6s;
+            filter: saturate(0.5);
         }
 
-        .lang-card:hover .flag-bg { opacity: 0.25; }
+        .lang-card:hover .flag-bg {
+            opacity: 0.25;
+            transform: scale(1.1);
+        }
 
         .lang-text {
             position: relative;
             z-index: 1;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 1.2px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             text-align: center;
-            padding: 0 10px;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        .footer-text {
-            margin-top: 50px;
-            font-size: 0.7rem;
-            opacity: 0.4;
-            letter-spacing: 2px;
+        .lang-card:hover .lang-text {
+            color: var(--accent);
+        }
+
+        .footer-info {
+            margin-top: 60px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0.3;
         }
     </style>
 </head>
 <body>
 
+    <!-- Busca o logo na pasta assets/ logo acima das pastas de idioma -->
     <img src="assets/Logo.png" alt="BIM3D Hub" class="logo-top">
 
     <div class="language-container">
+        <!-- English -->
         <a href="./en/" class="lang-card">
-            <div class="flag-bg" style="background-image: url('assets/flags/en.png');"></div>
+            <div class="flag-bg" style="background-image: url('https://flagcdn.com/w320/us.png');"></div>
             <span class="lang-text">English</span>
         </a>
+
+        <!-- Français Canada -->
         <a href="./fr-ca/" class="lang-card">
-            <div class="flag-bg" style="background-image: url('assets/flags/fr-ca.png');"></div>
+            <div class="flag-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Flag_of_Quebec.svg/320px-Flag_of_Quebec.svg.png');"></div>
             <span class="lang-text">Français<br>(Canada)</span>
         </a>
+
+        <!-- Português Brasil -->
         <a href="./pt-br/" class="lang-card">
-            <div class="flag-bg" style="background-image: url('assets/flags/pt-br.png');"></div>
+            <div class="flag-bg" style="background-image: url('https://flagcdn.com/w320/br.png');"></div>
             <span class="lang-text">Português<br>(Brasil)</span>
         </a>
+
+        <!-- Português Portugal -->
         <a href="./pt-pt/" class="lang-card">
-            <div class="flag-bg" style="background-image: url('assets/flags/pt-pt.png');"></div>
+            <div class="flag-bg" style="background-image: url('https://flagcdn.com/w320/pt.png');"></div>
             <span class="lang-text">Português<br>(Portugal)</span>
         </a>
+
+        <!-- Español EE.UU. -->
         <a href="./es-us/" class="lang-card">
-            <div class="flag-bg" style="background-image: url('assets/flags/es-us.png');"></div>
+            <div class="flag-bg" style="background-image: url('https://flagcdn.com/w320/us.png');"></div>
             <span class="lang-text">Español<br>(EE. UU.)</span>
         </a>
+
+        <!-- Italiano -->
         <a href="./it/" class="lang-card">
-            <div class="flag-bg" style="background-image: url('assets/flags/it.png');"></div>
+            <div class="flag-bg" style="background-image: url('https://flagcdn.com/w320/it.png');"></div>
             <span class="lang-text">Italiano</span>
         </a>
     </div>
 
-    <div class="footer-text">BIM3D HUB &copy; 2025 | GLOBAL INTEROPERABILITY</div>
+    <div class="footer-info">BIM3D Hub © 2025 | Universal Interoperability</div>
 
 </body>
 </html>
