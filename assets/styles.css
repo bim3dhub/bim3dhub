@@ -1,6 +1,6 @@
 /* 
     BIM3D Hub - Master Global Stylesheet
-    Revisão: Hierarquia de Verdes + Centralização Total de Conteúdo
+    Revisão: Restauração da Timeline Alternada + Phase Tags Azuladas
     Data: 31/12/2025
 */
 
@@ -16,15 +16,16 @@
     --secondary: #7000ff;        /* Violeta Profundo */
     --accent: #ff006e;           /* Rosa Hero */
     
-    /* Hierarquia de Verdes solicitada */
-    --green-subtitle: #4db6ac;   /* Esverdeado mais escuro (Sub-títulos de seção) */
+    /* Hierarquia de Cores solicitada */
+    --green-subtitle: #4db6ac;   /* Esverdeado mais escuro (Sub-títulos) */
     --green-card-title: #afe3d7; /* Esverdeado mais claro (Títulos de Cards) */
+    --blue-phase: #00e5ff;       /* Azul ciano para Phase Tags */
     --green-scroll: #00ffcc;     /* Verde vibrante (Scroll e Linhas) */
     
     --cobalt-border: #005fcc;    /* Azul Cobalto Default das bordas */
     --hover-violet: #7000ff;     /* Violeta para Hover */
     --dark: #0a0a0f;
-    --glass: rgba(255, 255, 255, 0.05);
+    --glass: rgba(15, 23, 42, 0.6); 
     --glass-border: rgba(255, 255, 255, 0.1);
     --nav-height: 80px;
     --container-width: 1100px;
@@ -37,7 +38,7 @@ html {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+    background: radial-gradient(circle at top right, #0f172a 0%, #05070a 100%);
     color: #ffffff;
     overflow-x: hidden;
     line-height: 1.6;
@@ -75,8 +76,8 @@ section {
 
 @keyframes float {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(100px, -100px) rotate(120deg); }
-    66% { transform: translate(-100px, 100px) rotate(240deg); }
+    33% { transform: translate(60px, -60px) rotate(120deg); }
+    66% { transform: translate(-60px, 60px) rotate(240deg); }
 }
 
 /* --- 4. NAVEGAÇÃO --- */
@@ -85,7 +86,7 @@ nav {
     top: 0; left: 0; right: 0;
     z-index: 9999;
     background: rgba(10, 10, 15, 0.85);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass-border);
     padding: 1rem 2rem;
 }
@@ -142,7 +143,7 @@ nav {
     margin-bottom: 3rem;
 }
 
-/* --- 6. SCROLL INDICATOR (CORRIGIDO) --- */
+/* --- 6. SCROLL INDICATOR --- */
 .scroll-indicator {
     position: absolute;
     bottom: 30px;
@@ -152,7 +153,7 @@ nav {
 }
 
 .scroll-indicator span {
-    color: var(--green-scroll); /* Cor verde igual à linha */
+    color: var(--green-scroll);
     font-size: 0.75rem;
     letter-spacing: 2px;
     font-weight: 600;
@@ -160,7 +161,7 @@ nav {
 
 .scroll-line {
     width: 1px; height: 45px;
-    background: var(--green-scroll); /* Linha verde */
+    background: var(--green-scroll);
     margin: 12px auto 0 auto;
     animation: grow 2s infinite;
 }
@@ -184,8 +185,8 @@ nav {
 }
 
 .section-subtitle {
-    font-size: 1.6rem; /* Tamanho aumentado conforme solicitado */
-    color: var(--green-subtitle); /* Verde mais escuro para hierarquia */
+    font-size: 1.6rem;
+    color: var(--green-subtitle);
     text-align: center;
     margin-bottom: 4rem;
     max-width: 850px;
@@ -194,7 +195,7 @@ nav {
     font-weight: 600;
 }
 
-/* --- 8. CARDS: GLASS VISUAL + CENTRALIZAÇÃO + HIERARQUIA --- */
+/* --- 8. REGRA GLOBAL DE CARDS (CENTRALIZAÇÃO INTERNA) --- */
 .glass-card, 
 .feature-card, 
 .stat-card, 
@@ -205,7 +206,6 @@ nav {
     border: 1.5px solid var(--cobalt-border);
     border-radius: 20px;
     padding: 3rem;
-    margin-bottom: 2rem;
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
@@ -226,26 +226,30 @@ nav {
     box-shadow: 0 15px 40px rgba(128, 128, 128, 0.3); /* Sombra Cinza */
 }
 
+/* Espaçamentos específicos */
+.glass-card { margin-bottom: 2rem; }
+
 /* Títulos dentro dos Cards */
 h3 {
-    color: var(--green-card-title) !important; /* Verde mais claro conforme hierarquia */
+    color: var(--green-card-title) !important;
     font-size: 1.8rem;
     margin-bottom: 1.2rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 /* Centralização de listas dentro dos cards */
-.glass-card ul, .feature-card ul {
+.glass-card ul, .feature-card ul, .timeline-content ul {
     display: inline-block;
-    text-align: left; /* Mantém itens alinhados à esquerda para leitura, mas o bloco centralizado */
+    text-align: left;
     margin: 0 auto;
 }
 
-/* --- 9. ELEMENTOS ESPECÍFICOS --- */
+/* --- 9. GRIDS --- */
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 2.5rem;
+    margin-top: 2rem;
 }
 
 .icon {
@@ -272,25 +276,68 @@ li::before {
     font-size: 1.1rem;
 }
 
-/* --- 11. TIMELINE / ROADMAP --- */
-.timeline::before {
-    background: linear-gradient(180deg, var(--cobalt-border), var(--hover-violet));
-}
-.timeline-item:nth-child(even) { flex-direction: row-reverse; }
-.timeline-dot {
-    background: var(--cobalt-border);
-    border: 4px solid var(--dark);
+/* --- 11. TIMELINE / ROADMAP (RESTAURAÇÃO ZIGUE-ZAGUE) --- */
+.timeline { 
+    position: relative; 
+    padding: 50px 0; 
 }
 
+/* Linha Vertical */
+.timeline::before {
+    content: ''; 
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 2px; 
+    height: 100%; 
+    background: linear-gradient(180deg, var(--cobalt-border), var(--hover-violet));
+}
+
+.timeline-item {
+    display: flex; 
+    justify-content: space-between; 
+    width: 100%;
+    margin-bottom: 4rem; 
+    position: relative;
+}
+
+/* Faz os itens alternarem entre esquerda e direita */
+.timeline-item:nth-child(even) { 
+    flex-direction: row-reverse; 
+}
+
+/* Largura do card na timeline para caber no zigue-zague */
+.timeline-content { 
+    width: 45%; 
+    padding: 2.5rem; /* Ajuste para não ficar muito largo internamente */
+}
+
+/* O ponto na linha do tempo */
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: var(--cobalt-border);
+    border-radius: 50%;
+    border: 4px solid var(--dark);
+    z-index: 2;
+}
+
+/* PHASE TAGS (AZULADAS E MAIORES) */
 .phase {
-    background: rgba(175, 227, 215, 0.1);
-    color: var(--green-card-title);
-    border: 1px solid var(--green-card-title);
-    padding: 0.3rem 1.2rem;
+    background: rgba(0, 229, 255, 0.1); /* Fundo ciano transparente */
+    color: var(--blue-phase);           /* Azul ciano destacado */
+    border: 1px solid var(--blue-phase);
+    padding: 0.5rem 1.5rem;             /* Padding aumentado */
     border-radius: 50px;
-    font-size: 0.75rem;
+    font-size: 1rem;                    /* Fonte aumentada */
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* --- 12. BOTÕES --- */
@@ -312,7 +359,7 @@ li::before {
     box-shadow: 0 20px 40px rgba(0, 240, 255, 0.4);
 }
 
-/* --- 13. RESPONSIVIDADE E ANIMAÇÕES --- */
+/* --- 13. RESPONSIVIDADE --- */
 .fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
@@ -320,11 +367,9 @@ li::before {
     .grid { grid-template-columns: 1fr; }
     .timeline::before { left: 20px; }
     .timeline-item { flex-direction: column !important; padding-left: 50px; align-items: flex-start; }
+    .timeline-content { width: 100%; }
     .timeline-dot { left: 20px; }
 }
-
-.desktop-only { display: block; }
-@media (max-width: 768px) { .desktop-only { display: none; } }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 10px; }
