@@ -1,7 +1,6 @@
 /* 
-    BIM3D Hub - Global Stylesheet (FULL RESTORED VERSION)
-    Data: 31/12/2025
-    Foco: Estética Glass Futurista & Interoperabilità
+    BIM3D Hub - Master Stylesheet
+    RESTAURAÇÃO TOTAL DA ESTÉTICA ORIGINAL DO PDF
 */
 
 * {
@@ -11,51 +10,13 @@
 }
 
 :root {
-    --primary: #afe3d7; /* Tom Pastel Verde-Azulado atualizado */
+    /* Cores Originais do PDF */
+    --primary: #00f0ff;
     --secondary: #7000ff;
-    --accent: #ff006ff4d4d;
-    --nav-height: 80px;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: var(--nav-height);
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
-    color: #ffffff;
-    overflow-x: hidden;
-    line-height: 1.6;
-}
-
-/* --- BACKGROUND PARTICLES --- */
-.bg-particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-e;
+    --accent: #ff006e;
     --dark: #0a0a0f;
     --glass: rgba(255, 255, 255, 0.05);
-    --glass-border    z-index: -1; /* Corrigido para ficar atrás do conteúdo */
-}
-
-.particle {
-    position: absolute;
-    background: var(--primary);
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: float 20s infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(100px, -100px) rotate(120deg); }
-    66% { transform: translate(-100px, 100px): rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.1);
     --success: #00ff9d;
     --error: #ff4d4d;
     --nav-height: 80px;
@@ -74,26 +35,12 @@ body {
     line-height: 1.6;
 }
 
-/* --- BACKGROUND PARTICLES --- */
+/* --- BACKGROUND PARTICLES (CORREÇÃO DE CAMADA) --- */
 .bg-particles {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-     rotate(240deg); }
-}
-
-/* --- NAVIGATION --- */
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999; /* Camada máxima para cliques garantidos */
-    background: rgba(10, 10, 15, 0.8);
-    backdrop-filter: blur(height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none;
-    z-index: -1; /* Garante que fique atrás do conteúdo */
+    z-index: -1; /* Garante que fique atrás de tudo */
 }
 
 .particle {
@@ -101,28 +48,20 @@ nav {
     background: var(--primary);
     border-radius: 50%;
     opacity: 0.3;
-    animation: float 20s infinite linear;
+    animation: float 20s infinite;
 }
 
 @keyframes float {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate10px);
-    border-bottom: 1px solid var(--glass-border);
-    padding: 1rem 2rem;
-    transition: all 0.3s ease;
-}
-
-nav.(100px, -100px) rotate(120deg); }
+    33% { transform: translate(100px, -100px) rotate(120deg); }
     66% { transform: translate(-100px, 100px) rotate(240deg); }
 }
 
-/* --- NAVIGATION --- */
+/* --- NAVIGATION (RESTAURADA DO PDF + CORREÇÃO DE CLIQUE) --- */
 nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999; /* Máxima prioridade para cliques */
+    top: 0; left: 0; right: 0;
+    z-index: 9999; /* Garante que o menu receba os cliques */
     background: rgba(10, 10, 15, 0.8);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -144,34 +83,9 @@ nav.scrolled {
     align-items: center;
 }
 
-.logo-img {
-    height: 48px;
-    width: auto;
-    display: block;
-scrolled {
-    background: rgba(10, 10, 15, 0.95);
-    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
-}
+.logo-img { height: 48px; width: auto; display: block; }
 
-.nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo-img {
-    height: 48px;
-    width: auto;
-    filter: drop-shadow(0 0 10px rgba(175, 227, 215, 0.2));
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
 
 .nav-links a {
     color: #ffffff;
@@ -184,54 +98,14 @@ scrolled {
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-}
-
-.nav-links a {
-    color: #ffffff;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    position: relative;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width:(--primary), var(--secondary));
+    bottom: -5px; left: 0; width: 0; height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
     transition: width 0.3s ease;
 }
 
 .nav-links a:hover::after { width: 100%; }
 
 /* --- HERO SECTION & SCROLL INDICATOR --- */
-. 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    padding: 4remafter { width: 100%; }
-
-/* --- HERO SECTION --- */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -245,39 +119,14 @@ scrolled {
 .hero::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(0, 24 2rem;
-}
-
-.hero h1 {
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 900;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradient 5s ease infinite;
-    background-size: 200% 200%;0, 255, 0.1) 0%, transparent 70%);
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
     animation: pulse 8s ease-in-out infinite;
 }
 
 @keyframes pulse {
     0%, 100% { transform: scale(1); opacity: 0.3; }
-    50% { transform: scale
-}
-
-.scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    z-index: 5;
-    color: var(--primary);
-    pointer-events: none;(1.2); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 0.6; }
 }
 
 .hero h1 {
@@ -285,30 +134,21 @@ scrolled {
     font-weight: 900;
     margin-bottom: 1.5rem;
     background: linear-gradient(135deg, #00f0ff, #7000ff, #ff006e);
-    
-}
-
-.scroll-indicator span {
-    display: block;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    opacity: 0.6;
-}
-
-.scroll-line {
-    width: 1px;
-    height: 40px;
-    background: var(--primary);
-    margin: 10px auto 0 auto;
-    animation:-webkit-background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradient 5s ease infinite;
     background-size: 200% 200%;
 }
 
-.hero .subtitle {
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    color: rgba(255, 255,  grow 2s infinite;
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px; left: 0; width: 100%;
+    text-align: center; z-index: 5; color: var(--primary);
+}
+
+.scroll-line {
+    width: 1px; height: 40px; background: var(--primary);
+    margin: 10px auto 0 auto; animation: grow 2s infinite;
 }
 
 @keyframes grow {
@@ -317,110 +157,11 @@ scrolled {
     100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
 }
 
-/* --- GLOBAL LISTS255, 0.8);
-    margin-bottom: 3rem;
-}
-
-/* --- SCROLL INDICATOR --- */
-.scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    z-index: (UNIFIED CHECKMARKS) --- */
-ul { list-style: none; padding: 0; }
-li {
-    position: relative;
-    padding-left: 30px;
-    margin-bottom: 12px;
-}
- 5;
-    color: var(--primary);
-    pointer-events: none;
-}
-
-.scroll-indicator span {
-    display: block;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    opacity: 0.6;
-}
-
-.scroll-line {
-    width:li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    top: 2px;
-    color: var(--primary);
-    font-weight: bold;
-    font 1px;
-    height: 40px;
-    background: var(--primary);
-    margin: 10px auto 0 auto;
-    animation: grow 2s infinite;
-}
-
-@-size: 1rem;
-}
-
-/* --- SECTION GENERAL STYLES --- */
-section {
-    padding: 6rem keyframes grow {
-    0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
-    50% { transform: scaleY(1); transform-origin: top; opacity:2rem;
-    position: relative;
-    z-index: 1;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.section-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    margin-bottom: 3rem;
-    text-align: center;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* --- GLASS CARDS (FORMAT 1; }
-    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
-}
-
-/* --- ESTILO DE LISTAS GLOBAL (CHECKMARKS) --- */
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    position: relative;
-    padding-left: 30px;
-    margin-bottom: 12px;
-}
-
-li::beforeO ORIGINAL DO PDF) --- */
+/* --- GLASS CARDS (O EFEITO IMPECÁVEL DO PDF) --- */
 .glass-card {
     background: var(--glass);
-    backdrop-filter: {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    top: 2px;
-    color: var(--primary);
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-/* --- GLASS CARDS --- */
-.glass-card {
- blur(10px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 2.5rem;
@@ -433,20 +174,8 @@ li::beforeO ORIGINAL DO PDF) --- */
 .glass-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 240,     background: var(--glass);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden255, 0.1), transparent);
+    top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
     transition: left 0.6s;
 }
 
@@ -458,30 +187,12 @@ li::beforeO ORIGINAL DO PDF) --- */
     box-shadow: 0 20px 60px rgba(0, 240, 255, 0.2);
 }
 
-/* --- GRID & FEATURE CARDS (FORMATO ORIGINAL DO PDF) --- */
-;
-}
-
-.glass-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary);
-    box-shadow: 0 20px 60px rgba(0, 240, 255, 0.2);
-}
-
-/* --- GRIDS & FEATURE CARDS --- */
+/* --- GRIDS & FEATURE CARDS (ORIGINAIS) --- */
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
-    margin-top: 3rem;.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
     margin-top: 3rem;
-}
-
-.feature-card {
-    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(112, 0, 255, 0.0
 }
 
 .feature-card {
@@ -491,31 +202,14 @@ li::beforeO ORIGINAL DO PDF) --- */
     padding: 2rem;
     text-align: center;
     transition: all 0.4s ease;
-    position: relative;5));
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
-}
-
-.feature
 }
 
 .feature-card:hover {
     transform: translateY(-10px) scale(1.02);
     border-color: var(--primary);
-}
-
-.icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    display: inline-block;
--card:hover {
-    transform: translateY(-10px) scale(1.02);
-    border-color: var(--primary);
+    box-shadow: 0 20px 60px rgba(0, 240, 255, 0.3);
 }
 
 .icon {
@@ -524,50 +218,23 @@ li::beforeO ORIGINAL DO PDF) --- */
     display: inline-block;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
-    -webkit-text-fill    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* --- STATS SECTION --- */
+/* --- STATS SECTION (ORIGINAL) --- */
 .stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
 }
-
-.stat-card {
-    text--color: transparent;
-}
-
-/* --- STATS SECTION (FORMATO ORIGINAL DO PDF) --- */
-.stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}align: center;
-    padding: 2rem;
-    background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(112, 0, 255, 0.1));
-    border-radius: 20px;
-    border: 1px solid var(--glass-border);
-    transition: all 0.
 
 .stat-card {
     text-align: center;
     padding: 2rem;
     background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(112, 0, 255, 0.1));
     border-radius: 20px;
-    border: 1px solid var(--glass-3s ease;
-}
-
-.stat-number {
-    font-size: 3rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparentborder);
+    border: 1px solid var(--glass-border);
     transition: all 0.3s ease;
 }
 
@@ -576,11 +243,11 @@ li::beforeO ORIGINAL DO PDF) --- */
     font-weight: 900;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
-    -webkit;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 0.5rem;
 }
 
-/* --- TIMELINE (ROADMAP) --- */
+/* --- TIMELINE / ROADMAP (RECUPERAÇÃO TOTAL DO LAYOUT) --- */
 .timeline {
     position: relative;
     padding: 2rem 0;
@@ -589,52 +256,14 @@ li::beforeO ORIGINAL DO PDF) --- */
 .timeline::before {
     content: '';
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 100%;-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
-}
-
-/* --- TIMELINE / ROADMAP (RECUPERAÇÃO TOTAL DO LAYOUT) --- */
-.timeline {
-    position: relative;
-    
+    left: 50%; transform: translateX(-50%);
+    width: 2px; height: 100%;
     background: linear-gradient(180deg, var(--primary), var(--secondary));
 }
 
 .timeline-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
-    position: relative;
-}
-
-.timeline-item:nthpadding: 2rem 0;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--primary), var(--secondary));
-}
-
-.timeline-item {
-    display: flex;
-    justify-content:-child(even) { flex-direction: row-reverse; }
-
-.timeline-content {
-    width: 45%;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 15px;
-    padding space-between;
     align-items: center;
     margin-bottom: 3rem;
     position: relative;
@@ -653,162 +282,79 @@ li::beforeO ORIGINAL DO PDF) --- */
 
 .timeline-dot {
     position: absolute;
-    left: 50%;
-    transform: 2rem;
+    left: 50%; transform: translateX(-50%);
+    width: 20px; height: 20px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    border: 4px solid var(--dark);
+    z-index: 2;
 }
 
-.timeline-dot {
+.phase {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* --- GLOBAL CHECKMARKS (ESTILO DISCRETO) --- */
+ul { list-style: none; padding: 0; }
+li { position: relative; padding-left: 30px; margin-bottom: 12px; }
+li::before {
+    content: '✓';
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 50%;
-    border: 4px solid var(--dark);
-    z-index: 2;
+    left: 0; top: 2px;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1rem;
 }
 
-.phase {
-    display: inline-block;
-    background: linear-: translateX(-50%);
-    width: 20px;
-    height: 20px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 50%;
-    border: 4px solid var(--dark);
-    z-index: 2;
-}
-
-.phase {
-    display: inline-block;
-    background: linear-gradient(135gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-}
-
-/* --- SOLUTION CENTERING --- */
+/* --- SOLUTION CENTERING (CORRIGIDO) --- */
 .solution-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
+.solution-content ul { display: inline-block; text-align: left; margin: 0 auto; }
 
-.solution-content ul {
-    display: inline-block;deg, var(--primary), var(--secondary));
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-/* --- SOLUTION
-    text-align: left;
-    margin: 0 auto;
-}
-
-/* --- FORM STYLES --- */
-.form-group { margin-bottom: 1.5rem; text-align: left; }
-.form-label { display: block; margin-bottom: 0.5rem; color: rgba(255, ALIGNMENT FIX --- */
-.solution-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* --- SECTION TITLES --- */
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 3rem;
     text-align: center;
-}
-.solution-content ul {
-    display: inline-block;
-    text-align: left;
-    margin: 0 auto;
- 255, 255, 0.9); font-weight: 500; }
-.form-input, .form-textarea {
-    width: 100%; padding: 1rem; border-radius: 10px;
-    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
-    }
-
-/* --- FORMS --- */
-.form-group { margin-bottom: 1.5rem;color: #fff; transition: all 0.3s ease;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* --- ANIMATIONS & RESPONSIVE --- */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.cta-button {
-    display: inline-block;
-    padding: 1.2rem 3rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: all 0.3s text-align: left; }
-.form-label { display: block; margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.9); font-weight: 500; }
-.form-input, .form-textarea {
-    width: 100%; padding: 1rem; border-radius: 10px;
-    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
-    color: #fff; transition: all 0.3s ease;
-}
-
-.cta-button {
-    display: inline-block;
-    padding: 1.2rem 3rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white; ease;
-    border: none;
-    cursor: pointer;
-}
+.fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
     .timeline::before { left: 20px; }
-    .timeline-item { flex-direction
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-}
-
-/* --- ANIMATIONS & RESPONSIVE --- */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.fade-in.visible { opacity: 1; transform: translateY(: column !important; align-items: flex-start; padding-left: 50px; }
+    .timeline-item { flex-direction: column !important; align-items: flex-start; padding-left: 50px; }
     .timeline-dot { left: 20px; }
     .timeline-content { width: 100%; }
     .desktop-only { display: none; }
 }
 
-/* Progress Bar */
-.progress-bar {
-    position: fixed;
-    top: 0; left: 0; height: 4px;0); }
+/* --- FORM STYLES --- */
+.form-input, .form-textarea {
+    width: 100%; padding: 1rem; border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
+    color: #fff; transition: 0.3s;
+}
+.form-input:focus, .form-textarea:focus { outline: none; border-color: var(--primary); }
 
-@media (max-width: 768px) {
-    .desktop-only { display: none; }
-    .grid { grid-template-columns: 1fr; }
-    .timeline::before { left: 20px; }
-    .timeline-item { flex-direction: column !important; align-
-    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-    z-index: 10000;
-    transform-origin: left;
-    transition: transform 0.1s ease;
+.cta-button {
+    display: inline-block; padding: 1.2rem 3rem; border-radius: 50px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white; text-decoration: none; font-weight: 600; cursor: pointer; border: none;
 }
