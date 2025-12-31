@@ -20,6 +20,7 @@
             --glass-border: rgba(255, 255, 255, 0.12);
             --text: #ffffff;
             --accent: #00f0ff;
+            --text-pastel: #afe3d7;
         }
 
         body {
@@ -110,11 +111,14 @@
             text-transform: uppercase;
             text-align: center;
             line-height: 1.4;
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--text-pastel);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
         }
 
         .lang-card:hover .lang-text {
-            color: var(--accent);
+            color: #ffffff;
+            text-shadow: 0 0 10px var(--accent);
         }
 
         .footer-info {
