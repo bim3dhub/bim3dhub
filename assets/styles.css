@@ -290,7 +290,7 @@ li::before {
     transform: translateX(-50%);
     width: 2px; 
     height: 100%; 
-    background: linear-gradient(180deg, var(--blue-phase), var(--cobalt-border), var(--hover-violet));
+    background: linear-gradient(180deg, var(--green-scroll), var(--cobalt-border), var(--hover-violet));
 }
 
 .timeline-item {
