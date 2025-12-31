@@ -190,13 +190,29 @@ nav.scrolled {
 /* --- SCROLL INDICATOR --- */
 .scroll-indicator {
     position: absolute;
-    bottom: 30px; /* Fixa no fundo da dobra da tela */
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 30px;
+    left: 0;
+    width: 100%; /* Ocupa toda a largura para garantir a centralização do texto */
     text-align: center;
     z-index: 5;
-    color: var(--primary); /* Usa o tom pastel que definimos */
-    pointer-events: none; /* Garante que não bloqueie cliques acidentais */
+    color: var(--primary);
+    pointer-events: none;
+}
+
+.scroll-indicator span {
+    display: block;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    opacity: 0.6;
+}
+
+/* A linha animada abaixo do texto */
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: var(--primary);
+    margin: 10px auto 0 auto; /* O 'auto' nas laterais centraliza a linha */
+    animation: grow 2s infinite;
 }
 
 /* --- SECTION GENERAL STYLES --- */
