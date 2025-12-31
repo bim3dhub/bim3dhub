@@ -1,70 +1,90 @@
-// Wait domain load
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Scroll Progress Bar
-    const progressBar = document.getElementById('progressBar');
-    window.addEventListener('scroll', () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        if (progressBar) {
-            progressBar.style.transform = `scaleX(${scrolled / 100})`;
-        }
-    });
+/**
+ * BIM3D Hub - Main Systems Script
+ * Versão revisada para compatibilidade multi-idioma e performance
+ */
 
-    // 2. Navbar scroll effect
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("BIM3D Hub Engine: Initialized");
+
+    // --- 1. BARRA DE PROGRESSO DE LEITURA ---
+    const progressBar = document.getElementById('progressBar');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.transform = `scaleX(${scrolled / 100})`;
+        });
+    }
+
+    // --- 2. EFEITO DA NAVBAR AO ROLAR ---
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (navbar) {
-            if (window.scrollY > 50) {
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
-        }
-    });
+        });
+    }
 
-    // 3. Intersection Observer for fade-in animations
+    // --- 3. ANIMAÇÕES FADE-IN (INTERSECTION OBSERVER) ---
+    // Ajustado para disparar a animação mais cedo e ser mais robusto
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.05, // Dispara quando apenas 5% do elemento aparece
+        rootMargin: '0px 0px -50px 0px' 
     };
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                // Uma vez visível, para de observar o elemento (melhora performance)
+                observer.unobserve(entry.target); 
             }
         });
     }, observerOptions);
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    const fadeElements = document.querySelectorAll('.fade-in');
+    if (fadeElements.length > 0) {
+        fadeElements.forEach(el => observer.observe(el));
+    } else {
+        console.warn("BIM3D Hub: No .fade-in elements found.");
+    }
 
-    // 4. Generate background particles
+    // --- 4. GERADOR DE PARTÍCULAS DE FUNDO ---
     const particlesContainer = document.getElementById('particles');
     if (particlesContainer) {
         const particleCount = 30;
+        const fragment = document.createDocumentFragment(); // Melhor performance de renderização
+        
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
-            particle.style.width = `${Math.random() * 4 + 2}px`;
-            particle.style.height = particle.style.width;
+            const size = Math.random() * 4 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
             particle.style.left = `${Math.random() * 100}%`;
             particle.style.top = `${Math.random() * 100}%`;
-            particle.style.animationDelay = `${Math.random() * 20}s`;
+            particle.style.animationDelay = `${Math.random() * 15}s`;
             particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
-            particlesContainer.appendChild(particle);
+            fragment.appendChild(particle);
         }
+        particlesContainer.appendChild(fragment);
     }
 
-    // 5. Smooth scrolling for navigation links
+    // --- 5. NAVEGAÇÃO SUAVE (SMOOTH SCROLL) ---
+    // Corrigido para evitar erros com seletores vazios ou inexistentes
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
-            const target = document.querySelector(targetId);
-            if (target) {
-                target.scrollIntoView({
+            if (targetId === "#") return; // Ignora links vazios
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                targetElement.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
@@ -72,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 6. CLOUDFLARE WORKER FORM SUBMISSION
+    // --- 6. ENVIO DO FORMULÁRIO (CLOUDFLARE WORKER) ---
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
@@ -82,17 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const responseDiv = document.getElementById('formResponse');
             const originalText = btn.innerText;
             
-            // UI Feedback: Loading
             btn.disabled = true;
-            btn.innerText = 'Sending...';
-            responseDiv.innerHTML = '';
+            btn.innerText = 'Sending...'; // Em inglês, como o site atual
+            if (responseDiv) responseDiv.innerHTML = '';
 
-            // Capturar dados do formulário
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
 
             try {
-                // URL do seu Worker configurado
                 const workerUrl = 'https://bim3dhub-contact.pschiarelli.workers.dev'; 
                 
                 const response = await fetch(workerUrl, {
@@ -101,18 +118,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(data)
                 });
 
-                const result = await response.json();
-
                 if (response.ok) {
-                    responseDiv.innerHTML = '<span class="msg-success">Message sent successfully! We will contact you shortly.</span>';
+                    if (responseDiv) responseDiv.innerHTML = '<span class="msg-success">Message sent successfully!</span>';
                     this.reset();
                 } else {
-                    console.error('Worker error:', result);
-                    throw new Error(result.error || 'Server responded with error');
+                    throw new Error('Server Error');
                 }
             } catch (error) {
-                console.error('Fetch error:', error);
-                responseDiv.innerHTML = '<span class="msg-error">Error sending message. Please try again or email us directly.</span>';
+                console.error('Submission error:', error);
+                if (responseDiv) responseDiv.innerHTML = '<span class="msg-error">Error. Please try again or email us directly.</span>';
             } finally {
                 btn.disabled = false;
                 btn.innerText = originalText;
