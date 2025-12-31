@@ -1,179 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIM3D Hub | Select Language</title>
-    
-    <!-- Metadados de SEO Técnico - Impressiona Investidores -->
-    <link rel="alternate" hreflang="en" href="https://www.bim3dhub.com/en/" />
-    <link rel="alternate" hreflang="pt-br" href="https://www.bim3dhub.com/pt-br/" />
-    <link rel="alternate" hreflang="pt-pt" href="https://www.bim3dhub.com/pt-pt/" />
-    <link rel="alternate" hreflang="fr-ca" href="https://www.bim3dhub.com/fr-ca/" />
-    <link rel="alternate" hreflang="es-us" href="https://www.bim3dhub.com/es-us/" />
-    <link rel="alternate" hreflang="it" href="https://www.bim3dhub.com/it/" />
-    <link rel="alternate" hreflang="x-default" href="https://www.bim3dhub.com/en/" />
-
-    <style>
-        :root {
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --text: #ffffff;
-            --accent: #00f0ff;
-            --text-pastel: #afe3d7;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
-            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
-            color: var(--text);
-            overflow: hidden;
-        }
-
-        .logo-top {
-            width: 500px;
-            margin-bottom: 50px;
-            filter: drop-shadow(0 0 15px rgba(175, 227, 215, 0.3));
-            transition: transform 0.5s ease;
-        }
-        
-        .logo-top:hover {
-            transform: scale(1.05);
-        }
-
-        .language-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            width: 90%;
-            max-width: 700px;
-            perspective: 1000px;
-        }
-
-        @media (min-width: 768px) {
-            .language-container { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        .lang-card {
-            position: relative;
-            height: 120px;
-            text-decoration: none;
-            border-radius: 16px;
-            border: 1px solid var(--glass-border);
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-        }
-
-        .lang-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--accent);
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.2);
-        }
-
-        .flag-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0.08;
-            z-index: 0;
-            transition: opacity 0.4s, transform 0.6s;
-            filter: saturate(0.5);
-        }
-
-        .lang-card:hover .flag-bg {
-            opacity: 0.25;
-            transform: scale(1.1);
-        }
-
-        .lang-text {
-            position: relative;
-            z-index: 1;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            text-align: center;
-            line-height: 1.4;
-            color: var(--text-pastel);
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .lang-card:hover .lang-text {
-            color: #ffffff;
-            text-shadow: 0 0 10px var(--accent);
-        }
-
-        .footer-info {
-            margin-top: 60px;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            opacity: 0.3;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BIM3D Hub - Universal 3D Interoperability Platform</title>
+    <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="bg-particles" id="particles"></div>
+    
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../assets/Logo.png" alt="BIM3D Hub" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#summary">Summary</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#market">Market</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <!-- Busca o logo na pasta assets/ logo acima das pastas de idioma -->
-    <img src="assets/Logo.png" alt="BIM3D Hub" class="logo-top">
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="fade-in">BIM3D Hub</h1>
+            <p class="subtitle fade-in">The Universal 3D Interoperability Platform</p>
+            <a href="#solution" class="cta-button fade-in">Discover the Future</a>
+        </div>
+    </section>
 
-    <div class="language-container">
-        <!-- English -->
-        <a href="./en/" class="lang-card">
-            <div class="flag-bg" style="background-image: url('https://flagcdn.com/w640/ca.png');"></div>
-            <span class="lang-text">English</span>
-        </a>
+    <section id="summary">
+        <div class="container">
+            <h2 class="section-title fade-in">Executive Summary</h2>
+            <div class="glass-card fade-in">
+                <p>The BIM3D Hub addresses theProfound and costly challenges in the AEC industry: manual rework due to software incompatibility.</p>
+            </div>
+        </div>
+    </section>
 
-        <!-- Français Canada -->
-        <a href="./fr-ca/" class="lang-card">
-            <div class="flag-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Flag_of_Quebec.svg/320px-Flag_of_Quebec.svg.png');"></div>
-            <span class="lang-text">Français<br>(Canada)</span>
-        </a>
+    <section id="problem">
+        <div class="container">
+            <h2 class="section-title fade-in">The Problem</h2>
+            <div class="glass-card fade-in">
+                <ul>
+                    <li>Continuous rework for multiple versions</li>
+                    <li>Information loss during conversions</li>
+                    <li>High costs for library maintenance</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-        <!-- Português Brasil -->
-        <a href="./pt-br/" class="lang-card">
-            <div class="flag-bg" style="background-image: url('https://flagcdn.com/w320/br.png');"></div>
-            <span class="lang-text">Português<br>(Brasil)</span>
-        </a>
+    <section id="research">
+        <div class="container">
+            <h2 class="section-title fade-in">Research</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="glass-card fade-in">
+                    <h3>For Architects</h3>
+                    <a href="https://tally.so/r/q4apk2" class="cta-button" target="_blank">Take Survey</a>
+                </div>
+                <div class="glass-card fade-in">
+                    <h3>For Manufacturers</h3>
+                    <a href="https://tally.so/r/q4a8QG" class="cta-button" target="_blank">Take Survey</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Português Portugal -->
-        <a href="./pt-pt/" class="lang-card">
-            <div class="flag-bg" style="background-image: url('https://flagcdn.com/w320/pt.png');"></div>
-            <span class="lang-text">Português<br>(Portugal)</span>
-        </a>
+    <section id="solution">
+        <div class="container">
+            <h2 class="section-title fade-in">The Solution</h2>
+            <div class="glass-card fade-in">
+                <h3>Universal .b3do Format</h3>
+                <p>A single file that works natively across Revit, SketchUp, Rhino, and more.</p>
+            </div>
+        </div>
+    </section>
 
-        <!-- Español EE.UU. -->
-        <a href="./es-us/" class="lang-card">
-            <div class="flag-bg" style="background-image: url('https://flagcdn.com/w320/us.png');"></div>
-            <span class="lang-text">Español<br>(EE. UU.)</span>
-        </a>
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Contact</h2>
+            <div class="glass-card fade-in" style="max-width: 600px; margin: 0 auto;">
+                <form id="contactForm">
+                    <input type="text" name="name" placeholder="Name" class="form-input" style="width:100%; margin-bottom:10px; padding:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white;">
+                    <input type="email" name="email" placeholder="Email" class="form-input" style="width:100%; margin-bottom:10px; padding:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white;">
+                    <textarea name="message" placeholder="Message" style="width:100%; height:100px; margin-bottom:10px; padding:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:white;"></textarea>
+                    <button type="submit" class="cta-button">Send</button>
+                </form>
+                <div id="formResponse"></div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Italiano -->
-        <a href="./it/" class="lang-card">
-            <div class="flag-bg" style="background-image: url('https://flagcdn.com/w320/it.png');"></div>
-            <span class="lang-text">Italiano</span>
-        </a>
-    </div>
-
-    <div class="footer-info">BIM3D Hub © 2025 | Universal Interoperability</div>
-
+    <script src="../assets/main.js"></script>
 </body>
 </html>
