@@ -231,7 +231,7 @@ nav {
 
 /* Títulos dentro dos Cards */
 h3 {
-    color: var(--green-card-title) !important;
+    color: var(--green-subtitle) !important;
     font-size: 1.8rem;
     margin-bottom: 1.2rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -255,7 +255,7 @@ h3 {
 .icon {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
-    filter: drop-shadow(0 0 10px var(--green-card-title));
+    filter: drop-shadow(0 0 10px var(--green-subtitle));
 }
 
 .stat-number {
@@ -271,7 +271,7 @@ li::before {
     content: '✓';
     position: absolute;
     left: 0; top: 3px;
-    color: var(--green-card-title);
+    color: var(--green-subtitle);
     font-weight: 900;
     font-size: 1.1rem;
 }
