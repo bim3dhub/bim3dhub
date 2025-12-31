@@ -509,3 +509,45 @@ footer {
         display: none;
     }
 }
+
+/* --- AJUSTE DA SEÇÃO SOLUTION --- */
+.solution-content {
+    max-width: 650px;      /* Largura ideal para leitura */
+    margin: 0 auto;        /* Centraliza o bloco dentro do card */
+    text-align: left;      /* Mantém o texto da lista alinhado à esquerda */
+}
+
+.solution-content h3 {
+    text-align: center;    /* Centraliza o título "Universal .b3do Format" */
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+}
+
+.solution-content p {
+    text-align: center;    /* Centraliza a frase "An intelligent 3D container..." */
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.solution-content ul {
+    list-style: none;      /* Remove as bolinhas pretas feias */
+    padding: 0;
+}
+
+.solution-content li {
+    margin-bottom: 15px;
+    padding-left: 35px;
+    position: relative;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+/* Adiciona um ícone de "check" pastel no lugar da bolinha */
+.solution-content li::before {
+    content: '✓'; 
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
