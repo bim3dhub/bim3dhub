@@ -562,16 +562,3 @@ footer {
     font-weight: bold;
     font-size: 1.2rem;
 }
-
-/* Adiciona um ícone de "check" pastel no lugar da bolinha */
-.solution-content li::before {
-    content: '✓'; 
-    position: absolute;
-    left: 0;
-    color: var(--primary);
-    font-weight: bold;
-    
-    /* ALTERAÇÕES AQUI: */
-    font-size: 0.9rem;  /* Diminuído de 1.2rem para 0.9rem (ajuste conforme preferir) */
-    top: 4px;           /* Ajuste para alinhar verticalmente com o texto menor */
-}
