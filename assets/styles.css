@@ -510,28 +510,32 @@ footer {
     }
 }
 
-/* --- AJUSTE DA SEÇÃO SOLUTION --- */
+/* --- AJUSTE DA SEÇÃO SOLUTION (VERSÃO CENTRALIZAÇÃO TOTAL) --- */
 .solution-content {
-    max-width: 650px;      /* Largura ideal para leitura */
-    margin: 0 auto;        /* Centraliza o bloco dentro do card */
-    text-align: left;      /* Mantém o texto da lista alinhado à esquerda */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os filhos (h3, p, ul) no meio da div */
+    text-align: center;
 }
 
 .solution-content h3 {
-    text-align: center;    /* Centraliza o título "Universal .b3do Format" */
     margin-bottom: 1.5rem;
     color: var(--primary);
+    width: 100%;
 }
 
 .solution-content p {
-    text-align: center;    /* Centraliza a frase "An intelligent 3D container..." */
     margin-bottom: 2rem;
     font-weight: 500;
+    width: 100%;
 }
 
 .solution-content ul {
-    list-style: none;      /* Remove as bolinhas pretas feias */
+    list-style: none;
     padding: 0;
+    display: inline-block; /* Faz a lista ter apenas a largura do maior item */
+    text-align: left;      /* Mantém o texto alinhado pela esquerda (melhor leitura) */
+    margin: 0 auto;        /* Garante que o bloco fique no meio */
 }
 
 .solution-content li {
@@ -540,6 +544,23 @@ footer {
     position: relative;
     font-size: 1.1rem;
     line-height: 1.4;
+    white-space: nowrap;   /* Evita quebras de linha desnecessárias em telas grandes */
+}
+
+/* Ajuste para mobile (permite quebrar linha em telas pequenas) */
+@media (max-width: 768px) {
+    .solution-content li {
+        white-space: normal;
+    }
+}
+
+.solution-content li::before {
+    content: '✓'; 
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 /* Adiciona um ícone de "check" pastel no lugar da bolinha */
