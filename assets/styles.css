@@ -543,3 +543,41 @@ li::before {
     transform: rotate(20deg); /* Leve rotação ao passar o mouse */
 }
 
+/* --- BOTÃO RETORNAR AO TOPO (DENTRO DAS SEÇÕES) --- */
+.back-to-top-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    width: 100%;
+}
+
+.back-to-top-link {
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3); /* Cor discreta inicial */
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-to-top-link:hover {
+    color: var(--primary); /* Acende com a cor pastel */
+    text-shadow: 0 0 10px var(--primary);
+    transform: translateY(-3px);
+}
+
+/* Seta minimalista em CSS */
+.back-to-top-link::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-left: 2px solid currentColor;
+    border-top: 2px solid currentColor;
+    transform: rotate(45deg);
+}
