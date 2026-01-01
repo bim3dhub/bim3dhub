@@ -6,17 +6,12 @@
   <b>Select Language</b><br>
   <a href="#english">English</a> | 
   <a href="#français-québec">Français (Québec)</a> | 
-  <a href="#português-brasil">Português (Brasil)</a> | 
-  <a href="#português-portugal">Português (Portugal)</a> | 
+  <a href="#português-brasil">Português (Br)</a> | 
+  <a href="#português-portugal">Português (Pt)</a> | 
   <a href="#español-ee-uu">Español (EE. UU.)</a> | 
-  <a href="#italiano-milano">Italiano (Milano)</a>
+  <a href="#italiano-milano">Italiano</a>
 </p>
 
-## English
-Your content here...
-
-## Français (Québec)
-Votre contenu ici...
 ## Overview
 
 **BIM3D Hub** is a universal 3D interoperability platform designed to solve one of the biggest challenges in the Architecture, Engineering, Construction (AEC), and Industrial Design industries: the lack of an operational standard that allows the same 3D object to function with quality and fidelity across any software, eliminating rework and information loss.
