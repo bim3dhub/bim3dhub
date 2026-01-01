@@ -5,7 +5,7 @@
 <p align="center">
   <b>Select Language</b><br>
   <a href="#english">English </a> | 
-  <a href="#Présentation générale"> Français (Québec) </a> | 
+  <a href="#Fraçais (Québec)"> Français (Québec) </a> | 
   <a href="#português-brasil"> Português (Br) </a> | 
   <a href="#português-portugal"> Português (Pt) </a> | 
   <a href="#español-ee-uu"> Español (EE. UU.) </a> | 
@@ -50,6 +50,9 @@ For inquiries or partnerships, please contact: contact@bim3dhub.com
 *BIM3D Hub — Transforming 3D interoperability in the AEC and Industrial Design industries.*
 
 ---
+
+## Français (Québec)
+Votre contenu en français du Québec ici...
 
 ## Présentation générale
 
