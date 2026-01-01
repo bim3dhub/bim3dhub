@@ -521,3 +521,25 @@ li::before {
     font-weight: 600;
     line-height: 1.3;
 }
+
+/* --- ESTILO DO ÍCONE DE GLOBO (NAVBAR) --- */
+.nav-globe-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+}
+
+.nav-globe-link svg {
+    width: 22px; /* Tamanho proporcional ao texto do menu */
+    height: 22px;
+    fill: var(--green-subtitle); /* Mesma cor verde dos links do menu */
+    transition: all 0.3s ease;
+}
+
+.nav-globe-link:hover svg {
+    fill: var(--primary); /* Muda para o verde claro no hover */
+    filter: drop-shadow(0 0 8px var(--primary)); /* Efeito de brilho */
+    transform: rotate(20deg); /* Leve rotação ao passar o mouse */
+}
+
