@@ -90,4 +90,4 @@ Pour toute demande de renseignements ou de partenariat, veuillez nous joindre à
 BIM3D Hub — Transformer l'interopérabilité 3D dans les secteurs de l'AEC et du Design industriel.
 
 ---
-[↑ Back to top / Voltar ao topo](#select-language--selecione-o-idioma)
+[↑ Back to top / Voltar ao topo](#select language)
