@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BIM3D Hub | Global Gateway</title>
     
+    <!-- Link para o CSS Global -->
     <link rel="stylesheet" href="assets/styles.css?v=1.2">
+
     <style>
+        /* Estilos EXCLUSIVOS para o Portal de Entrada (Não afetam as páginas internas) */
         .gateway-container {
             min-height: 100vh;
             display: flex;
@@ -16,12 +19,41 @@
             padding: 40px 20px;
         }
 
-        .gateway-logo {
-            width: 180px;
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 0 15px rgba(175, 227, 215, 0.3));
+        /* Logotipo Expandido na Raiz */
+        .logo-hero-gateway {
+            width: 100%;
+            max-width: 750px; /* Largura para casar com o texto abaixo */
+            height: auto;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 0 20px rgba(175, 227, 215, 0.3));
+            transition: transform 0.5s ease;
         }
 
+        .logo-hero-gateway:hover {
+            transform: scale(1.02);
+        }
+
+        /* Sub-título que define a largura do conjunto */
+        .gateway-network-text {
+            font-size: 1.6rem !important;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 800;
+            width: 100%;
+            max-width: 750px; /* MESMA LARGURA DO LOGO */
+            text-align: center;
+            margin-bottom: 4rem !important;
+            line-height: 1.2;
+            
+            /* Gradiente idêntico aos títulos do site */
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Grid de Idiomas */
         .language-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -50,17 +82,13 @@
         .lang-button:hover {
             transform: translateY(-10px);
             border-color: var(--hover-violet);
-            box-shadow: 0 15px 40px rgba(128, 128, 128, 0.4);
+            box-shadow: 0 15px 40px rgba(128, 128, 128, 0.4); /* Sombra cinza de destaque */
         }
 
-        /* Ajuste para Bandeiras Inteiras */
         .flag-bg {
             position: absolute;
-            top: 15%; /* Centraliza verticalmente com respiro */
-            left: 5%;
-            width: 90%;
-            height: 70%;
-            background-size: contain; /* Garante a bandeira inteira */
+            top: 15%; left: 5%; width: 90%; height: 70%;
+            background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             opacity: 0.15;
@@ -69,22 +97,15 @@
             filter: saturate(0.7);
         }
 
-        .lang-button:hover .flag-bg {
-            opacity: 0.35;
-        }
-
         .lang-label {
             position: relative;
             z-index: 1;
             font-size: 1.4rem;
             font-weight: 700;
             text-align: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: var(--green-subtitle); /* Verde dos sub-títulos */
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .region-sublabel {
@@ -95,7 +116,6 @@
             opacity: 0.8;
             margin-top: 8px;
             font-weight: 500;
-            letter-spacing: 1px;
         }
 
         @media (max-width: 900px) { .language-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -106,9 +126,11 @@
     <div class="bg-particles" id="particles"></div>
 
     <main class="gateway-container">
-        <img src="assets/Logo.png" alt="BIM3D Hub Logo" class="gateway-logo fade-in">
-        <h1 class="section-title fade-in" style="margin-bottom: 0.5rem;">BIM3D Hub</h1>
-        <p class="section-subtitle fade-in" style="margin-bottom: 3rem;">Global 3D Interoperability Network</p>
+        <!-- O LOGOTIPO AGORA É O TÍTULO PRINCIPAL -->
+        <img src="assets/Logo.png" alt="BIM3D Hub Logo" class="logo-hero-gateway fade-in">
+
+        <!-- TEXTO COM A MESMA LARGURA DO LOGOTIPO -->
+        <p class="gateway-network-text fade-in">Global 3D Interoperability Network</p>
 
         <div class="language-grid">
             <!-- English -->
