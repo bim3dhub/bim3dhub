@@ -4,12 +4,12 @@
 
 <p align="center">
   <b>Select Language</b><br>
-  <a href="#english">English</a> | 
-  <a href="#français-québec">Français (Québec)</a> | 
-  <a href="#português-brasil">Português (Br)</a> | 
-  <a href="#português-portugal">Português (Pt)</a> | 
-  <a href="#español-ee-uu">Español (EE. UU.)</a> | 
-  <a href="#italiano-milano">Italiano</a>
+  <a href="#english">English </a> | 
+  <a href="#français-québec"> Français (Québec) </a> | 
+  <a href="#português-brasil"> Português (Br) </a> | 
+  <a href="#português-portugal"> Português (Pt) </a> | 
+  <a href="#español-ee-uu"> Español (EE. UU.) </a> | 
+  <a href="#italiano-milano"> Italiano</a>
 </p>
 
 ## Overview
