@@ -319,7 +319,7 @@
         </div>
     </section>
 
-    <!-- 12. Contact Section -->
+<!-- 12. Contact Section -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title fade-in">Contact Us</h2>
@@ -327,20 +327,25 @@
                 <form id="contactForm">
                     <div class="form-group">
                         <label class="form-label">Name</label>
-                        <input type="text" name="name" class="form-input" required>
+                        <input type="text" name="name" class="form-input" required placeholder="Your full name">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email</label>
-                        <input type="email" name="email" class="form-input" required>
+                        <input type="email" name="email" class="form-input" required placeholder="name@company.com">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Message</label>
-                        <textarea name="message" class="form-textarea" required></textarea>
+                        <textarea name="message" class="form-textarea" required placeholder="How can we help you?"></textarea>
                     </div>
-                    <p class="contact-info-text">
+
+                    <!-- Linha divisora e contato direto centralizado -->
+                    <div class="form-divider"></div>
+                    <p class="contact-info-centered">
                         Direct contact: contact@bim3dhub.com | (873) 973-2220
                     </p>
-                    <div style="text-align: center;">
+                    <div class="form-divider"></div>
+
+                    <div style="text-align: center; margin-top: 2.5rem;">
                         <button type="submit" class="cta-button">Send Message</button>
                     </div>
                 </form>
@@ -351,12 +356,12 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container">
+        <div class="container footer-content">
             <p>&copy; 2025 BIM3D Hub - Universal 3D Interoperability Platform. All rights reserved.</p>
-            <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">Gatineau, Outaouais, Québec, Canada</p>
+            <p>Gatineau, Outaouais, Québec, Canada</p>
         </div>
     </footer>
-
+    
     <!-- Script Centralizado -->
     <script src="../assets/main.js"></script>
 </body>
