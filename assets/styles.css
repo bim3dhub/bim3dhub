@@ -401,3 +401,61 @@ li::before {
     text-align: left;
     margin: 0 auto;
 }
+
+/* --- 15. FORMULÁRIO E FOOTER (REVISÃO PROFISSIONAL) --- */
+
+/* Estilo Glass para os Campos */
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 1.1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03); /* Vidro bem sutil */
+    border: 1px solid var(--glass-border);
+    color: #ffffff;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(175, 227, 215, 0.1);
+}
+
+/* Divisores de linha elegantes (Gradiente desaparecendo) */
+.form-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(to right, transparent, var(--glass-border), transparent);
+    margin: 1.5rem 0;
+}
+
+/* Texto de Contato Direto */
+.contact-info-centered {
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--green-card-title);
+    letter-spacing: 1px;
+}
+
+/* Centralização e Limpeza do Rodapé */
+.footer-content {
+    text-align: center;
+}
+
+.footer-content p {
+    margin: 0 !important; /* Remove o espaço extra entre as linhas */
+    padding: 2px 0;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    color: #ffffff;
+}
+
+/* Ajuste no botão do form para não herdar centralização de lista */
+#contactForm .cta-button {
+    display: inline-block;
+    width: auto;
+    min-width: 250px;
+}
