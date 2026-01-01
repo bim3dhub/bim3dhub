@@ -5,7 +5,7 @@
 <p align="center">
   <b>Select Language</b><br>
   <a href="#english">English </a> | 
-  <a href="#Fraçais (Québec)"> Français (Québec) </a> | 
+  <a href="#Français (Québec)"> Français (Québec) </a> | 
   <a href="#português-brasil"> Português (Br) </a> | 
   <a href="#português-portugal"> Português (Pt) </a> | 
   <a href="#español-ee-uu"> Español (EE. UU.) </a> | 
