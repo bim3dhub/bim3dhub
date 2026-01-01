@@ -32,8 +32,8 @@
 }
 
 html {
-    scroll-behavior: smooth;
-    scroll-padding-top: var(--nav-height);
+    -behavior: smooth;
+    -padding-top: var(--nav-height);
 }
 
 body {
@@ -153,7 +153,7 @@ nav {
 }
 
 .scroll-indicator span {
-    color: var(--green-scroll);
+    color: var(--green-scroll) !important; /* Mesma cor da linha animada */
     font-size: 0.75rem;
     letter-spacing: 2px;
     font-weight: 600;
@@ -458,4 +458,66 @@ li::before {
     display: inline-block;
     width: auto;
     min-width: 250px;
+}
+
+/* --- AJUSTE 2: MENU SUPERIOR (LIMPEZA E COR) --- */
+/* Remove especificamente os checkmarks do menu */
+.nav-links li::before {
+    content: none !important;
+}
+
+.nav-links li {
+    padding-left: 0 !important; /* Remove o recuo do checkmark */
+    margin-bottom: 0 !important;
+}
+
+.nav-links a {
+    color: var(--green-subtitle) !important; /* Cor verde dos sub-títulos */
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 10px rgba(175, 227, 215, 0.4);
+}
+
+/* --- AJUSTE 3: MARKET OPPORTUNITY (3 BOXES EM LINHA) --- */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Força 3 colunas no Desktop */
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+/* Ajuste de responsividade para o Market Opportunity */
+@media (max-width: 900px) {
+    .stats {
+        grid-template-columns: 1fr; /* Volta para 1 coluna no celular */
+    }
+}
+
+.stat-card {
+    padding: 2rem 1.5rem; /* Diminui um pouco o padding interno */
+}
+
+.stat-number {
+    font-size: 2.8rem; /* Diminuído para caber melhor em 3 colunas */
+    font-weight: 900;
+    /* Cor compatível: Gradiente ciano/verde para ar futurista */
+    background: linear-gradient(135deg, var(--primary), var(--green-scroll));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1.1rem; /* Aumentado conforme solicitado */
+    color: var(--green-subtitle); /* Cor do sub-título */
+    font-weight: 600;
+    line-height: 1.3;
 }
