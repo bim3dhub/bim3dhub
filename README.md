@@ -1,3 +1,4 @@
+<a name="top"></a>
 <p align="center">
   <img src="assets/Logo.png" alt="BIM3D Hub Logo" width="384" />
 </p>
@@ -50,6 +51,7 @@ For inquiries or partnerships, please contact: contact@bim3dhub.com
 *BIM3D Hub — Transforming 3D interoperability in the AEC and Industrial Design industries.*
 
 ---
+[Back to top](#top)
 
 <a name="fr"></a>
 ## Présentation générale
@@ -90,4 +92,4 @@ Pour toute demande de renseignements ou de partenariat, veuillez nous joindre à
 BIM3D Hub — Transformer l'interopérabilité 3D dans les secteurs de l'AEC et du Design industriel.
 
 ---
-[↑ Back to top / Voltar ao topo](#select language)
+[Back to top](#top)
