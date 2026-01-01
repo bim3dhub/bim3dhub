@@ -1,6 +1,6 @@
 <img src="assets/Logo.png" alt="BIM3D Hub Logo" width="384" />
 
-# Select Language / Selecione o Idioma
+## Select Language
 
 [English](#english) | [Français (Québec)](#français-québec) | [Português (Brasil)](#português-brasil) | [Português (Portugal)](#português-portugal) | [Español (EE. UU.)](#español-ee-uu) | [Italiano (Milano)](#italiano-milano)
 
