@@ -51,7 +51,7 @@ For inquiries or partnerships, please contact: contact@bim3dhub.com
 *BIM3D Hub — Transforming 3D interoperability in the AEC and Industrial Design industries.*
 
 ---
-[Back to top](#top)
+<p align="right"><a href="#top">Back to top</a></p>
 
 <a name="fr"></a>
 ## Présentation générale
@@ -92,4 +92,4 @@ Pour toute demande de renseignements ou de partenariat, veuillez nous joindre à
 BIM3D Hub — Transformer l'interopérabilité 3D dans les secteurs de l'AEC et du Design industriel.
 
 ---
-[Back to top](#top)
+<p align="right"><a href="#top">Back to top</a></p>
