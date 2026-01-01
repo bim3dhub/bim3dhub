@@ -58,3 +58,36 @@ Votre contenu en français du Québec ici...
 
 **BIM3D Hub** est une plateforme universelle d'interopérabilité 3D conçue pour résoudre l'un des plus grands défis des industries de l'Architecture, de l'Ingénierie, de la Construction (AEC) et du Design industriel : l'absence d'une norme opérationnelle permettant à un même objet 3D de fonctionner avec qualité et fidélité sur n'importe quel logiciel, éliminant ainsi le retravail et la perte d'informations.
 
+## Caractéristiques principales
+- Format .b3do intelligent avec géométrie complète, matériaux PBR et métadonnées BIM.
+- Convertisseur multiplateforme prenant en charge des formats tels que FBX, SKP, e plus encore.
+- Extensions (Plugins) pour SketchUp, Blender, Rhino, com uma prise en charge prochaine de Revit et ArchiCAD.
+- Bibliothèque infonuagique centralisée de modèles 3D interopérables.
+- Interface Web moderne pour la visualisation et la gestion de modèles.
+
+## Installation et utilisation
+
+1. Cloner le répertoire :
+```bash
+git clone https://github.com/bim3dhub/bim3dhub.git
+```
+2. Ouvrez le fichier index.html dans votre navigateur Web pour accéder à l'interface.
+3. Pour le développement, modifiez les fichiers styles.css et main.js selon vos besoins.
+
+## Contribution
+
+Les contributions sont les bienvenues! Veuillez ouvrir une « issue » pour signaler des bogues ou proposer des suggestions, et soumettre des « pull requests » pour toute amélioration.
+
+## Licence
+
+Ce projet est sous licence MIT.
+
+## Contact
+
+Pour toute demande de renseignements ou de partenariat, veuillez nous joindre à : contact@bim3dhub.com
+
+---
+
+BIM3D Hub — Transformer l'interopérabilité 3D dans les secteurs de l'AEC et du Design industriel.
+
+---
