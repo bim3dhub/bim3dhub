@@ -1,10 +1,8 @@
 /* 
-    BIM3D Hub - Master Global Stylesheet
-    Integridade Total + Layout em Slides (100vh) + Identidade Cobalt/Violet
-    Data: 06/01/2026
+ BIM3D Hub - Master Global Stylesheet 
+ Revisão: Sistema de Slides + Separação Público/Investidor
 */
 
-/* --- 1. RESET E VARIÁVEIS GLOBAIS --- */
 * {
     margin: 0;
     padding: 0;
@@ -12,42 +10,59 @@
 }
 
 :root {
-    --primary: #00f0ff;          /* Ciano base */
-    --secondary: #7000ff;        /* Violeta profundo */
-    --accent: #ff006e;           /* Rosa para destaques pontuais */
-    
-    /* Hierarquia de Verdes e Azuis Técnicos */
-    --green-subtitle: #4db6ac;   /* Esverdeado sub-títulos */
-    --green-card-title: #afe3d7; /* Verde pastel títulos internos */
-    --blue-phase: #00e5ff;       /* Azul ciano fases */
-    --green-scroll: #00ffcc;     /* Verde linha de scroll */
-    
-    /* Bordas e Estados */
-    --cobalt-border: #005fcc;    /* Azul Cobalto (Default) */
-    --hover-violet: #7000ff;     /* Violeta (Hover) */
-    --shadow-gray: rgba(128, 128, 128, 0.4);
-    
-    --dark-bg: #05070a;
-    --glass: rgba(15, 23, 42, 0.65);
+    --primary: #00f0ff;
+    --secondary: #7000ff;
+    --accent: #ff006e;
+    --green-subtitle: #4db6ac;
+    --green-card-title: #afe3d7;
+    --blue-phase: #00e5ff;
+    --green-scroll: #00ffcc;
+    --cobalt-border: #005fcc;
+    --hover-violet: #7000ff;
+    --dark: #0a0a0f;
+    --glass: rgba(15, 23, 42, 0.6);
     --glass-border: rgba(255, 255, 255, 0.1);
-    --nav-height: 85px;
+    --nav-height: 80px;
     --container-width: 1100px;
 }
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: var(--nav-height);
+    /* Ativa o travamento por slide */
+    scroll-snap-type: y mandatory;
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: radial-gradient(circle at top right, #0f172a 0%, #05070a 100%);
     color: #ffffff;
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* --- 2. ELEMENTOS DE FUNDO E PARTICULAS --- */
+/* --- LÓGICA DE SEÇÕES (SLIDES) --- */
+section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    align-items: center;
+    position: relative;
+    padding: 100px 0;
+    z-index: 1;
+    scroll-snap-align: start; /* Trava o topo da seção na tela */
+    scroll-snap-stop: always;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 25px;
+    width: 100%;
+}
+
+/* --- BACKGROUND PARTICLES --- */
 .bg-particles {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -55,116 +70,80 @@ body {
     z-index: -1;
 }
 
-.particle {
-    position: absolute;
-    background: var(--primary);
-    border-radius: 50%;
-    opacity: 0.2;
-    animation: float 20s infinite linear;
-}
-
-@keyframes float {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(60px, -60px) rotate(120deg); }
-    66% { transform: translate(-60px, 60px) rotate(240deg); }
-}
-
-/* --- 3. NAVEGAÇÃO SUPERIOR (LÍMPIDA) --- */
+/* --- NAVEGAÇÃO --- */
 nav {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 9999;
     background: rgba(10, 10, 15, 0.85);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass-border);
-    height: var(--nav-height);
-    display: flex;
-    align-items: center;
+    padding: 1rem 2rem;
 }
 
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 30px;
 }
 
-.logo-img {
-    height: 48px;
-    filter: drop-shadow(0 0 10px rgba(175, 227, 215, 0.2));
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-}
-
-.nav-links li { padding: 0 !important; margin: 0 !important; }
-.nav-links li::before { content: none !important; } /* Remove checks do menu */
+.logo-img { height: 48px; width: auto; display: block; }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 
 .nav-links a {
-    color: var(--green-subtitle);
+    color: #ffffff;
     text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 500;
     transition: 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
+    font-size: 0.9rem;
 }
 
 .nav-links a:hover { color: var(--primary); }
 
-/* Ícone de Globo */
-.nav-globe-link svg {
-    width: 22px; height: 22px;
-    fill: var(--green-subtitle);
-    transition: 0.3s;
+/* BOTÃO INVESTIDORES (DESTAQUE CIRCULADO) */
+.nav-invest-btn {
+    border: 2px solid var(--primary);
+    padding: 8px 20px !important;
+    border-radius: 50px;
+    color: var(--primary) !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
 }
-.nav-globe-link:hover svg { fill: var(--primary); transform: rotate(20deg); }
 
-/* --- 4. ESTRUTURA DE SEÇÕES (ESTILO SLIDES) --- */
-section {
-    height: 100vh; /* Ocupa a tela cheia */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.nav-invest-btn:hover {
+    background: var(--primary);
+    color: var(--dark) !important;
+}
+
+/* --- CARDS (GLASSMORPISM) --- */
+.glass-card, .feature-card, .stat-card, .timeline-content {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid var(--cobalt-border);
+    border-radius: 20px;
+    padding: 3rem;
+    transition: all 0.4s ease;
     position: relative;
-    padding: 0 30px;
-    box-sizing: border-box;
-    overflow: hidden; /* Garante que uma seção não invada a outra */
-}
-
-/* Exceção Roadmap */
-#roadmap { height: auto; min-height: 100vh; overflow: visible; padding: 120px 0; }
-
-.container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    width: 100%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-/* --- 5. TÍTULOS E SUBTÍTULOS (3D E GRADIENTES) --- */
-h1, .section-title {
-    color: #ffffff;
     text-align: center;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
-.hero h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; margin-bottom: 1.5rem; }
+.glass-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--hover-violet);
+    box-shadow: 0 15px 40px rgba(128, 128, 128, 0.3);
+}
 
+/* --- TEXTOS --- */
 .section-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -172,80 +151,31 @@ h1, .section-title {
 
 .section-subtitle {
     font-size: 1.6rem;
+    color: var(--green-subtitle);
     text-align: center;
-    margin-bottom: 3.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-/* --- 6. CARDS (GLASS + BORDAS COBALTO + HOVER VIOLETA) --- */
-.glass-card, .feature-card, .stat-card, .timeline-content {
-    background: var(--glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1.8px solid var(--cobalt-border);
-    border-radius: 24px;
-    padding: 3.5rem;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    width: 100%;
-}
-
-.glass-card:hover, .feature-card:hover, .stat-card:hover, .timeline-content:hover {
-    transform: translateY(-12px);
-    border-color: var(--hover-violet);
-    box-shadow: 0 15px 45px var(--shadow-gray);
-}
-
-/* Títulos internos dos cards */
-h3 {
-    color: var(--green-card-title) !important;
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-}
-
-/* --- 7. LISTAS GLOBAIS (CHECKMARKS PASTEL) --- */
-ul { list-style: none; padding: 0; }
-li { position: relative; padding-left: 35px; margin-bottom: 15px; text-align: left; }
-li::before {
-    content: '✓';
-    position: absolute;
-    left: 0; top: 3px;
-    color: var(--green-card-title);
-    font-weight: 900;
-    font-size: 1.1rem;
-}
-
-/* --- 8. ESPECÍFICOS: SOLUTION / MARKET / ROADMAP --- */
-.solution-intro {
-    font-weight: 800 !important;
-    font-size: 1.3rem !important;
     margin-bottom: 3rem;
-    color: #ffffff;
-    text-align: center;
+    font-weight: 600;
 }
 
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; width: 100%; }
-.stat-number {
-    font-size: 3.5rem; font-weight: 900;
-    background: linear-gradient(135deg, var(--primary), var(--green-scroll));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
+h3 { color: var(--green-subtitle) !important; font-size: 1.8rem; margin-bottom: 1.2rem; }
 
-/* Timeline Zigue-Zague */
-.timeline { position: relative; width: 100%; }
+/* --- TIMELINE (RESTAURAÇÃO ZIGUE-ZAGUE) --- */
+.timeline { position: relative; padding: 50px 0; width: 100%; }
 .timeline::before {
-    content: ''; position: absolute; left: 50%; width: 2px; height: 100%;
-    background: linear-gradient(to bottom, var(--cobalt-border), var(--hover-violet));
-    transform: translateX(-50%);
+    content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+    width: 2px; height: 100%;
+    background: linear-gradient(180deg, var(--green-scroll), var(--cobalt-border));
 }
-.timeline-item { display: flex; justify-content: space-between; width: 100%; margin-bottom: 4rem; position: relative; }
+
+.timeline-item {
+    display: flex; justify-content: space-between; width: 100%;
+    margin-bottom: 4rem; position: relative;
+}
+
 .timeline-item:nth-child(even) { flex-direction: row-reverse; }
-.timeline-content { width: 45%; text-align: center; display: flex; flex-direction: column; align-items: center; }
-.timeline-content ul { display: inline-block; }
+
+.timeline-content { width: 45%; }
+
 .timeline-dot {
     position: absolute; left: 50%; transform: translateX(-50%);
     width: 20px; height: 20px; background: var(--cobalt-border);
@@ -253,63 +183,65 @@ li::before {
 }
 
 .phase {
-    background: rgba(0, 229, 255, 0.1);
-    color: var(--blue-phase);
-    border: 1px solid var(--blue-phase);
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
+    display: inline-block; background: rgba(0, 229, 255, 0.1);
+    color: var(--blue-phase); border: 1px solid var(--blue-phase);
+    padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 800;
+    margin-bottom: 1.5rem; text-transform: uppercase;
 }
 
-/* --- 9. FORMULÁRIO E RODAPÉ --- */
+/* --- GRIDS --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    width: 100%;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* --- FORMULÁRIO --- */
+#contactForm { width: 100%; max-width: 800px; }
+.form-group { margin-bottom: 1.5rem; width: 100%; text-align: left; }
 .form-input, .form-textarea {
-    width: 100%; padding: 1.2rem; border-radius: 12px;
+    width: 100%; padding: 1.1rem; border-radius: 12px;
     background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border);
-    color: #ffffff; transition: 0.3s;
+    color: #ffffff; font-family: inherit; transition: 0.3s;
 }
-.form-divider { height: 1px; background: linear-gradient(to right, transparent, var(--glass-border), transparent); margin: 2rem 0; }
-.contact-info-centered { text-align: center; color: var(--green-card-title); font-weight: 500; }
+.form-input:focus, .form-textarea:focus { border-color: var(--primary); outline: none; }
 
-footer {
-    background: rgba(5, 7, 10, 0.95);
-    padding: 60px 0;
-    text-align: center;
-    border-top: 1px solid var(--glass-border);
-}
-.footer-content p { margin: 0 !important; padding: 4px 0; font-size: 0.9rem; opacity: 0.7; }
-
-/* --- 10. BOTÕES E INDICADORES --- */
 .cta-button {
-    display: inline-block; padding: 1.2rem 3.5rem; border-radius: 50px;
+    display: inline-block; padding: 1.2rem 3rem;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white; text-decoration: none; font-weight: 800; text-transform: uppercase;
-}
-.cta-button:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0, 240, 255, 0.3); }
-
-.scroll-indicator { position: absolute; bottom: 30px; text-align: center; }
-.scroll-indicator span { color: var(--green-scroll); font-weight: 700; letter-spacing: 2px; font-size: 0.75rem; }
-.scroll-line { width: 1px; height: 50px; background: var(--green-scroll); margin: 12px auto; animation: grow 2s infinite; }
-
-@keyframes grow {
-    0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
-    50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
-    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    color: white; text-decoration: none; border-radius: 50px;
+    font-weight: 700; border: none; cursor: pointer; transition: 0.3s;
 }
 
-/* Back to Top no fundo do slide */
-.back-to-top-container { position: absolute; bottom: 25px; }
+/* --- BACK TO TOP --- */
+.back-to-top-container { margin-top: 3rem; }
+.back-to-top-link {
+    text-decoration: none; font-size: 0.75rem; font-weight: 600;
+    color: rgba(255, 255, 255, 0.3); text-transform: uppercase;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.back-to-top-link::before {
+    content: ''; width: 8px; height: 8px;
+    border-left: 2px solid currentColor; border-top: 2px solid currentColor;
+    transform: rotate(45deg);
+}
 
-/* --- 11. RESPONSIVIDADE --- */
+/* --- RESPONSIVIDADE --- */
 @media (max-width: 900px) {
-    section { height: auto; min-height: 100vh; padding: 80px 20px; }
     .grid, .stats { grid-template-columns: 1fr; }
     .timeline::before { left: 20px; }
-    .timeline-item { flex-direction: column !important; padding-left: 50px; align-items: flex-start; }
-    .timeline-content { width: 100%; text-align: left; align-items: flex-start; }
+    .timeline-item { flex-direction: column !important; padding-left: 50px; }
+    .timeline-content { width: 100%; }
     .timeline-dot { left: 20px; }
-    .back-to-top-container { position: static; margin-top: 30px; }
-    .desktop-only { display: none; }
 }
+
+.fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
