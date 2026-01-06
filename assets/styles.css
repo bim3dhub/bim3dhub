@@ -314,12 +314,19 @@ footer {
     .desktop-only { display: none; }
 }
 
-/* Cria o espaçamento automático (linha em branco) entre parágrafos nos cards */
-.glass-card p {
-    margin-bottom: 3.5rem; /* Altura de aproximadamente uma linha e meia */
+/* --- FORÇAR LINHA EM BRANCO NO SUMÁRIO --- */
+.summary-para {
+    display: block !important;
+    margin-bottom: 2.5rem !important; /* Isso cria o espaço de uma linha e meia */
+    text-align: center;
+    width: 100%;
 }
 
-/* Remove o espaço do último parágrafo para não sobrar um buraco no fim do card */
+/* Remove o espaço apenas do último parágrafo para o card ficar simétrico */
+.summary-para:last-child {
+    margin-bottom: 0 !important;
+}
+
 .glass-card p:last-child {
     margin-bottom: 0;
 }
