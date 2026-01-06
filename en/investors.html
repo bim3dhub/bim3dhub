@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Investors | BIM3D Hub Business Vision</title>
-    <link rel="stylesheet" href="../assets/styles.css?v=1.1">
+    <!-- Link para o CSS centralizado -->
+    <link rel="stylesheet" href="../assets/styles.css?v=1.2">
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
@@ -13,84 +14,207 @@
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <a href="index.html"><img src="../assets/Logo.png" alt="BIM3D Hub Logo" class="logo-img" /></a>
+                <a href="index.html" title="Return to Product Home">
+                    <img src="../assets/Logo.png" alt="BIM3D Hub Logo" class="logo-img" />
+                </a>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Product Home</a></li>
                 <li><a href="#market">Market</a></li>
                 <li><a href="#roadmap">Roadmap</a></li>
                 <li><a href="#barriers">Advantages</a></li>
-                <li><a href="#impact">Economic Impact</a></li>
+                <li><a href="#impact">Impact</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <!-- Ícone de Globo para voltar ao seletor de idiomas -->
+                <li>
+                    <a href="../index.html" class="nav-globe-link" title="Global Gateway">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1 class="fade-in">Investor Relations</h1>
-            <p class="subtitle fade-in">Scaling the future of 3D Interoperability.<br>A multi-billion dollar opportunity in the AEC sector.</p>
+            <p class="subtitle fade-in">Scaling the future of 3D Interoperability.<br>A multi-billion dollar opportunity in the global AEC sector.</p>
             <a href="#market" class="cta-button fade-in">Business Overview</a>
+        </div>
+        <div class="scroll-indicator fade-in">
+            <span>SCROLL TO EXPLORE</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
+    <!-- 1. Market Opportunity -->
     <section id="market">
         <div class="container">
             <h2 class="section-title fade-in">Market Opportunity</h2>
+            <p class="section-subtitle fade-in">3D interoperability is a global technological trend, driven by BIM adoption and digital twin growth.</p>
             <div class="stats">
-                <div class="stat-card fade-in"><div class="stat-number">$12B</div><div class="stat-label">Global AEC Software Market 2025</div></div>
-                <div class="stat-card fade-in"><div class="stat-number">$8.1B</div><div class="stat-label">Global BIM Market 2024</div></div>
-                <div class="stat-card fade-in"><div class="stat-number">$19B</div><div class="stat-label">Projected Market by 2030</div></div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">$12B</div>
+                    <div class="stat-label">Global AEC Software Market 2025</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">$8.1B</div>
+                    <div class="stat-label">Global BIM Market 2024</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">$19B</div>
+                    <div class="stat-label">Projected Market by 2030</div>
+                </div>
             </div>
+        </div>
+        <div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Back to top</a>
         </div>
     </section>
 
+    <!-- 2. Roadmap -->
     <section id="roadmap">
         <div class="container">
             <h2 class="section-title fade-in">12-Month Roadmap</h2>
             <div class="timeline">
-                <div class="timeline-item fade-in"><div class="timeline-dot"></div><div class="timeline-content"><span class="phase">Phase 1</span><h3>MVP - Months 0-3</h3><p>B3DO format finalized and FBX converter functional.</p></div></div>
-                <div class="timeline-item fade-in"><div class="timeline-dot"></div><div class="timeline-content"><span class="phase">Phase 2</span><h3>Expansion - Months 4-6</h3><p>Plugin releases and Public API launch.</p></div></div>
-                <div class="timeline-item fade-in"><div class="timeline-dot"></div><div class="timeline-content"><span class="phase">Phase 3</span><h3>Consolidation - Months 7-12</h3><p>Manufacturer partnerships and expanded BIM integrations.</p></div></div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="phase">Phase 1 - MVP</span>
+                        <h3>Months 0-3</h3>
+                        <ul>
+                            <li>B3DO format finalized and documented</li>
+                            <li>FBX B3DO converter functional</li>
+                            <li>Quality and stability testing</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="phase">Phase 2 - Expansion</span>
+                        <h3>Months 4-6</h3>
+                        <ul>
+                            <li>SketchUp, Blender, and Rhino plugins</li>
+                            <li>BIM3D Hub Cloud catalog prototype</li>
+                            <li>Public API launch</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="phase">Phase 3 - Consolidation</span>
+                        <h3>Months 7-12</h3>
+                        <ul>
+                            <li>First manufacturer partnership</li>
+                            <li>Advanced converters with partial IFC</li>
+                            <li>Expanded CAD/BIM integrations</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Back to top</a>
         </div>
     </section>
 
+    <!-- 3. Competitive Advantages -->
     <section id="barriers">
         <div class="container">
             <h2 class="section-title fade-in">Competitive Advantages</h2>
             <div class="grid">
-                <div class="feature-card fade-in"><h3>Network Effect</h3><p>Standardizing the .b3do format creates a self-reinforcing adoption cycle.</p></div>
-                <div class="feature-card fade-in"><h3>Independence</h3><p>We provide a neutral bridge where legacy giants cannot operate.</p></div>
-                <div class="feature-card fade-in"><h3>Data Integrity</h3><p>Our pipeline preserves critical BIM metadata during conversion.</p></div>
+                <div class="feature-card fade-in">
+                    <h3>High Technical Complexity</h3>
+                    <p>Startups focused exclusively on universal formats can innovate faster than legacy giants with rigid architectures.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3>Network Effect</h3>
+                    <p>As more manufacturers adopt the .b3do standard, software support grows, creating a self-reinforcing adoption cycle.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3>Strategic Independence</h3>
+                    <p>Major players depend on closed ecosystems; we provide the neutral bridge the global industry needs.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3>Data Integrity</h3>
+                    <p>Our proprietary pipeline preserves critical BIM metadata, eliminating data loss during conversion.</p>
+                </div>
             </div>
+        </div>
+        <div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Back to top</a>
         </div>
     </section>
 
+    <!-- 4. Economic Impact -->
     <section id="impact">
         <div class="container">
             <h2 class="section-title fade-in">Economic Impact</h2>
             <div class="grid">
-                <div class="feature-card fade-in"><h3>Local Job Creation</h3><p>Positions in C++ and 3D artistry in Gatineau/Outaouais.</p></div>
-                <div class="feature-card fade-in"><h3>Global Export</h3><p>A technological hub with worldwide reach, born in Québec.</p></div>
+                <div class="feature-card fade-in">
+                    <div class="icon">💼</div>
+                    <h3>Local Job Creation</h3>
+                    <p>Qualified positions in C++, Python, and 3D artistry in the Outaouais region.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🌏</div>
+                    <h3>Global Export Platform</h3>
+                    <p>A technological hub with worldwide reach, born in Québec, Canada.</p>
+                </div>
             </div>
+        </div>
+        <div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Back to top</a>
         </div>
     </section>
 
+    <!-- 5. Contact Section -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title fade-in">Contact Investor Relations</h2>
-            <div class="glass-card fade-in" style="max-width: 600px; margin: 0 auto;">
-                <p style="text-align: center;">For investment inquiries or strategic partnerships:<br><strong>contact@bim3dhub.com</strong></p>
+            <div class="glass-card fade-in" style="max-width: 800px; margin: 0 auto;">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label">Name / Organization</label>
+                        <input type="text" name="name" class="form-input" required placeholder="Full name or Firm name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Professional Email</label>
+                        <input type="email" name="email" class="form-input" required placeholder="name@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Inquiry Details</label>
+                        <textarea name="message" class="form-textarea" required placeholder="How can we collaborate?"></textarea>
+                    </div>
+
+                    <div class="form-divider"></div>
+                    <p class="contact-info-centered">
+                        Direct contact: contact@bim3dhub.com | (873) 973-2220
+                    </p>
+                    <div class="form-divider"></div>
+
+                    <div style="text-align: center; margin-top: 2.5rem;">
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </div>
+                </form>
+                <div id="formResponse"></div>
             </div>
+        </div>
+        <div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Back to top</a>
         </div>
     </section>
 
     <footer>
         <div class="container footer-content">
-            <p>&copy; 2025 BIM3D Hub. Business Documentation.</p>
+            <p>&copy; 2025 BIM3D Hub - Universal 3D Interoperability Platform. All rights reserved.</p>
+            <p>Gatineau, Outaouais, Québec, Canada</p>
         </div>
     </footer>
+    
     <script src="../assets/main.js"></script>
 </body>
 </html>
