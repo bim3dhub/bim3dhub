@@ -1,10 +1,10 @@
 /* 
     BIM3D Hub - Master Global Stylesheet
-    Revisão: Restauração da Timeline Alternada + Phase Tags Azuladas
-    Data: 31/12/2025
+    RESTAURAÇÃO INTEGRAL + APRESENTAÇÃO FULL SCREEN
+    Versão: 31/12/2025
 */
 
-/* --- 1. CONFIGURAÇÕES GERAIS E PALETA --- */
+/* --- 1. RESET E VARIÁVEIS MASTER --- */
 * {
     margin: 0;
     padding: 0;
@@ -15,50 +15,35 @@
     --primary: #00f0ff;          /* Ciano Original */
     --secondary: #7000ff;        /* Violeta Profundo */
     --accent: #ff006e;           /* Rosa Hero */
-    
-    /* Hierarquia de Cores solicitada */
-    --green-subtitle: #4db6ac;   /* Esverdeado mais escuro (Sub-títulos) */
-    --green-card-title: #afe3d7; /* Esverdeado mais claro (Títulos de Cards) */
+    --green-subtitle: #4db6ac;   /* Esverdeado mais escuro */
+    --green-card-title: #afe3d7; /* Esverdeado mais claro */
     --blue-phase: #00e5ff;       /* Azul ciano para Phase Tags */
-    --green-scroll: #00ffcc;     /* Verde vibrante (Scroll e Linhas) */
-    
-    --cobalt-border: #005fcc;    /* Azul Cobalto Default das bordas */
-    --hover-violet: #7000ff;     /* Violeta para Hover */
+    --green-scroll: #00ffcc;     /* Verde vibrante */
+    --cobalt-border: #005fcc;    /* Azul Cobalto Default */
+    --hover-violet: #7000ff;
     --dark: #0a0a0f;
-    --glass: rgba(15, 23, 42, 0.6); 
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --nav-height: 80px;
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --success: #00ff9d;
+    --error: #ff4d4d;
+    --nav-height: 85px;
     --container-width: 1100px;
 }
 
 html {
-    -behavior: smooth;
-    -padding-top: var(--nav-height);
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-height);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background: radial-gradient(circle at top right, #0f172a 0%, #05070a 100%);
     color: #ffffff;
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* --- 2. LAYOUT E CENTRALIZAÇÃO --- */
-.container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 25px;
-    width: 100%;
-}
-
-section {
-    padding: 100px 0;
-    position: relative;
-    z-index: 1;
-}
-
-/* --- 3. BACKGROUND PARTICLES --- */
+/* --- 2. BACKGROUND & PARTICLES (ANIMADOS) --- */
 .bg-particles {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -70,118 +55,119 @@ section {
     position: absolute;
     background: var(--primary);
     border-radius: 50%;
-    opacity: 0.2;
-    animation: float 20s infinite;
+    opacity: 0.3;
+    animation: float 20s infinite linear;
 }
 
 @keyframes float {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(60px, -60px) rotate(120deg); }
-    66% { transform: translate(-60px, 60px) rotate(240deg); }
+    33% { transform: translate(100px, -100px) rotate(120deg); }
+    66% { transform: translate(-100px, 100px) rotate(240deg); }
 }
 
-/* --- 4. NAVEGAÇÃO --- */
+/* --- 3. NAVIGATION (MASTER) --- */
 nav {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 9999;
     background: rgba(10, 10, 15, 0.85);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--glass-border);
-    padding: 1rem 2rem;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+}
+
+nav.scrolled {
+    background: rgba(10, 10, 15, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
 }
 
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 30px;
 }
 
-.logo-img { height: 48px; width: auto; display: block; }
+.logo-img {
+    height: 48px;
+    filter: drop-shadow(0 0 10px rgba(175, 227, 215, 0.3));
+}
 
-.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
 
 .nav-links a {
     color: #ffffff;
     text-decoration: none;
-    font-weight: 500;
+    font-size: 0.85rem;
+    font-weight: 600;
     transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
 }
 
-.nav-links a:hover { color: var(--primary); }
+.nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
-/* --- 5. HERO SECTION --- */
-.hero {
-    min-height: 100vh;
+/* --- 4. ESTRUTURA DE SEÇÕES (ESTILO SLIDESHOW) --- */
+section {
+    min-height: 100vh; /* Cada seção ocupa a tela inteira */
     display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centralização Vertical */
+    align-items: center;     /* Centralização Horizontal */
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+/* Exceção Roadmap: Ele pode ser maior que a tela */
+#roadmap {
+    min-height: auto;
+    padding: 120px 0;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+}
+
+/* --- 5. TÍTULOS E TIPOGRAFIA (EFEITO 3D) --- */
+h1, .section-title {
+    color: #ffffff;
     text-align: center;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
 .hero h1 {
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(3.5rem, 8vw, 6rem);
     font-weight: 900;
     margin-bottom: 1.5rem;
     background: linear-gradient(135deg, #00f0ff, #7000ff, #ff006e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradient 5s ease infinite;
-    background-size: 200% 200%;
 }
 
-@keyframes gradient {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-
-.hero .subtitle {
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 3rem;
-}
-
-/* --- 6. SCROLL INDICATOR --- */
-.scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 0; width: 100%;
-    text-align: center;
-    z-index: 5;
-}
-
-.scroll-indicator span {
-    color: var(--green-scroll) !important; /* Mesma cor da linha animada */
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    font-weight: 600;
-}
-
-.scroll-line {
-    width: 1px; height: 45px;
-    background: var(--green-scroll);
-    margin: 12px auto 0 auto;
-    animation: grow 2s infinite;
-}
-
-@keyframes grow {
-    0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
-    50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
-    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
-}
-
-/* --- 7. TÍTULOS E SUB-TÍTULOS (ESTÉTICA 3D + VERDES) --- */
 .section-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
-    margin-bottom: 1.5rem;
-    text-align: center;
+    margin-bottom: 2rem;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 240, 255, 0.2);
 }
 
 .section-subtitle {
@@ -190,129 +176,136 @@ nav {
     text-align: center;
     margin-bottom: 4rem;
     max-width: 850px;
-    margin-left: auto;
-    margin-right: auto;
     font-weight: 600;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* --- 8. REGRA GLOBAL DE CARDS (CENTRALIZAÇÃO INTERNA) --- */
-.glass-card, 
-.feature-card, 
-.stat-card, 
-.timeline-content {
+/* --- 6. GLASS CARDS (O VISUAL IMPECÁVEL) --- */
+.glass-card {
     background: var(--glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border: 1.5px solid var(--cobalt-border);
-    border-radius: 20px;
-    padding: 3rem;
-    transition: all 0.4s ease;
+    border-radius: 24px;
+    padding: 3.5rem;
+    margin-bottom: 2rem;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
-    
-    /* Centralização de conteúdo dentro de todos os cards */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-.glass-card:hover, 
-.feature-card:hover, 
-.stat-card:hover, 
-.timeline-content:hover {
+.glass-card:hover {
     transform: translateY(-10px);
     border-color: var(--hover-violet);
-    box-shadow: 0 15px 40px rgba(128, 128, 128, 0.3); /* Sombra Cinza */
+    box-shadow: 0 20px 50px rgba(128, 128, 128, 0.2);
 }
 
-/* Espaçamentos específicos */
-.glass-card { margin-bottom: 2rem; }
-
-/* Títulos dentro dos Cards */
-h3 {
-    color: var(--green-subtitle) !important;
-    font-size: 1.8rem;
-    margin-bottom: 1.2rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+/* Brilho interno do card */
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+    transition: 0.6s;
 }
+.glass-card:hover::before { left: 100%; }
 
-/* Centralização de listas dentro dos cards */
-.glass-card ul, .feature-card ul, .timeline-content ul {
-    display: inline-block;
-    text-align: left;
-    margin: 0 auto;
-}
-
-/* --- 9. GRIDS --- */
+/* --- 7. GRIDS E FEATURE CARDS --- */
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
-    margin-top: 2rem;
+    width: 100%;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1.5px solid var(--cobalt-border);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    transition: 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feature-card:hover {
+    border-color: var(--hover-violet);
+    transform: translateY(-8px);
 }
 
 .icon {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
-    filter: drop-shadow(0 0 10px var(--green-subtitle));
+    filter: drop-shadow(0 0 10px var(--green-card-title));
+}
+
+/* --- 8. STATS SECTION --- */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    width: 100%;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 2.5rem;
+    background: var(--glass);
+    border: 1.5px solid var(--cobalt-border);
+    border-radius: 20px;
 }
 
 .stat-number {
-    font-size: 3.5rem; font-weight: 900;
-    color: var(--accent);
-    text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
-}
-
-/* --- 10. GLOBAL CHECKMARKS --- */
-ul { list-style: none; padding: 0; }
-li { position: relative; padding-left: 35px; margin-bottom: 15px; }
-li::before {
-    content: '✓';
-    position: absolute;
-    left: 0; top: 3px;
-    color: var(--green-subtitle);
+    font-size: 3rem;
     font-weight: 900;
-    font-size: 1.1rem;
+    background: linear-gradient(135deg, var(--primary), var(--green-scroll));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* --- 11. TIMELINE / ROADMAP (RESTAURAÇÃO ZIGUE-ZAGUE) --- */
-.timeline { 
-    position: relative; 
-    padding: 50px 0; 
+/* --- 9. TIMELINE / ROADMAP (ZIGUE-ZAGUE) --- */
+.timeline {
+    position: relative;
+    width: 100%;
+    padding: 40px 0;
 }
 
-/* Linha Vertical */
 .timeline::before {
-    content: ''; 
-    position: absolute; 
-    left: 50%; 
+    content: '';
+    position: absolute;
+    left: 50%;
     transform: translateX(-50%);
-    width: 2px; 
-    height: 100%; 
-    background: linear-gradient(180deg, var(--green-scroll), var(--cobalt-border), var(--hover-violet));
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--cobalt-border), var(--hover-violet), transparent);
 }
 
 .timeline-item {
-    display: flex; 
-    justify-content: space-between; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    margin-bottom: 4rem; 
+    margin-bottom: 4rem;
     position: relative;
 }
 
-/* Faz os itens alternarem entre esquerda e direita */
-.timeline-item:nth-child(even) { 
-    flex-direction: row-reverse; 
+.timeline-item:nth-child(even) { flex-direction: row-reverse; }
+
+.timeline-content {
+    width: 45%;
+    background: var(--glass);
+    border: 1.5px solid var(--cobalt-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
 }
 
-/* Largura do card na timeline para caber no zigue-zague */
-.timeline-content { 
-    width: 45%; 
-    padding: 2.5rem; /* Ajuste para não ficar muito largo internamente */
-}
-
-/* O ponto na linha do tempo */
 .timeline-dot {
     position: absolute;
     left: 50%;
@@ -323,261 +316,93 @@ li::before {
     border-radius: 50%;
     border: 4px solid var(--dark);
     z-index: 2;
+    box-shadow: 0 0 15px var(--cobalt-border);
 }
 
-/* PHASE TAGS (AZULADAS E MAIORES) */
 .phase {
-    background: rgba(0, 229, 255, 0.1); /* Fundo ciano transparente */
-    color: var(--blue-phase);           /* Azul ciano destacado */
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--blue-phase);
     border: 1px solid var(--blue-phase);
-    padding: 0.5rem 1.5rem;             /* Padding aumentado */
+    padding: 0.5rem 1.5rem;
     border-radius: 50px;
-    font-size: 1rem;                    /* Fonte aumentada */
+    font-size: 1rem;
     font-weight: 800;
+    text-transform: uppercase;
     margin-bottom: 1.5rem;
     display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
-/* --- 12. BOTÕES --- */
+/* --- 10. LISTAS E CHECKMARKS (INTELIGENTES) --- */
+ul { list-style: none; padding: 0; }
+li { position: relative; padding-left: 35px; margin-bottom: 15px; text-align: left; }
+li::before {
+    content: '✓';
+    position: absolute;
+    left: 0; top: 3px;
+    color: var(--green-card-title);
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+/* --- 11. AJUSTE SOLUTION --- */
+.solution-intro {
+    font-weight: 800 !important;
+    font-size: 1.3rem !important;
+    margin-bottom: 2.5rem;
+    color: #ffffff;
+}
+
+/* --- 12. FORMULÁRIO E FOOTER --- */
+.form-input, .form-textarea {
+    width: 100%; padding: 1.2rem; border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+.form-input:focus { border-color: var(--primary); outline: none; }
+
 .cta-button {
     display: inline-block;
-    padding: 1.2rem 3rem;
+    padding: 1.2rem 3.5rem;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
-    text-decoration: none;
     border-radius: 50px;
     font-weight: 700;
-    transition: 0.3s;
+    text-transform: uppercase;
+    text-decoration: none;
     border: none;
     cursor: pointer;
 }
 
-.cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 20px 40px rgba(0, 240, 255, 0.4);
+.footer-content { text-align: center; }
+.footer-content p { margin: 0 !important; padding: 4px 0; font-size: 0.9rem; opacity: 0.7; }
+
+/* --- 13. SCROLL INDICATOR --- */
+.scroll-indicator {
+    position: absolute; bottom: 30px; text-align: center;
+}
+.scroll-indicator span { color: var(--green-scroll); font-weight: 700; letter-spacing: 2px; font-size: 0.75rem; }
+.scroll-line { width: 1px; height: 50px; background: var(--green-scroll); margin: 10px auto; animation: grow 2s infinite; }
+
+@keyframes grow {
+    0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+    50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
 }
 
-/* --- 13. RESPONSIVIDADE --- */
-.fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+/* --- 14. BACK TO TOP --- */
+.back-to-top-container { margin-top: auto; padding-top: 30px; }
+.back-to-top-link { color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 700; font-size: 0.7rem; letter-spacing: 2px; }
+.back-to-top-link:hover { color: var(--primary); }
 
+/* --- 15. RESPONSIVIDADE --- */
 @media (max-width: 900px) {
-    .grid { grid-template-columns: 1fr; }
-    .timeline::before { left: 20px; }
-    .timeline-item { flex-direction: column !important; padding-left: 50px; align-items: flex-start; }
+    .grid, .stats { grid-template-columns: 1fr; }
+    .timeline::before { left: 25px; }
+    .timeline-item { flex-direction: column !important; padding-left: 60px; align-items: flex-start; }
     .timeline-content { width: 100%; }
-    .timeline-dot { left: 20px; }
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--dark); }
-::-webkit-scrollbar-thumb { background: var(--green-subtitle); border-radius: 5px; }
-
-/* --- 14. AJUSTES FINOS DE CONTEÚDO --- */
-
-/* Estilo específico para a introdução da Solução */
-.solution-intro {
-    font-weight: 800 !important;    /* Negrito intenso solicitado */
-    font-size: 1.3rem !important;   /* Aumentado em 2 pontos (estava 1.1) */
-    margin-bottom: 2.5rem;          /* O "pulo de linha" até a lista abaixo */
-    text-align: center;             /* Centralização garantida */
-    color: #ffffff;                 /* Branco puro para destacar do esverdeado */
-    display: block;
-    width: 100%;
-}
-
-/* Centralização do bloco da lista dentro do card da solução */
-#solution .glass-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#solution ul {
-    display: inline-block;
-    text-align: left;
-    margin: 0 auto;
-}
-
-/* --- 15. FORMULÁRIO E FOOTER (REVISÃO PROFISSIONAL) --- */
-
-/* Estilo Glass para os Campos */
-.form-input, .form-textarea {
-    width: 100%;
-    padding: 1.1rem;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.03); /* Vidro bem sutil */
-    border: 1px solid var(--glass-border);
-    color: #ffffff;
-    font-family: inherit;
-    transition: all 0.3s ease;
-}
-
-.form-input:focus, .form-textarea:focus {
-    outline: none;
-    border-color: var(--primary);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 15px rgba(175, 227, 215, 0.1);
-}
-
-/* Divisores de linha elegantes (Gradiente desaparecendo) */
-.form-divider {
-    height: 1px;
-    width: 100%;
-    background: linear-gradient(to right, transparent, var(--glass-border), transparent);
-    margin: 1.5rem 0;
-}
-
-/* Texto de Contato Direto */
-.contact-info-centered {
-    text-align: center;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--green-card-title);
-    letter-spacing: 1px;
-}
-
-/* Centralização e Limpeza do Rodapé */
-.footer-content {
-    text-align: center;
-}
-
-.footer-content p {
-    margin: 0 !important; /* Remove o espaço extra entre as linhas */
-    padding: 2px 0;
-    font-size: 0.85rem;
-    opacity: 0.6;
-    color: #ffffff;
-}
-
-/* Ajuste no botão do form para não herdar centralização de lista */
-#contactForm .cta-button {
-    display: inline-block;
-    width: auto;
-    min-width: 250px;
-}
-
-/* --- AJUSTE 2: MENU SUPERIOR (LIMPEZA E COR) --- */
-/* Remove especificamente os checkmarks do menu */
-.nav-links li::before {
-    content: none !important;
-}
-
-.nav-links li {
-    padding-left: 0 !important; /* Remove o recuo do checkmark */
-    margin-bottom: 0 !important;
-}
-
-.nav-links a {
-    color: var(--green-subtitle) !important; /* Cor verde dos sub-títulos */
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.nav-links a:hover {
-    color: var(--primary);
-    text-shadow: 0 0 10px rgba(175, 227, 215, 0.4);
-}
-
-/* --- AJUSTE 3: MARKET OPPORTUNITY (3 BOXES EM LINHA) --- */
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Força 3 colunas no Desktop */
-    gap: 1.5rem;
-    margin-top: 3rem;
-}
-
-/* Ajuste de responsividade para o Market Opportunity */
-@media (max-width: 900px) {
-    .stats {
-        grid-template-columns: 1fr; /* Volta para 1 coluna no celular */
-    }
-}
-
-.stat-card {
-    padding: 2rem 1.5rem; /* Diminui um pouco o padding interno */
-}
-
-.stat-number {
-    font-size: 2.8rem; /* Diminuído para caber melhor em 3 colunas */
-    font-weight: 900;
-    /* Cor compatível: Gradiente ciano/verde para ar futurista */
-    background: linear-gradient(135deg, var(--primary), var(--green-scroll));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    font-size: 1.1rem; /* Aumentado conforme solicitado */
-    color: var(--green-subtitle); /* Cor do sub-título */
-    font-weight: 600;
-    line-height: 1.3;
-}
-
-/* --- ESTILO DO ÍCONE DE GLOBO (NAVBAR) --- */
-.nav-globe-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s ease;
-}
-
-.nav-globe-link svg {
-    width: 22px; /* Tamanho proporcional ao texto do menu */
-    height: 22px;
-    fill: var(--green-subtitle); /* Mesma cor verde dos links do menu */
-    transition: all 0.3s ease;
-}
-
-.nav-globe-link:hover svg {
-    fill: var(--primary); /* Muda para o verde claro no hover */
-    filter: drop-shadow(0 0 8px var(--primary)); /* Efeito de brilho */
-    transform: rotate(20deg); /* Leve rotação ao passar o mouse */
-}
-
-/* --- BOTÃO RETORNAR AO TOPO (DENTRO DAS SEÇÕES) --- */
-.back-to-top-container {
-    display: flex;
-    justify-content: center;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    width: 100%;
-}
-
-.back-to-top-link {
-    text-decoration: none;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.3); /* Cor discreta inicial */
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.back-to-top-link:hover {
-    color: var(--primary); /* Acende com a cor pastel */
-    text-shadow: 0 0 10px var(--primary);
-    transform: translateY(-3px);
-}
-
-/* Seta minimalista em CSS */
-.back-to-top-link::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-left: 2px solid currentColor;
-    border-top: 2px solid currentColor;
-    transform: rotate(45deg);
+    .timeline-dot { left: 25px; }
+    .nav-links { display: none; }
 }
