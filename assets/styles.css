@@ -102,11 +102,15 @@ nav {
 
 /* --- TÍTULOS PRINCIPAIS (Gradiente e Sombra Resgatados) --- */
 .section-title {
+    text-align: center;      /* Centraliza o texto */
+    margin-left: auto;       /* Garante centralização em blocos */
+    margin-right: auto;      /* Garante centralização em blocos */
+    width: 100%;             /* Força o título a ocupar a largura total do container */
+    display: block;          /* Garante comportamento de bloco */
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     margin-bottom: 1.5rem;
-    text-align: center;
-    
+     
     /* O Gradiente "Padrão Ótimo" */
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
@@ -120,10 +124,15 @@ nav {
 
 /* --- SUBTÍTULOS (Verde idêntico ao Menu de Topo) --- */
 .section-subtitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 100%;
+    max-width: 850px; /* Limita a largura para melhor leitura, mas mantém centralizado */
     font-size: 1.6rem;
     /* Força a cor verde do menu (#4db6ac) */
     color: var(--green-subtitle) !important; 
-    text-align: center;
     margin-bottom: 4rem;
     font-weight: 600;
     text-transform: none; /* Mantém a leitura natural */
