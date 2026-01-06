@@ -1,4 +1,4 @@
-/* BIM3D Hub - Master Global Stylesheet (RESTAURADO) */
+/* BIM3D Hub - Master Global Stylesheet */
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -19,7 +19,7 @@
 
 html { 
     scroll-behavior: smooth; 
-    scroll-snap-type: y mandatory; /* Sistema de Slides */
+    scroll-snap-type: y mandatory; 
 }
 
 body {
@@ -30,7 +30,7 @@ body {
     overflow-x: hidden;
 }
 
-/* --- LOGICA DE SLIDES --- */
+/* Lógica de Slides */
 section {
     min-height: 100vh;
     display: flex;
@@ -45,7 +45,7 @@ section {
 
 .container { max-width: 1100px; margin: 0 auto; width: 100%; }
 
-/* --- NAVEGAÇÃO (Resgatado do PDF pág. 19/21) --- */
+/* Navegação - Cores Sincronizadas com o Globo */
 nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
     background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(15px);
@@ -53,12 +53,12 @@ nav {
 }
 
 .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
-.logo-img { height: 48px; }
+.logo-img { height: 48px; filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.2)); }
 
 .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 
 .nav-links a, .nav-globe-link svg {
-    color: var(--green-subtitle) !important; /* Cor exata do PDF */
+    color: var(--green-subtitle) !important;
     fill: var(--green-subtitle);
     text-decoration: none;
     font-size: 0.85rem;
@@ -79,71 +79,41 @@ nav {
     border: 2px solid var(--primary);
     padding: 6px 18px !important;
     border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
 }
 
-/* --- CARDS (Resgatado do PDF pág. 8/9) --- */
-.glass-card, .feature-card, .stat-card, .timeline-content {
+/* Glass Cards - Padrão do Portal Raiz */
+.glass-card, .feature-card, .stat-card {
     background: var(--glass);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1.5px solid var(--cobalt-border);
     border-radius: 20px;
-    padding: 2.5rem;
-    transition: all 0.4s ease;
+    padding: 3rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-align: center;
 }
 
-.glass-card:hover {
+.glass-card:hover, .feature-card:hover {
     transform: translateY(-10px);
     border-color: var(--hover-violet);
-    box-shadow: 0 15px 40px rgba(128, 128, 128, 0.3);
+    box-shadow: 0 15px 40px rgba(128, 128, 128, 0.4);
 }
 
-/* --- TÍTULOS E TEXTOS (Resgatado do PDF pág. 7/8/20) --- */
+/* Títulos com Gradiente */
 .section-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800; margin-bottom: 1.5rem;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .section-subtitle {
     color: var(--green-subtitle); font-size: 1.4rem; font-weight: 600; margin-bottom: 3rem;
 }
 
-.stat-number {
-    font-size: 3rem; font-weight: 900;
-    background: linear-gradient(135deg, var(--primary), var(--green-scroll));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
-}
-
-/* --- TIMELINE (PDF pág. 11/12) --- */
-.timeline { position: relative; width: 100%; padding: 40px 0; }
-.timeline::before {
-    content: ''; position: absolute; left: 50%; width: 2px; height: 100%;
-    background: linear-gradient(180deg, var(--green-scroll), var(--cobalt-border));
-    transform: translateX(-50%);
-}
-.timeline-item { display: flex; justify-content: space-between; width: 100%; margin-bottom: 3rem; }
-.timeline-item:nth-child(even) { flex-direction: row-reverse; }
-.timeline-content { width: 45%; }
-.timeline-dot { 
-    position: absolute; left: 50%; transform: translateX(-50%);
-    width: 16px; height: 16px; background: var(--cobalt-border); 
-    border-radius: 50%; border: 3px solid var(--dark);
-}
-.phase {
-    display: inline-block; padding: 4px 12px; border-radius: 20px;
-    background: rgba(0, 229, 255, 0.1); color: var(--blue-phase);
-    border: 1px solid var(--blue-phase); font-size: 0.8rem; font-weight: 800; margin-bottom: 10px;
-}
-
-/* --- ANIMAÇÕES --- */
-.fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-/* --- BACK TO TOP (PDF pág. 22) --- */
+/* Back to Top */
 .back-to-top-link {
     text-decoration: none; font-size: 0.75rem; font-weight: 600;
     color: rgba(255,255,255,0.4); text-transform: uppercase;
@@ -154,12 +124,11 @@ nav {
     border-top: 2px solid currentColor; transform: rotate(45deg);
 }
 
-/* Grid e Responsividade */
-.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 20px; }
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; width: 100%; }
+.fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
 @media (max-width: 900px) {
-    .grid, .stats { grid-template-columns: 1fr; }
-    .timeline::before, .timeline-dot { left: 20px; }
-    .timeline-item { flex-direction: column !important; padding-left: 50px; }
-    .timeline-content { width: 100%; }
+    .grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; } /* Menu hamburguer seria necessário aqui */
 }
