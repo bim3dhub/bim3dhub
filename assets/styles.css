@@ -1,13 +1,6 @@
-/* 
- BIM3D Hub - Master Global Stylesheet 
- Revisão: Sistema de Slides + Separação Público/Investidor
-*/
+/* BIM3D Hub - Master Global Stylesheet (RESTAURADO) */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
     --primary: #00f0ff;
@@ -22,113 +15,80 @@
     --dark: #0a0a0f;
     --glass: rgba(15, 23, 42, 0.6);
     --glass-border: rgba(255, 255, 255, 0.1);
-    --nav-height: 80px;
-    --container-width: 1100px;
 }
 
-html {
-    scroll-behavior: smooth;
-    /* Ativa o travamento por slide */
-    scroll-snap-type: y mandatory;
+html { 
+    scroll-behavior: smooth; 
+    scroll-snap-type: y mandatory; /* Sistema de Slides */
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: radial-gradient(circle at top right, #0f172a 0%, #05070a 100%);
     color: #ffffff;
-    overflow-x: hidden;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* --- LÓGICA DE SEÇÕES (SLIDES) --- */
+/* --- LOGICA DE SLIDES --- */
 section {
     min-height: 100vh;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    justify-content: center;
     align-items: center;
-    position: relative;
-    padding: 100px 0;
-    z-index: 1;
-    scroll-snap-align: start; /* Trava o topo da seção na tela */
+    scroll-snap-align: start;
     scroll-snap-stop: always;
+    position: relative;
+    padding: 80px 20px;
 }
 
-.container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 25px;
-    width: 100%;
-}
+.container { max-width: 1100px; margin: 0 auto; width: 100%; }
 
-/* --- BACKGROUND PARTICLES --- */
-.bg-particles {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* --- NAVEGAÇÃO --- */
+/* --- NAVEGAÇÃO (Resgatado do PDF pág. 19/21) --- */
 nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 9999;
-    background: rgba(10, 10, 15, 0.85);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--glass-border);
-    padding: 1rem 2rem;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+    background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border); padding: 0.8rem 2rem;
 }
 
-.nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+.logo-img { height: 48px; }
 
-.logo-img { height: 48px; width: auto; display: block; }
 .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 
-.nav-links a {
-    color: #ffffff;
+.nav-links a, .nav-globe-link svg {
+    color: var(--green-subtitle) !important; /* Cor exata do PDF */
+    fill: var(--green-subtitle);
     text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
 }
 
-.nav-links a:hover { color: var(--primary); }
-
-/* BOTÃO INVESTIDORES (DESTAQUE CIRCULADO) */
-.nav-invest-btn {
-    border: 2px solid var(--primary);
-    padding: 8px 20px !important;
-    border-radius: 50px;
+.nav-links a:hover, .nav-globe-link:hover svg {
     color: var(--primary) !important;
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    fill: var(--primary);
+    text-shadow: 0 0 10px rgba(175, 227, 215, 0.4);
 }
 
-.nav-invest-btn:hover {
-    background: var(--primary);
-    color: var(--dark) !important;
+/* Botão destaque Investidores */
+.nav-investors-btn {
+    border: 2px solid var(--primary);
+    padding: 6px 18px !important;
+    border-radius: 50px;
 }
 
-/* --- CARDS (GLASSMORPISM) --- */
+/* --- CARDS (Resgatado do PDF pág. 8/9) --- */
 .glass-card, .feature-card, .stat-card, .timeline-content {
     background: var(--glass);
     backdrop-filter: blur(12px);
     border: 1.5px solid var(--cobalt-border);
     border-radius: 20px;
-    padding: 3rem;
+    padding: 2.5rem;
     transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
 }
 
@@ -138,110 +98,68 @@ nav {
     box-shadow: 0 15px 40px rgba(128, 128, 128, 0.3);
 }
 
-/* --- TEXTOS --- */
+/* --- TÍTULOS E TEXTOS (Resgatado do PDF pág. 7/8/20) --- */
 .section-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    text-align: center;
+    font-weight: 800; margin-bottom: 1.5rem;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
 }
 
 .section-subtitle {
-    font-size: 1.6rem;
-    color: var(--green-subtitle);
-    text-align: center;
-    margin-bottom: 3rem;
-    font-weight: 600;
+    color: var(--green-subtitle); font-size: 1.4rem; font-weight: 600; margin-bottom: 3rem;
 }
 
-h3 { color: var(--green-subtitle) !important; font-size: 1.8rem; margin-bottom: 1.2rem; }
+.stat-number {
+    font-size: 3rem; font-weight: 900;
+    background: linear-gradient(135deg, var(--primary), var(--green-scroll));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
 
-/* --- TIMELINE (RESTAURAÇÃO ZIGUE-ZAGUE) --- */
-.timeline { position: relative; padding: 50px 0; width: 100%; }
+/* --- TIMELINE (PDF pág. 11/12) --- */
+.timeline { position: relative; width: 100%; padding: 40px 0; }
 .timeline::before {
-    content: ''; position: absolute; left: 50%; transform: translateX(-50%);
-    width: 2px; height: 100%;
+    content: ''; position: absolute; left: 50%; width: 2px; height: 100%;
     background: linear-gradient(180deg, var(--green-scroll), var(--cobalt-border));
+    transform: translateX(-50%);
 }
-
-.timeline-item {
-    display: flex; justify-content: space-between; width: 100%;
-    margin-bottom: 4rem; position: relative;
-}
-
+.timeline-item { display: flex; justify-content: space-between; width: 100%; margin-bottom: 3rem; }
 .timeline-item:nth-child(even) { flex-direction: row-reverse; }
-
 .timeline-content { width: 45%; }
-
-.timeline-dot {
+.timeline-dot { 
     position: absolute; left: 50%; transform: translateX(-50%);
-    width: 20px; height: 20px; background: var(--cobalt-border);
-    border-radius: 50%; border: 4px solid var(--dark); z-index: 2;
+    width: 16px; height: 16px; background: var(--cobalt-border); 
+    border-radius: 50%; border: 3px solid var(--dark);
 }
-
 .phase {
-    display: inline-block; background: rgba(0, 229, 255, 0.1);
-    color: var(--blue-phase); border: 1px solid var(--blue-phase);
-    padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 800;
-    margin-bottom: 1.5rem; text-transform: uppercase;
+    display: inline-block; padding: 4px 12px; border-radius: 20px;
+    background: rgba(0, 229, 255, 0.1); color: var(--blue-phase);
+    border: 1px solid var(--blue-phase); font-size: 0.8rem; font-weight: 800; margin-bottom: 10px;
 }
 
-/* --- GRIDS --- */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
-    width: 100%;
-}
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    width: 100%;
-}
-
-/* --- FORMULÁRIO --- */
-#contactForm { width: 100%; max-width: 800px; }
-.form-group { margin-bottom: 1.5rem; width: 100%; text-align: left; }
-.form-input, .form-textarea {
-    width: 100%; padding: 1.1rem; border-radius: 12px;
-    background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border);
-    color: #ffffff; font-family: inherit; transition: 0.3s;
-}
-.form-input:focus, .form-textarea:focus { border-color: var(--primary); outline: none; }
-
-.cta-button {
-    display: inline-block; padding: 1.2rem 3rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white; text-decoration: none; border-radius: 50px;
-    font-weight: 700; border: none; cursor: pointer; transition: 0.3s;
-}
-
-/* --- BACK TO TOP --- */
-.back-to-top-container { margin-top: 3rem; }
-.back-to-top-link {
-    text-decoration: none; font-size: 0.75rem; font-weight: 600;
-    color: rgba(255, 255, 255, 0.3); text-transform: uppercase;
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-}
-.back-to-top-link::before {
-    content: ''; width: 8px; height: 8px;
-    border-left: 2px solid currentColor; border-top: 2px solid currentColor;
-    transform: rotate(45deg);
-}
-
-/* --- RESPONSIVIDADE --- */
-@media (max-width: 900px) {
-    .grid, .stats { grid-template-columns: 1fr; }
-    .timeline::before { left: 20px; }
-    .timeline-item { flex-direction: column !important; padding-left: 50px; }
-    .timeline-content { width: 100%; }
-    .timeline-dot { left: 20px; }
-}
-
+/* --- ANIMAÇÕES --- */
 .fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* --- BACK TO TOP (PDF pág. 22) --- */
+.back-to-top-link {
+    text-decoration: none; font-size: 0.75rem; font-weight: 600;
+    color: rgba(255,255,255,0.4); text-transform: uppercase;
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+}
+.back-to-top-link::before {
+    content: ''; width: 8px; height: 8px; border-left: 2px solid currentColor;
+    border-top: 2px solid currentColor; transform: rotate(45deg);
+}
+
+/* Grid e Responsividade */
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 20px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+@media (max-width: 900px) {
+    .grid, .stats { grid-template-columns: 1fr; }
+    .timeline::before, .timeline-dot { left: 20px; }
+    .timeline-item { flex-direction: column !important; padding-left: 50px; }
+    .timeline-content { width: 100%; }
+}
