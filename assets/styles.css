@@ -101,45 +101,34 @@ nav {
     box-shadow: 0 15px 40px rgba(128, 128, 128, 0.4);
 }
 
-/* --- TÍTULOS PRINCIPAIS (Gradiente e Sombra Resgatados) --- */
+/* --- TÍTULOS PRINCIPAIS --- */
 .section-title {
-    text-align: center;      /* Centraliza o texto */
-    margin-left: auto;       /* Garante centralização em blocos */
-    margin-right: auto;      /* Garante centralização em blocos */
-    width: 100%;             /* Força o título a ocupar a largura total do container */
-    display: block;          /* Garante comportamento de bloco */
+    width: 100%;
+    text-align: center;
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     margin-bottom: 1.5rem;
-     
-    /* O Gradiente "Padrão Ótimo" */
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-
-    /* A Sombra de profundidade que resgata o visual 3D */
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), 
                  0 0 15px rgba(0, 240, 255, 0.2);
 }
 
-/* --- SUBTÍTULOS (Verde idêntico ao Menu de Topo) --- */
+/* --- SUBTÍTULOS --- */
 .section-subtitle {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
     width: 100%;
-    max-width: 850px; /* Limita a largura para melhor leitura, mas mantém centralizado */
+    max-width: 850px;
+    text-align: center;
     font-size: 1.6rem;
-    /* Força a cor verde do menu (#4db6ac) */
     color: var(--green-subtitle) !important; 
     margin-bottom: 4rem;
     font-weight: 600;
-    text-transform: none; /* Mantém a leitura natural */
     letter-spacing: 1px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
+
 /* Back to Top */
 .back-to-top-link {
     text-decoration: none; font-size: 0.75rem; font-weight: 600;
@@ -159,3 +148,4 @@ nav {
     .grid { grid-template-columns: 1fr; }
     .nav-links { display: none; } /* Menu hamburguer seria necessário aqui */
 }
+
