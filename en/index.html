@@ -1,189 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <link rel="icon" type="image/png" href="../assets/favicon.png">
-    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BIM3D Hub - Universal 3D Interoperability Platform</title>
-    <link rel="stylesheet" href="../assets/styles.css?v=1.1">
+    <title>BIM3D Hub | Universal 3D Interoperability</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    
+    <!-- Link para o CSS Global -->
+    <link rel="stylesheet" href="../assets/styles.css?v=1.3">
 </head>
 <body>
+    <!-- Background Animado -->
     <div class="progress-bar" id="progressBar"></div>
     <div class="bg-particles" id="particles"></div>
     
+    <!-- Navegação Superior -->
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <a href="../index.html" title="Return to Global Menu">
-                    <img src="../assets/Logo.png" alt="BIM3D Hub Logo" class="logo-img" />
+                <a href="../index.html" title="Return to Global Gateway">
+                    <img src="../assets/Logo.png" alt="BIM3D Hub" class="logo-img" />
                 </a>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#summary">Summary</a></li>
-                <li><a href="#problem">The Problem</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#solution">The Solution</a></li>
-                <li><a href="#tech">Technology</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <!-- Link de destaque para Investidores -->
-                <li><a href="investors.html" style="color: var(--primary); border: 1px solid var(--primary); padding: 5px 15px; border-radius: 20px;">Investors</a></li>
+                <!-- Botão Investidores em Destaque -->
+                <li><a href="en_investors.html" class="nav-investors-btn">Investors</a></li>
+                <!-- Ícone de Globo -->
                 <li>
-                    <a href="../index.html" class="nav-globe-link" title="Global Gateway">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    <a href="../index.html" class="nav-globe-link" title="Global Selection">
+                        <svg viewBox="0 0 24 24" style="width:22px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1 class="fade-in">BIM3D Hub</h1>
-            <p class="subtitle fade-in">The 3D object interoperability platform<br>Unlocking efficiency, scaling global results</p>
-            <a href="#summary" class="cta-button fade-in">Discover the Future</a>
-        </div>
-        <div class="scroll-indicator fade-in">
-            <span>SCROLL TO EXPLORE</span>
-            <div class="scroll-line"></div>
+    <!-- Slide 1: Hero -->
+    <section id="home">
+        <div class="container fade-in" style="text-align: center;">
+            <h1 class="section-title">BIM3D Hub</h1>
+            <p class="section-subtitle" style="color: white; opacity: 0.8; letter-spacing: 2px;">The 3D Object Interoperability Platform</p>
+            <div class="back-to-top-container">
+                <a href="#summary" class="back-to-top-link" style="transform: rotate(180deg);">Explore</a>
+            </div>
         </div>
     </section>
 
+    <!-- Slide 2: Executive Summary (3 Parágrafos Solicitados) -->
     <section id="summary">
-        <div class="container">
-            <h2 class="section-title fade-in"<br><br>Executive Summary</h2>
-            <div class="glass-card fade-in">
+        <div class="container fade-in">
+            <h2 class="section-title">Executive Summary</h2>
+            <div class="glass-card">
                 <p>The <strong>BIM3D Hub</strong> is a groundbreaking technology designed to address one of the most profound and costly challenges in the Architecture, Engineering, Construction (AEC) and Industrial Design industries:</p>
-                <p>The enormous waste of resources spent manually fixing incompatible 3D object formats.</p>
+                <br><br>
+                <p><strong>The enormous waste of resources spent manually fixing incompatible 3D object formats.</strong></p>
+                <br><br>
                 <p>BIM3D Hub ensures that a single block (complete with geometry, materials, and BIM metadata) functions consistently across any software, without rework or loss of consistency.</p>
             </div>
+            <div class="back-to-top-container">
+                <a href="#home" class="back-to-top-link">Back to Top</a>
+            </div>
         </div>
-        <div class="back-to-top-container fade-in"><a href="#home" class="back-to-top-link">Back to top</a></div>
     </section>
 
+    <!-- Slide 3: The Problem -->
     <section id="problem">
-        <div class="container">
-            <h2 class="section-title fade-in">The Problem</h2>
-            <p class="section-subtitle fade-in">The AEC industry operates in a fragmented environment <br class="desktop-only"> with dozens of incompatible formats</p>
-            <div class="glass-card fade-in">
-                <h3>Critical Consequences</h3>
-                <ul>
-                    <li>Continuous rework to generate multiple versions of the same object</li>
-                    <li>Loss of information during software conversions</li>
-                    <li>High costs for modelling and library maintenance</li>
-                    <li>Adoption limited by structural incompatibilities</li>
-                </ul>
+        <div class="container fade-in">
+            <h2 class="section-title">The Problem</h2>
+            <div class="glass-card">
+                <p class="section-subtitle">A Fragmented Industry</p>
+                <p>For years, productivity has been hampered by the absence of an operational standard. This leads to information loss, high modeling costs, and constant rework to generate multiple versions of the same object.</p>
+            </div>
+            <div class="back-to-top-container">
+                <a href="#home" class="back-to-top-link">Back to Top</a>
             </div>
         </div>
-        <div class="back-to-top-container fade-in"><a href="#home" class="back-to-top-link">Back to top</a></div>
     </section>
 
-    <section id="research">
-        <div class="container">
-            <h2 class="section-title fade-in">Help Shape the Future</h2>
-            <div class="grid">
-                <div class="glass-card fade-in" style="text-align: center; border-color: var(--primary);">
-                    <div class="icon">📐</div>
-                    <h3>For Architects & Designers</h3>
-                    <p>Help us define the perfect workflow for your daily needs.</p>
-                    <a href="https://tally.so/r/q4apk2" target="_blank" class="cta-button">Take Survey</a>
-                </div>
-                <div class="glass-card fade-in" style="text-align: center; border-color: var(--accent);">
-                    <div class="icon">🏭</div>
-                    <h3>For Manufacturers</h3>
-                    <p>Share your challenges with digital catalogs and ROI.</p>
-                    <a href="https://tally.so/r/q4a8QG" target="_blank" class="cta-button">Take Survey</a>
-                </div>
-            </div>
-        </div>
-        <div class="back-to-top-container fade-in"><a href="#home" class="back-to-top-link">Back to top</a></div>
-    </section>
-
+    <!-- Slide 4: The Solution -->
     <section id="solution">
-        <div class="container">
-            <h2 class="section-title fade-in">The Solution</h2>
-            <div class="glass-card fade-in">
-                <div class="solution-content">
-                    <h3>Universal .b3do Format</h3>
-                    <p class="solution-intro fade-in">An intelligent 3D container that combines:</p>
-                    <ul>
-                        <li><strong>Optimized Geometry:</strong> Clean, efficient mesh data</li>
-                        <li><strong>PBR Materials:</strong> Physically-based rendering materials</li>
-                        <li><strong>IFC Metadata:</strong> Industry Foundation Classes integration</li>
-                        <li><strong>Parametric Properties:</strong> Manufacturer-specific attributes</li>
-                    </ul>
+        <div class="container fade-in">
+            <h2 class="section-title">The Solution</h2>
+            <div class="grid">
+                <div class="feature-card">
+                    <h3>Universal Format</h3>
+                    <p>The .b3do format carries geometry, PBR materials, and BIM metadata in a single, intelligent container.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Multi-Platform</h3>
+                    <p>Native plugins for SketchUp, Blender, Rhino, Revit, and ArchiCAD coming soon.</p>
                 </div>
             </div>
-        </div>
-        <div class="back-to-top-container fade-in"><a href="#home" class="back-to-top-link">Back to top</a></div>
-    </section>
-
-    <section id="tech">
-        <div class="container">
-            <h2 class="section-title fade-in">Technical Differentiators</h2>
-            <div class="grid">
-                <div class="feature-card fade-in"><h3>Hybrid Format</h3><p>Mesh + parametric + metadata in one container</p></div>
-                <div class="feature-card fade-in"><h3>Modular Architecture</h3><p>Flexible conversion pipeline</p></div>
-                <div class="feature-card fade-in"><h3>Game Engine Ready</h3><p>Compatible with AAA workflows (FBX)</p></div>
+            <div class="back-to-top-container">
+                <a href="#home" class="back-to-top-link">Back to Top</a>
             </div>
         </div>
-        <div class="back-to-top-container fade-in"><a href="#home" class="back-to-top-link">Back to top</a></div>
     </section>
 
-<!-- 12. Contact Section -->
+    <!-- Slide 5: Contact -->
     <section id="contact">
-        <div class="container">
-            <h2 class="section-title fade-in">Contact Us</h2>
-            <div class="glass-card fade-in" style="max-width: 800px; margin: 0 auto;">
+        <div class="container fade-in">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
                 <form id="contactForm">
-                    <div class="form-group">
-                        <label class="form-label">Name / Organization</label>
-                        <input type="text" name="name" class="form-input" required placeholder="Full name or Firm name">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Professional Email</label>
-                        <input type="email" name="email" class="form-input" required placeholder="name@company.com">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Inquiry Details</label>
-                        <textarea name="message" class="form-textarea" required placeholder="How can we help?"></textarea>
-                    </div>
-
-                    <div class="form-divider"></div>
-                    <p class="contact-info-centered">
-                        Direct contact: contact@bim3dhub.com | (873) 973-2220
-                    </p>
-                    <div class="form-divider"></div>
-
-                    <div style="text-align: center; margin-top: 2.5rem;">
-                        <button type="submit" class="cta-button">Send Message</button>
-                    </div>
+                    <div style="margin-bottom:15px;"><input type="text" class="form-input" placeholder="Name" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:white; border-radius:8px;"></div>
+                    <div style="margin-bottom:15px;"><input type="email" class="form-input" placeholder="Email" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:white; border-radius:8px;"></div>
+                    <div style="margin-bottom:15px;"><textarea class="form-textarea" placeholder="Message" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:white; border-radius:8px; height:100px;"></textarea></div>
+                    <button type="submit" class="cta-button" style="width:100%;">Send Message</button>
                 </form>
             </div>
-            
-            <div class="back-to-top-container fade-in">
-                <a href="#home" class="back-to-top-link">Back to top</a>
+            <div class="back-to-top-container">
+                <a href="#home" class="back-to-top-link">Back to Top</a>
             </div>
+            <footer style="margin-top: 5rem; opacity: 0.5; font-size: 0.8rem; text-align: center;">
+                <p>&copy; 2025 BIM3D Hub - Universal 3D Interoperability Platform.</p>
+            </footer>
         </div>
-    
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2025 BIM3D Hub - Universal 3D Interoperability Platform. All rights reserved.</p>
-            <p>Gatineau, Outaouais, Québec, Canada</p>
-        </div>
-    </footer>
-        
     </section>
-    
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2025 BIM3D Hub - Universal 3D Interoperability Platform. All rights reserved.</p>
-            <p>Gatineau, Outaouais, Québec, Canada</p>
-        </div>
-    </footer>
-    
+
     <script src="../assets/main.js"></script>
 </body>
 </html>
