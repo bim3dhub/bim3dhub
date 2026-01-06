@@ -1,10 +1,10 @@
 /* 
     BIM3D Hub - Master Global Stylesheet
-    RESTAURAÇÃO INTEGRAL + APRESENTAÇÃO FULL SCREEN
-    Versão: 31/12/2025
+    Integridade Total + Layout em Slides (100vh) + Identidade Cobalt/Violet
+    Data: 06/01/2026
 */
 
-/* --- 1. RESET E VARIÁVEIS MASTER --- */
+/* --- 1. RESET E VARIÁVEIS GLOBAIS --- */
 * {
     margin: 0;
     padding: 0;
@@ -12,20 +12,24 @@
 }
 
 :root {
-    --primary: #00f0ff;          /* Ciano Original */
-    --secondary: #7000ff;        /* Violeta Profundo */
-    --accent: #ff006e;           /* Rosa Hero */
-    --green-subtitle: #4db6ac;   /* Esverdeado mais escuro */
-    --green-card-title: #afe3d7; /* Esverdeado mais claro */
-    --blue-phase: #00e5ff;       /* Azul ciano para Phase Tags */
-    --green-scroll: #00ffcc;     /* Verde vibrante */
-    --cobalt-border: #005fcc;    /* Azul Cobalto Default */
-    --hover-violet: #7000ff;
-    --dark: #0a0a0f;
-    --glass: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.12);
-    --success: #00ff9d;
-    --error: #ff4d4d;
+    --primary: #00f0ff;          /* Ciano base */
+    --secondary: #7000ff;        /* Violeta profundo */
+    --accent: #ff006e;           /* Rosa para destaques pontuais */
+    
+    /* Hierarquia de Verdes e Azuis Técnicos */
+    --green-subtitle: #4db6ac;   /* Esverdeado sub-títulos */
+    --green-card-title: #afe3d7; /* Verde pastel títulos internos */
+    --blue-phase: #00e5ff;       /* Azul ciano fases */
+    --green-scroll: #00ffcc;     /* Verde linha de scroll */
+    
+    /* Bordas e Estados */
+    --cobalt-border: #005fcc;    /* Azul Cobalto (Default) */
+    --hover-violet: #7000ff;     /* Violeta (Hover) */
+    --shadow-gray: rgba(128, 128, 128, 0.4);
+    
+    --dark-bg: #05070a;
+    --glass: rgba(15, 23, 42, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.1);
     --nav-height: 85px;
     --container-width: 1100px;
 }
@@ -43,7 +47,7 @@ body {
     line-height: 1.6;
 }
 
-/* --- 2. BACKGROUND & PARTICLES (ANIMADOS) --- */
+/* --- 2. ELEMENTOS DE FUNDO E PARTICULAS --- */
 .bg-particles {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -55,33 +59,28 @@ body {
     position: absolute;
     background: var(--primary);
     border-radius: 50%;
-    opacity: 0.3;
+    opacity: 0.2;
     animation: float 20s infinite linear;
 }
 
 @keyframes float {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(100px, -100px) rotate(120deg); }
-    66% { transform: translate(-100px, 100px) rotate(240deg); }
+    33% { transform: translate(60px, -60px) rotate(120deg); }
+    66% { transform: translate(-60px, 60px) rotate(240deg); }
 }
 
-/* --- 3. NAVIGATION (MASTER) --- */
+/* --- 3. NAVEGAÇÃO SUPERIOR (LÍMPIDA) --- */
 nav {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 9999;
     background: rgba(10, 10, 15, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass-border);
     height: var(--nav-height);
     display: flex;
     align-items: center;
-}
-
-nav.scrolled {
-    background: rgba(10, 10, 15, 0.95);
-    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
 }
 
 .nav-container {
@@ -96,7 +95,7 @@ nav.scrolled {
 
 .logo-img {
     height: 48px;
-    filter: drop-shadow(0 0 10px rgba(175, 227, 215, 0.3));
+    filter: drop-shadow(0 0 10px rgba(175, 227, 215, 0.2));
 }
 
 .nav-links {
@@ -105,36 +104,44 @@ nav.scrolled {
     list-style: none;
 }
 
+.nav-links li { padding: 0 !important; margin: 0 !important; }
+.nav-links li::before { content: none !important; } /* Remove checks do menu */
+
 .nav-links a {
-    color: #ffffff;
+    color: var(--green-subtitle);
     text-decoration: none;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 700;
     transition: 0.3s;
     text-transform: uppercase;
     letter-spacing: 1.2px;
 }
 
-.nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+.nav-links a:hover { color: var(--primary); }
 
-/* --- 4. ESTRUTURA DE SEÇÕES (ESTILO SLIDESHOW) --- */
+/* Ícone de Globo */
+.nav-globe-link svg {
+    width: 22px; height: 22px;
+    fill: var(--green-subtitle);
+    transition: 0.3s;
+}
+.nav-globe-link:hover svg { fill: var(--primary); transform: rotate(20deg); }
+
+/* --- 4. ESTRUTURA DE SEÇÕES (ESTILO SLIDES) --- */
 section {
-    min-height: 100vh; /* Cada seção ocupa a tela inteira */
+    height: 100vh; /* Ocupa a tela cheia */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centralização Vertical */
-    align-items: center;     /* Centralização Horizontal */
-    padding: 100px 0;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    z-index: 1;
+    padding: 0 30px;
     box-sizing: border-box;
+    overflow: hidden; /* Garante que uma seção não invada a outra */
 }
 
-/* Exceção Roadmap: Ele pode ser maior que a tela */
-#roadmap {
-    min-height: auto;
-    padding: 120px 0;
-}
+/* Exceção Roadmap */
+#roadmap { height: auto; min-height: 100vh; overflow: visible; padding: 120px 0; }
 
 .container {
     max-width: var(--container-width);
@@ -145,26 +152,19 @@ section {
     align-items: center;
 }
 
-/* --- 5. TÍTULOS E TIPOGRAFIA (EFEITO 3D) --- */
+/* --- 5. TÍTULOS E SUBTÍTULOS (3D E GRADIENTES) --- */
 h1, .section-title {
     color: #ffffff;
     text-align: center;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 240, 255, 0.2);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
-.hero h1 {
-    font-size: clamp(3.5rem, 8vw, 6rem);
-    font-weight: 900;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #00f0ff, #7000ff, #ff006e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+.hero h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; margin-bottom: 1.5rem; }
 
 .section-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -172,167 +172,42 @@ h1, .section-title {
 
 .section-subtitle {
     font-size: 1.6rem;
-    color: var(--green-subtitle);
     text-align: center;
-    margin-bottom: 4rem;
-    max-width: 850px;
-    font-weight: 600;
+    margin-bottom: 3.5rem;
+    font-weight: 700;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-/* --- 6. GLASS CARDS (O VISUAL IMPECÁVEL) --- */
-.glass-card {
+/* --- 6. CARDS (GLASS + BORDAS COBALTO + HOVER VIOLETA) --- */
+.glass-card, .feature-card, .stat-card, .timeline-content {
     background: var(--glass);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1.5px solid var(--cobalt-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.8px solid var(--cobalt-border);
     border-radius: 24px;
     padding: 3.5rem;
-    margin-bottom: 2rem;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
-    overflow: hidden;
     width: 100%;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-.glass-card:hover {
-    transform: translateY(-10px);
+.glass-card:hover, .feature-card:hover, .stat-card:hover, .timeline-content:hover {
+    transform: translateY(-12px);
     border-color: var(--hover-violet);
-    box-shadow: 0 20px 50px rgba(128, 128, 128, 0.2);
+    box-shadow: 0 15px 45px var(--shadow-gray);
 }
 
-/* Brilho interno do card */
-.glass-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%; width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-    transition: 0.6s;
-}
-.glass-card:hover::before { left: 100%; }
-
-/* --- 7. GRIDS E FEATURE CARDS --- */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
-    width: 100%;
-}
-
-.feature-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1.5px solid var(--cobalt-border);
-    border-radius: 20px;
-    padding: 3rem;
-    text-align: center;
-    transition: 0.4s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.feature-card:hover {
-    border-color: var(--hover-violet);
-    transform: translateY(-8px);
-}
-
-.icon {
-    font-size: 3.5rem;
+/* Títulos internos dos cards */
+h3 {
+    color: var(--green-card-title) !important;
+    font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    filter: drop-shadow(0 0 10px var(--green-card-title));
 }
 
-/* --- 8. STATS SECTION --- */
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    width: 100%;
-}
-
-.stat-card {
-    text-align: center;
-    padding: 2.5rem;
-    background: var(--glass);
-    border: 1.5px solid var(--cobalt-border);
-    border-radius: 20px;
-}
-
-.stat-number {
-    font-size: 3rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--primary), var(--green-scroll));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* --- 9. TIMELINE / ROADMAP (ZIGUE-ZAGUE) --- */
-.timeline {
-    position: relative;
-    width: 100%;
-    padding: 40px 0;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--cobalt-border), var(--hover-violet), transparent);
-}
-
-.timeline-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 4rem;
-    position: relative;
-}
-
-.timeline-item:nth-child(even) { flex-direction: row-reverse; }
-
-.timeline-content {
-    width: 45%;
-    background: var(--glass);
-    border: 1.5px solid var(--cobalt-border);
-    border-radius: 20px;
-    padding: 2.5rem;
-    text-align: center;
-}
-
-.timeline-dot {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
-    background: var(--cobalt-border);
-    border-radius: 50%;
-    border: 4px solid var(--dark);
-    z-index: 2;
-    box-shadow: 0 0 15px var(--cobalt-border);
-}
-
-.phase {
-    background: rgba(0, 229, 255, 0.1);
-    color: var(--blue-phase);
-    border: 1px solid var(--blue-phase);
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: inline-block;
-}
-
-/* --- 10. LISTAS E CHECKMARKS (INTELIGENTES) --- */
+/* --- 7. LISTAS GLOBAIS (CHECKMARKS PASTEL) --- */
 ul { list-style: none; padding: 0; }
 li { position: relative; padding-left: 35px; margin-bottom: 15px; text-align: left; }
 li::before {
@@ -344,47 +219,79 @@ li::before {
     font-size: 1.1rem;
 }
 
-/* --- 11. AJUSTE SOLUTION --- */
+/* --- 8. ESPECÍFICOS: SOLUTION / MARKET / ROADMAP --- */
 .solution-intro {
     font-weight: 800 !important;
     font-size: 1.3rem !important;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
     color: #ffffff;
+    text-align: center;
 }
 
-/* --- 12. FORMULÁRIO E FOOTER --- */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; width: 100%; }
+.stat-number {
+    font-size: 3.5rem; font-weight: 900;
+    background: linear-gradient(135deg, var(--primary), var(--green-scroll));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* Timeline Zigue-Zague */
+.timeline { position: relative; width: 100%; }
+.timeline::before {
+    content: ''; position: absolute; left: 50%; width: 2px; height: 100%;
+    background: linear-gradient(to bottom, var(--cobalt-border), var(--hover-violet));
+    transform: translateX(-50%);
+}
+.timeline-item { display: flex; justify-content: space-between; width: 100%; margin-bottom: 4rem; position: relative; }
+.timeline-item:nth-child(even) { flex-direction: row-reverse; }
+.timeline-content { width: 45%; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.timeline-content ul { display: inline-block; }
+.timeline-dot {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    width: 20px; height: 20px; background: var(--cobalt-border);
+    border-radius: 50%; border: 4px solid var(--dark); z-index: 2;
+}
+
+.phase {
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--blue-phase);
+    border: 1px solid var(--blue-phase);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* --- 9. FORMULÁRIO E RODAPÉ --- */
 .form-input, .form-textarea {
     width: 100%; padding: 1.2rem; border-radius: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--glass-border);
-    color: #ffffff;
-    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border);
+    color: #ffffff; transition: 0.3s;
 }
+.form-divider { height: 1px; background: linear-gradient(to right, transparent, var(--glass-border), transparent); margin: 2rem 0; }
+.contact-info-centered { text-align: center; color: var(--green-card-title); font-weight: 500; }
 
-.form-input:focus { border-color: var(--primary); outline: none; }
-
-.cta-button {
-    display: inline-block;
-    padding: 1.2rem 3.5rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    border-radius: 50px;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
+footer {
+    background: rgba(5, 7, 10, 0.95);
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid var(--glass-border);
 }
-
-.footer-content { text-align: center; }
 .footer-content p { margin: 0 !important; padding: 4px 0; font-size: 0.9rem; opacity: 0.7; }
 
-/* --- 13. SCROLL INDICATOR --- */
-.scroll-indicator {
-    position: absolute; bottom: 30px; text-align: center;
+/* --- 10. BOTÕES E INDICADORES --- */
+.cta-button {
+    display: inline-block; padding: 1.2rem 3.5rem; border-radius: 50px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white; text-decoration: none; font-weight: 800; text-transform: uppercase;
 }
+.cta-button:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0, 240, 255, 0.3); }
+
+.scroll-indicator { position: absolute; bottom: 30px; text-align: center; }
 .scroll-indicator span { color: var(--green-scroll); font-weight: 700; letter-spacing: 2px; font-size: 0.75rem; }
-.scroll-line { width: 1px; height: 50px; background: var(--green-scroll); margin: 10px auto; animation: grow 2s infinite; }
+.scroll-line { width: 1px; height: 50px; background: var(--green-scroll); margin: 12px auto; animation: grow 2s infinite; }
 
 @keyframes grow {
     0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
@@ -392,17 +299,17 @@ li::before {
     100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
 }
 
-/* --- 14. BACK TO TOP --- */
-.back-to-top-container { margin-top: auto; padding-top: 30px; }
-.back-to-top-link { color: rgba(255,255,255,0.4); text-decoration: none; font-weight: 700; font-size: 0.7rem; letter-spacing: 2px; }
-.back-to-top-link:hover { color: var(--primary); }
+/* Back to Top no fundo do slide */
+.back-to-top-container { position: absolute; bottom: 25px; }
 
-/* --- 15. RESPONSIVIDADE --- */
+/* --- 11. RESPONSIVIDADE --- */
 @media (max-width: 900px) {
+    section { height: auto; min-height: 100vh; padding: 80px 20px; }
     .grid, .stats { grid-template-columns: 1fr; }
-    .timeline::before { left: 25px; }
-    .timeline-item { flex-direction: column !important; padding-left: 60px; align-items: flex-start; }
-    .timeline-content { width: 100%; }
-    .timeline-dot { left: 25px; }
-    .nav-links { display: none; }
+    .timeline::before { left: 20px; }
+    .timeline-item { flex-direction: column !important; padding-left: 50px; align-items: flex-start; }
+    .timeline-content { width: 100%; text-align: left; align-items: flex-start; }
+    .timeline-dot { left: 20px; }
+    .back-to-top-container { position: static; margin-top: 30px; }
+    .desktop-only { display: none; }
 }
