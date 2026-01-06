@@ -100,19 +100,36 @@ nav {
     box-shadow: 0 15px 40px rgba(128, 128, 128, 0.4);
 }
 
-/* Títulos com Gradiente */
+/* --- TÍTULOS PRINCIPAIS (Gradiente e Sombra Resgatados) --- */
 .section-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800; margin-bottom: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    
+    /* O Gradiente "Padrão Ótimo" */
     background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* A Sombra de profundidade que resgata o visual 3D */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), 
+                 0 0 15px rgba(0, 240, 255, 0.2);
 }
 
+/* --- SUBTÍTULOS (Verde idêntico ao Menu de Topo) --- */
 .section-subtitle {
-    color: var(--green-subtitle); font-size: 1.4rem; font-weight: 600; margin-bottom: 3rem;
+    font-size: 1.6rem;
+    /* Força a cor verde do menu (#4db6ac) */
+    color: var(--green-subtitle) !important; 
+    text-align: center;
+    margin-bottom: 4rem;
+    font-weight: 600;
+    text-transform: none; /* Mantém a leitura natural */
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
-
 /* Back to Top */
 .back-to-top-link {
     text-decoration: none; font-size: 0.75rem; font-weight: 600;
