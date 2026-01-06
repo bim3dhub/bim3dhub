@@ -207,16 +207,6 @@ h3 {
     margin-bottom: 1.5rem;
 }
 
-/* Cria o espaçamento automático (linha em branco) entre parágrafos nos cards */
-.glass-card p {
-    margin-bottom: 1.5rem; /* Altura de aproximadamente uma linha e meia */
-}
-
-/* Remove o espaço do último parágrafo para não sobrar um buraco no fim do card */
-.glass-card p:last-child {
-    margin-bottom: 0;
-}
-
 /* --- 7. LISTAS GLOBAIS (CHECKMARKS PASTEL) --- */
 ul { list-style: none; padding: 0; }
 li { position: relative; padding-left: 35px; margin-bottom: 15px; text-align: left; }
@@ -322,4 +312,14 @@ footer {
     .timeline-dot { left: 20px; }
     .back-to-top-container { position: static; margin-top: 30px; }
     .desktop-only { display: none; }
+}
+
+/* Cria o espaçamento automático (linha em branco) entre parágrafos nos cards */
+.glass-card p {
+    margin-bottom: 1.5rem; /* Altura de aproximadamente uma linha e meia */
+}
+
+/* Remove o espaço do último parágrafo para não sobrar um buraco no fim do card */
+.glass-card p:last-child {
+    margin-bottom: 0;
 }
