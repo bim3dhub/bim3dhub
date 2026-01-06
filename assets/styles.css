@@ -1,158 +1,128 @@
-/* BIM3D Hub - Master Global Stylesheet */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BIM3D Hub | Universal 3D Interoperability</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    
+    <!-- Link para o CSS Global -->
+    <link rel="stylesheet" href="../assets/styles.css?v=1.3">
+</head>
+<body>
+    <!-- Background Animado -->
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="bg-particles" id="particles"></div>
+    
+    <!-- Navegação Superior -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../index.html" title="Return to Global Gateway">
+                    <img src="../assets/Logo.png" alt="BIM3D Hub" class="logo-img" />
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#summary">Summary</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- Botão Investidores em Destaque -->
+                <li><a href="en_investors.html" class="nav-investors-btn">Investors</a></li>
+                <!-- Ícone de Globo -->
+                <li>
+                    <a href="../index.html" class="nav-globe-link" title="Global Selection">
+                        <svg viewBox="0 0 24 24" style="width:22px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+    <!-- Slide 1: Hero -->
+    <section id="home">
+        <div class="container fade-in" style="text-align: center;">
+            <h1 class="section-title">BIM3D Hub</h1>
+            <p class="section-subtitle" style="color: white; opacity: 0.8; letter-spacing: 2px;">The 3D Object Interoperability Platform</p>
+            <div class="back-to-top-container">
+                <a href="#summary" class="back-to-top-link" style="transform: rotate(180deg);">Explore</a>
+            </div>
+        </div>
+    </section>
 
-:root {
-    --primary: #00f0ff;
-    --secondary: #7000ff;
-    --accent: #ff006e;
-    --green-subtitle: #4db6ac;
-    --green-card-title: #afe3d7;
-    --blue-phase: #00e5ff;
-    --green-scroll: #00ffcc;
-    --cobalt-border: #005fcc;
-    --hover-violet: #7000ff;
-    --dark: #0a0a0f;
-    --glass: rgba(15, 23, 42, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.1);
-}
+    <!-- Slide 2: Executive Summary (3 Parágrafos Solicitados) -->
+    <section id="summary">
+        <div class="container fade-in">
+            <h2 class="section-title fade-in">Executive Summary</h2>
+            <div class="glass-card">
+                <p>The <strong>BIM3D Hub</strong> is a groundbreaking technology designed to address one of the most profound and costly challenges in the Architecture, Engineering, Construction (AEC) and Industrial Design industries:</p>
+                <br><br>
+                <p><strong>The enormous waste of resources spent manually fixing incompatible 3D object formats.</strong></p>
+                <br><br>
+                <p>BIM3D Hub ensures that a single block (complete with geometry, materials, and BIM metadata) functions consistently across any software, without rework or loss of consistency.</p>
+            </div>
+            <div class="back-to-top-container">
+                <a href="#home" class="back-to-top-link">Back to Top</a>
+            </div>
+        </div>
+    </section>
 
-html { 
-    scroll-behavior: smooth; 
-    scroll-snap-type: y mandatory; 
-}
+    <!-- Slide 3: The Problem -->
+    <section id="problem">
+        <div class="container fade-in">
+            <h2 class="section-title">The Problem</h2>
+            <div class="glass-card">
+                <p class="section-subtitle">A Fragmented Industry</p>
+                <p>For years, productivity has been hampered by the absence of an operational standard. This leads to information loss, high modeling costs, and constant rework to generate multiple versions of the same object.</p>
+            </div>
+            <div class="back-to-top-container">
+                <a href="#home" class="back-to-top-link">Back to Top</a>
+            </div>
+        </div>
+    </section>
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: radial-gradient(circle at top right, #0f172a 0%, #05070a 100%);
-    color: #ffffff;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+    <!-- Slide 4: The Solution -->
+    <section id="solution">
+        <div class="container fade-in">
+            <h2 class="section-title">The Solution</h2>
+            <div class="grid">
+                <div class="feature-card">
+                    <h3>Universal Format</h3>
+                    <p>The .b3do format carries geometry, PBR materials, and BIM metadata in a single, intelligent container.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Multi-Platform</h3>
+                    <p>Native plugins for SketchUp, Blender, Rhino, Revit, and ArchiCAD coming soon.</p>
+                </div>
+            </div>
+            <div class="back-to-top-container">
+                <a href="#home" class="back-to-top-link">Back to Top</a>
+            </div>
+        </div>
+    </section>
 
-/* Lógica de Slides */
-section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;       /* Isso centraliza o contêiner filho */
-    text-align: center;        /* ADICIONE ESTA LINHA */
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    position: relative;
-    padding: 80px 20px;
-}
+    <!-- Slide 5: Contact -->
+    <section id="contact">
+        <div class="container fade-in">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+                <form id="contactForm">
+                    <div style="margin-bottom:15px;"><input type="text" class="form-input" placeholder="Name" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:white; border-radius:8px;"></div>
+                    <div style="margin-bottom:15px;"><input type="email" class="form-input" placeholder="Email" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:white; border-radius:8px;"></div>
+                    <div style="margin-bottom:15px;"><textarea class="form-textarea" placeholder="Message" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:white; border-radius:8px; height:100px;"></textarea></div>
+                    <button type="submit" class="cta-button" style="width:100%;">Send Message</button>
+                </form>
+            </div>
+            <div class="back-to-top-container">
+                <a href="#home" class="back-to-top-link">Back to Top</a>
+            </div>
+            <footer style="margin-top: 5rem; opacity: 0.5; font-size: 0.8rem; text-align: center;">
+                <p>&copy; 2025 BIM3D Hub - Universal 3D Interoperability Platform.</p>
+            </footer>
+        </div>
+    </section>
 
-.container { 
-    max-width: 1100px; 
-    margin: 0 auto; 
-    width: 100%; 
-    display: flex;             /* ADICIONE */
-    flex-direction: column;    /* ADICIONE */
-    align-items: center;       /* ADICIONE - Força tudo ao centro */
-}
-
-/* Navegação - Cores Sincronizadas com o Globo */
-nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-    background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--glass-border); padding: 0.8rem 2rem;
-}
-
-.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
-.logo-img { height: 48px; filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.2)); }
-
-.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-
-.nav-links a, .nav-globe-link svg {
-    color: var(--green-subtitle) !important;
-    fill: var(--green-subtitle);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: 0.3s ease;
-}
-
-.nav-links a:hover, .nav-globe-link:hover svg {
-    color: var(--primary) !important;
-    fill: var(--primary);
-    text-shadow: 0 0 10px rgba(175, 227, 215, 0.4);
-}
-
-/* Botão destaque Investidores */
-.nav-investors-btn {
-    border: 2px solid var(--primary);
-    padding: 6px 18px !important;
-    border-radius: 50px;
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
-}
-
-/* Glass Cards - Padrão do Portal Raiz */
-.glass-card, .feature-card, .stat-card {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1.5px solid var(--cobalt-border);
-    border-radius: 20px;
-    padding: 3rem;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    text-align: center;
-}
-
-.glass-card:hover, .feature-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--hover-violet);
-    box-shadow: 0 15px 40px rgba(128, 128, 128, 0.4);
-}
-
-/* --- TÍTULOS PRINCIPAIS --- */
-.section-title {
-    width: 100%;
-    text-align: center;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), 
-                 0 0 15px rgba(0, 240, 255, 0.2);
-}
-
-/* --- SUBTÍTULOS --- */
-.section-subtitle {
-    width: 100%;
-    max-width: 850px;
-    text-align: center;
-    font-size: 1.6rem;
-    color: var(--green-subtitle) !important; 
-    margin-bottom: 4rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-/* Back to Top */
-.back-to-top-link {
-    text-decoration: none; font-size: 0.75rem; font-weight: 600;
-    color: rgba(255,255,255,0.4); text-transform: uppercase;
-    display: flex; flex-direction: column; align-items: center; gap: 5px;
-}
-.back-to-top-link::before {
-    content: ''; width: 8px; height: 8px; border-left: 2px solid currentColor;
-    border-top: 2px solid currentColor; transform: rotate(45deg);
-}
-
-.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; width: 100%; }
-.fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 900px) {
-    .grid { grid-template-columns: 1fr; }
-    .nav-links { display: none; } /* Menu hamburguer seria necessário aqui */
-}
-
+    <script src="../assets/main.js"></script>
+</body>
+</html>
