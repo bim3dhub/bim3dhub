@@ -128,22 +128,43 @@
         <div class="back-to-top-container fade-in"><a href="#home" class="back-to-top-link">Back to top</a></div>
     </section>
 
+<!-- 12. Contact Section -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title fade-in">Contact Us</h2>
             <div class="glass-card fade-in" style="max-width: 800px; margin: 0 auto;">
                 <form id="contactForm">
-                    <div class="form-group"><label class="form-label">Name</label><input type="text" name="name" class="form-input" required></div>
-                    <div class="form-group"><label class="form-label">Email</label><input type="email" name="email" class="form-input" required></div>
+                    <div class="form-group">
+                        <label class="form-label">Name / Organization</label>
+                        <input type="text" name="name" class="form-input" required placeholder="Full name or Firm name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Professional Email</label>
+                        <input type="email" name="email" class="form-input" required placeholder="name@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Inquiry Details</label>
+                        <textarea name="message" class="form-textarea" required placeholder="How can we help?"></textarea>
+                    </div>
+
                     <div class="form-divider"></div>
-                    <p class="contact-info-centered">contact@bim3dhub.com | (873) 973-2220</p>
+                    <p class="contact-info-centered">
+                        Direct contact: contact@bim3dhub.com | (873) 973-2220
+                    </p>
                     <div class="form-divider"></div>
-                    <div style="text-align: center;"><button type="submit" class="cta-button">Send Message</button></div>
+
+                    <div style="text-align: center; margin-top: 2.5rem;">
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </div>
                 </form>
+            </div>
+            
+            <div class="back-to-top-container fade-in">
+                <a href="#home" class="back-to-top-link">Back to top</a>
             </div>
         </div>
     </section>
-
+    
     <footer>
         <div class="container footer-content">
             <p>&copy; 2025 BIM3D Hub - Universal 3D Interoperability Platform. All rights reserved.</p>
