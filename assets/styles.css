@@ -36,7 +36,8 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center;       /* Isso centraliza o contêiner filho */
+    text-align: center;        /* ADICIONE ESTA LINHA */
     scroll-snap-align: start;
     scroll-snap-stop: always;
     position: relative;
