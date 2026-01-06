@@ -8,11 +8,11 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../assets/favicon.png">
     
-    <!-- Link para o CSS centralizado -->
+    <!-- Link para o CSS centralizado (Certifique-se que o styles.css contém as regras de slide) -->
     <link rel="stylesheet" href="../assets/styles.css?v=1.2">
 </head>
 <body>
-    <!-- Elementos Funcionais -->
+    <!-- Elementos Funcionais de Background -->
     <div class="progress-bar" id="progressBar"></div>
     <div class="bg-particles" id="particles"></div>
     
@@ -20,46 +20,52 @@
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <a href="en_index.html" title="Return to Product Home">
+                <!-- LINK CORRIGIDO: Remete ao index.html na raiz -->
+                <a href="../index.html" title="Return to Global Gateway">
                     <img src="../assets/Logo.png" alt="BIM3D Hub Logo" class="logo-img" />
                 </a>
             </div>
             <ul class="nav-links">
+                <!-- LINK CORRIGIDO: Remete ao en_index.html nesta pasta -->
                 <li><a href="en_index.html">Product Home</a></li>
                 <li><a href="#market">Market</a></li>
                 <li><a href="#roadmap">Roadmap</a></li>
                 <li><a href="#barriers">Advantages</a></li>
                 <li><a href="#impact">Impact</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <!-- Ícone de Globo para voltar ao seletor de idiomas -->
+                
+                <!-- ÍCONE DE GLOBO CORRIGIDO: Link para a raiz -->
                 <li>
-                    <a href="../index.html" class="nav-globe-link" title="Global Gateway">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    <a href="../index.html" class="nav-globe-link" title="Global Language Selection">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:22px; fill:var(--green-subtitle);">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section (Slide 1) -->
+    <!-- 1. Hero Section (Slide 1) -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1 class="fade-in">Investor Relations</h1>
-            <p class="subtitle fade-in">Scaling the future of 3D Interoperability.<br>A multi-billion dollar opportunity in the global AEC sector.</p>
-            <a href="#market" class="cta-button fade-in">Business Overview</a>
+            <p class="section-subtitle fade-in" style="color: white; opacity: 0.9;">
+                Scaling the future of 3D Interoperability.<br>
+                A multi-billion dollar opportunity in the global AEC sector.
+            </p>
+            <a href="#market" class="cta-button fade-in">View Business Case</a>
         </div>
-        <!-- Indicador de Scroll Centralizado -->
         <div class="scroll-indicator fade-in">
             <span>SCROLL TO EXPLORE</span>
             <div class="scroll-line"></div>
         </div>
     </section>
 
-    <!-- 1. Market Opportunity (Slide 2) -->
+    <!-- 2. Market Opportunity (Slide 2) -->
     <section id="market">
         <div class="container">
             <h2 class="section-title fade-in">Market Opportunity</h2>
-            <p class="section-subtitle fade-in">3D interoperability is a global technological trend, driven by BIM adoption and digital twin growth.</p>
             <div class="stats">
                 <div class="stat-card fade-in">
                     <div class="stat-number">$12B</div>
@@ -74,26 +80,26 @@
                     <div class="stat-label">Projected Market by 2030</div>
                 </div>
             </div>
-        </div>
-        <div class="back-to-top-container fade-in">
-            <a href="#home" class="back-to-top-link">Back to top</a>
+            <div class="back-to-top-container">
+                <a href="#home" class="back-to-top-link">Back to top</a>
+            </div>
         </div>
     </section>
 
-    <!-- 2. Roadmap (Slide 3) -->
+    <!-- 3. Roadmap (Slide 3) -->
     <section id="roadmap">
         <div class="container">
-            <h2 class="section-title fade-in">12-Month Roadmap</h2>
+            <h2 class="section-title fade-in">Strategic Roadmap</h2>
             <div class="timeline">
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="phase">Phase 1 - MVP</span>
                         <h3>Months 0-3</h3>
-                        <ul>
-                            <li>B3DO format finalized and documented</li>
-                            <li>FBX B3DO converter functional</li>
-                            <li>Quality and stability testing</li>
+                        <ul style="text-align: left; display: inline-block;">
+                            <li>B3DO format finalization</li>
+                            <li>FBX Converter deployment</li>
+                            <li>Stability & Quality Assurance</li>
                         </ul>
                     </div>
                 </div>
@@ -102,126 +108,101 @@
                     <div class="timeline-content">
                         <span class="phase">Phase 2 - Expansion</span>
                         <h3>Months 4-6</h3>
-                        <ul>
-                            <li>SketchUp, Blender, and Rhino plugins</li>
-                            <li>BIM3D Hub Cloud catalog prototype</li>
-                            <li>Public API launch</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="phase">Phase 3 - Consolidation</span>
-                        <h3>Months 7-12</h3>
-                        <ul>
-                            <li>First manufacturer partnership</li>
-                            <li>Advanced converters with partial IFC</li>
-                            <li>Expanded CAD/BIM integrations</li>
+                        <ul style="text-align: left; display: inline-block;">
+                            <li>Key Plugins (Blender, SketchUp)</li>
+                            <li>Cloud Catalog Launch</li>
+                            <li>Public API Beta</li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="back-to-top-container fade-in">
-            <a href="#home" class="back-to-top-link">Back to top</a>
+            <div class="back-to-top-container">
+                <a href="#home" class="back-to-top-link">Back to top</a>
+            </div>
         </div>
     </section>
 
-    <!-- 3. Competitive Advantages (Slide 4) -->
+    <!-- 4. Competitive Advantages (Slide 4) -->
     <section id="barriers">
         <div class="container">
             <h2 class="section-title fade-in">Competitive Advantages</h2>
             <div class="grid">
-                <div class="feature-card fade-in">
+                <div class="glass-card fade-in">
                     <h3>High Technical Complexity</h3>
-                    <p>Startups focused exclusively on universal formats can innovate faster than legacy giants with rigid architectures.</p>
+                    <p>Our proprietary pipeline overcomes the "technical debt" of legacy giants, allowing for faster innovation in 3D translation.</p>
                 </div>
-                <div class="feature-card fade-in">
+                <div class="glass-card fade-in">
                     <h3>Network Effect</h3>
-                    <p>As more manufacturers adopt the .b3do standard, software support grows, creating a self-reinforcing adoption cycle.</p>
+                    <p>As more manufacturers adopt .b3do, the ecosystem value grows exponentially, creating a self-reinforcing standard.</p>
                 </div>
-                <div class="feature-card fade-in">
-                    <h3>Strategic Independence</h3>
-                    <p>Major players depend on closed ecosystems; we provide the neutral bridge the global industry needs.</p>
-                </div>
-                <div class="feature-card fade-in">
+                <div class="glass-card fade-in">
                     <h3>Data Integrity</h3>
-                    <p>Our proprietary pipeline preserves critical BIM metadata, eliminating data loss during conversion.</p>
+                    <p>Unlike standard converters, we preserve BIM metadata and PBR materials across the entire digital chain.</p>
+                </div>
+                <div class="glass-card fade-in">
+                    <h3>Neutrality</h3>
+                    <p>We act as a neutral bridge between competing software ecosystems, a role major players lack the incentive to fill.</p>
                 </div>
             </div>
-        </div>
-        <div class="back-to-top-container fade-in">
-            <a href="#home" class="back-to-top-link">Back to top</a>
+            <div class="back-to-top-container">
+                <a href="#home" class="back-to-top-link">Back to top</a>
+            </div>
         </div>
     </section>
 
-    <!-- 4. Economic Impact (Slide 5) -->
+    <!-- 5. Economic Impact (Slide 5) -->
     <section id="impact">
         <div class="container">
             <h2 class="section-title fade-in">Economic Impact</h2>
             <div class="grid">
                 <div class="feature-card fade-in">
-                    <div class="icon">💼</div>
-                    <h3>Local Job Creation</h3>
-                    <p>Qualified positions in C++, Python, and 3D artistry in the Outaouais region.</p>
+                    <div class="icon" style="font-size:3rem; margin-bottom:1rem;">💼</div>
+                    <h3>Local Talent</h3>
+                    <p>Qualified positions in C++ and Python development right here in the Outaouais region.</p>
                 </div>
                 <div class="feature-card fade-in">
-                    <div class="icon">🌏</div>
-                    <h3>Global Export Platform</h3>
-                    <p>A technological hub with worldwide reach, born in Québec, Canada.</p>
+                    <div class="icon" style="font-size:3rem; margin-bottom:1rem;">🌏</div>
+                    <h3>Global Reach</h3>
+                    <p>A Québec-born technological hub exporting 3D interoperability solutions to the entire world.</p>
                 </div>
             </div>
-        </div>
-        <div class="back-to-top-container fade-in">
-            <a href="#home" class="back-to-top-link">Back to top</a>
+            <div class="back-to-top-container">
+                <a href="#home" class="back-to-top-link">Back to top</a>
+            </div>
         </div>
     </section>
 
-    <!-- 5. Contact Section (Slide 6) -->
+    <!-- 6. Contact (Slide 6) -->
     <section id="contact">
         <div class="container">
-            <h2 class="section-title fade-in">Contact Investor Relations</h2>
+            <h2 class="section-title fade-in">Connect with us</h2>
             <div class="glass-card fade-in" style="max-width: 800px; margin: 0 auto;">
                 <form id="contactForm">
                     <div class="form-group">
-                        <label class="form-label">Name / Organization</label>
-                        <input type="text" name="name" class="form-input" required placeholder="Full name or Firm name">
+                        <label class="form-label">Organization Name</label>
+                        <input type="text" class="form-input" placeholder="Full name or Investment Firm" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Professional Email</label>
-                        <input type="email" name="email" class="form-input" required placeholder="name@company.com">
+                        <input type="email" class="form-input" placeholder="name@organization.com" required>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Inquiry Details</label>
-                        <textarea name="message" class="form-textarea" required placeholder="How can we collaborate?"></textarea>
+                        <label class="form-label">Inquiry</label>
+                        <textarea class="form-textarea" rows="4" placeholder="How would you like to collaborate with BIM3D Hub?" required></textarea>
                     </div>
-
-                    <div class="form-divider"></div>
-                    <p class="contact-info-centered">
-                        Direct contact: contact@bim3dhub.com | (873) 973-2220
-                    </p>
-                    <div class="form-divider"></div>
-
-                    <div style="text-align: center; margin-top: 2.5rem;">
-                        <button type="submit" class="cta-button">Send Message</button>
-                    </div>
+                    <button type="submit" class="cta-button">Send Inquiry</button>
                 </form>
-                <div id="formResponse"></div>
             </div>
-        </div>
-
-        <div class="back-to-top-container fade-in">
-            <a href="#home" class="back-to-top-link">Back to top</a>
-        </div>
-
-        <!-- Footer integrado ao último slide -->
-        <footer style="margin-top: 4rem;">
-            <div class="container footer-content">
-                <p>&copy; 2025 BIM3D Hub - Universal 3D Interoperability Platform. All rights reserved.</p>
-                <p>Gatineau, Outaouais, Québec, Canada</p>
+            
+            <div class="back-to-top-container">
+                <a href="#home" class="back-to-top-link">Back to top</a>
             </div>
-        </footer>
+            
+            <!-- Footer integrado ao último slide -->
+            <footer style="margin-top: 5rem; opacity: 0.6; font-size: 0.8rem;">
+                <p>&copy; 2025 BIM3D Hub - Universal 3D Interoperability Platform. Gatineau, Québec, Canada.</p>
+            </footer>
+        </div>
     </section>
 
     <!-- Scripts -->
