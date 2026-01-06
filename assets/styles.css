@@ -1,128 +1,583 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BIM3D Hub | Universal 3D Interoperability</title>
-    <link rel="icon" type="image/png" href="../assets/favicon.png">
+/* 
+    BIM3D Hub - Master Global Stylesheet
+    Revisão: Restauração da Timeline Alternada + Phase Tags Azuladas
+    Data: 31/12/2025
+*/
+
+/* --- 1. CONFIGURAÇÕES GERAIS E PALETA --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #00f0ff;          /* Ciano Original */
+    --secondary: #7000ff;        /* Violeta Profundo */
+    --accent: #ff006e;           /* Rosa Hero */
     
-    <!-- Link para o CSS Global -->
-    <link rel="stylesheet" href="../assets/styles.css?v=1.3">
-</head>
-<body>
-    <!-- Background Animado -->
-    <div class="progress-bar" id="progressBar"></div>
-    <div class="bg-particles" id="particles"></div>
+    /* Hierarquia de Cores solicitada */
+    --green-subtitle: #4db6ac;   /* Esverdeado mais escuro (Sub-títulos) */
+    --green-card-title: #afe3d7; /* Esverdeado mais claro (Títulos de Cards) */
+    --blue-phase: #00e5ff;       /* Azul ciano para Phase Tags */
+    --green-scroll: #00ffcc;     /* Verde vibrante (Scroll e Linhas) */
     
-    <!-- Navegação Superior -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <a href="../index.html" title="Return to Global Gateway">
-                    <img src="../assets/Logo.png" alt="BIM3D Hub" class="logo-img" />
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#summary">Summary</a></li>
-                <li><a href="#problem">Problem</a></li>
-                <li><a href="#solution">Solution</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <!-- Botão Investidores em Destaque -->
-                <li><a href="en_investors.html" class="nav-investors-btn">Investors</a></li>
-                <!-- Ícone de Globo -->
-                <li>
-                    <a href="../index.html" class="nav-globe-link" title="Global Selection">
-                        <svg viewBox="0 0 24 24" style="width:22px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    --cobalt-border: #005fcc;    /* Azul Cobalto Default das bordas */
+    --hover-violet: #7000ff;     /* Violeta para Hover */
+    --dark: #0a0a0f;
+    --glass: rgba(15, 23, 42, 0.6); 
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --nav-height: 80px;
+    --container-width: 1100px;
+}
 
-    <!-- Slide 1: Hero -->
-    <section id="home">
-        <div class="container fade-in" style="text-align: center;">
-            <h1 class="section-title">BIM3D Hub</h1>
-            <p class="section-subtitle" style="color: white; opacity: 0.8; letter-spacing: 2px;">The 3D Object Interoperability Platform</p>
-            <div class="back-to-top-container">
-                <a href="#summary" class="back-to-top-link" style="transform: rotate(180deg);">Explore</a>
-            </div>
-        </div>
-    </section>
+html {
+    -behavior: smooth;
+    -padding-top: var(--nav-height);
+}
 
-    <!-- Slide 2: Executive Summary (3 Parágrafos Solicitados) -->
-    <section id="summary">
-        <div class="container fade-in">
-            <h2 class="section-title fade-in">Executive Summary</h2>
-            <div class="glass-card">
-                <p>The <strong>BIM3D Hub</strong> is a groundbreaking technology designed to address one of the most profound and costly challenges in the Architecture, Engineering, Construction (AEC) and Industrial Design industries:</p>
-                <br><br>
-                <p><strong>The enormous waste of resources spent manually fixing incompatible 3D object formats.</strong></p>
-                <br><br>
-                <p>BIM3D Hub ensures that a single block (complete with geometry, materials, and BIM metadata) functions consistently across any software, without rework or loss of consistency.</p>
-            </div>
-            <div class="back-to-top-container">
-                <a href="#home" class="back-to-top-link">Back to Top</a>
-            </div>
-        </div>
-    </section>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle at top right, #0f172a 0%, #05070a 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
 
-    <!-- Slide 3: The Problem -->
-    <section id="problem">
-        <div class="container fade-in">
-            <h2 class="section-title">The Problem</h2>
-            <div class="glass-card">
-                <p class="section-subtitle">A Fragmented Industry</p>
-                <p>For years, productivity has been hampered by the absence of an operational standard. This leads to information loss, high modeling costs, and constant rework to generate multiple versions of the same object.</p>
-            </div>
-            <div class="back-to-top-container">
-                <a href="#home" class="back-to-top-link">Back to Top</a>
-            </div>
-        </div>
-    </section>
+/* --- 2. LAYOUT E CENTRALIZAÇÃO --- */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 25px;
+    width: 100%;
+}
 
-    <!-- Slide 4: The Solution -->
-    <section id="solution">
-        <div class="container fade-in">
-            <h2 class="section-title">The Solution</h2>
-            <div class="grid">
-                <div class="feature-card">
-                    <h3>Universal Format</h3>
-                    <p>The .b3do format carries geometry, PBR materials, and BIM metadata in a single, intelligent container.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Multi-Platform</h3>
-                    <p>Native plugins for SketchUp, Blender, Rhino, Revit, and ArchiCAD coming soon.</p>
-                </div>
-            </div>
-            <div class="back-to-top-container">
-                <a href="#home" class="back-to-top-link">Back to Top</a>
-            </div>
-        </div>
-    </section>
+section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+}
 
-    <!-- Slide 5: Contact -->
-    <section id="contact">
-        <div class="container fade-in">
-            <h2 class="section-title">Contact Us</h2>
-            <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
-                <form id="contactForm">
-                    <div style="margin-bottom:15px;"><input type="text" class="form-input" placeholder="Name" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:white; border-radius:8px;"></div>
-                    <div style="margin-bottom:15px;"><input type="email" class="form-input" placeholder="Email" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:white; border-radius:8px;"></div>
-                    <div style="margin-bottom:15px;"><textarea class="form-textarea" placeholder="Message" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:white; border-radius:8px; height:100px;"></textarea></div>
-                    <button type="submit" class="cta-button" style="width:100%;">Send Message</button>
-                </form>
-            </div>
-            <div class="back-to-top-container">
-                <a href="#home" class="back-to-top-link">Back to Top</a>
-            </div>
-            <footer style="margin-top: 5rem; opacity: 0.5; font-size: 0.8rem; text-align: center;">
-                <p>&copy; 2025 BIM3D Hub - Universal 3D Interoperability Platform.</p>
-            </footer>
-        </div>
-    </section>
+/* --- 3. BACKGROUND PARTICLES --- */
+.bg-particles {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
 
-    <script src="../assets/main.js"></script>
-</body>
-</html>
+.particle {
+    position: absolute;
+    background: var(--primary);
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: float 20s infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(60px, -60px) rotate(120deg); }
+    66% { transform: translate(-60px, 60px) rotate(240deg); }
+}
+
+/* --- 4. NAVEGAÇÃO --- */
+nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 9999;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1rem 2rem;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img { height: 48px; width: auto; display: block; }
+
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--primary); }
+
+/* --- 5. HERO SECTION --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #00f0ff, #7000ff, #ff006e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 5s ease infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.hero .subtitle {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+}
+
+/* --- 6. SCROLL INDICATOR --- */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 0; width: 100%;
+    text-align: center;
+    z-index: 5;
+}
+
+.scroll-indicator span {
+    color: var(--green-scroll) !important; /* Mesma cor da linha animada */
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.scroll-line {
+    width: 1px; height: 45px;
+    background: var(--green-scroll);
+    margin: 12px auto 0 auto;
+    animation: grow 2s infinite;
+}
+
+@keyframes grow {
+    0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+    50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+/* --- 7. TÍTULOS E SUB-TÍTULOS (ESTÉTICA 3D + VERDES) --- */
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+.section-subtitle {
+    font-size: 1.6rem;
+    color: var(--green-subtitle);
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 600;
+}
+
+/* --- 8. REGRA GLOBAL DE CARDS (CENTRALIZAÇÃO INTERNA) --- */
+.glass-card, 
+.feature-card, 
+.stat-card, 
+.timeline-content {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid var(--cobalt-border);
+    border-radius: 20px;
+    padding: 3rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    
+    /* Centralização de conteúdo dentro de todos os cards */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.glass-card:hover, 
+.feature-card:hover, 
+.stat-card:hover, 
+.timeline-content:hover {
+    transform: translateY(-10px);
+    border-color: var(--hover-violet);
+    box-shadow: 0 15px 40px rgba(128, 128, 128, 0.3); /* Sombra Cinza */
+}
+
+/* Espaçamentos específicos */
+.glass-card { margin-bottom: 2rem; }
+
+/* Títulos dentro dos Cards */
+h3 {
+    color: var(--green-subtitle) !important;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Centralização de listas dentro dos cards */
+.glass-card ul, .feature-card ul, .timeline-content ul {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+}
+
+/* --- 9. GRIDS --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 10px var(--green-subtitle));
+}
+
+.stat-number {
+    font-size: 3.5rem; font-weight: 900;
+    color: var(--accent);
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+}
+
+/* --- 10. GLOBAL CHECKMARKS --- */
+ul { list-style: none; padding: 0; }
+li { position: relative; padding-left: 35px; margin-bottom: 15px; }
+li::before {
+    content: '✓';
+    position: absolute;
+    left: 0; top: 3px;
+    color: var(--green-subtitle);
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+/* --- 11. TIMELINE / ROADMAP (RESTAURAÇÃO ZIGUE-ZAGUE) --- */
+.timeline { 
+    position: relative; 
+    padding: 50px 0; 
+}
+
+/* Linha Vertical */
+.timeline::before {
+    content: ''; 
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 2px; 
+    height: 100%; 
+    background: linear-gradient(180deg, var(--green-scroll), var(--cobalt-border), var(--hover-violet));
+}
+
+.timeline-item {
+    display: flex; 
+    justify-content: space-between; 
+    width: 100%;
+    margin-bottom: 4rem; 
+    position: relative;
+}
+
+/* Faz os itens alternarem entre esquerda e direita */
+.timeline-item:nth-child(even) { 
+    flex-direction: row-reverse; 
+}
+
+/* Largura do card na timeline para caber no zigue-zague */
+.timeline-content { 
+    width: 45%; 
+    padding: 2.5rem; /* Ajuste para não ficar muito largo internamente */
+}
+
+/* O ponto na linha do tempo */
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: var(--cobalt-border);
+    border-radius: 50%;
+    border: 4px solid var(--dark);
+    z-index: 2;
+}
+
+/* PHASE TAGS (AZULADAS E MAIORES) */
+.phase {
+    background: rgba(0, 229, 255, 0.1); /* Fundo ciano transparente */
+    color: var(--blue-phase);           /* Azul ciano destacado */
+    border: 1px solid var(--blue-phase);
+    padding: 0.5rem 1.5rem;             /* Padding aumentado */
+    border-radius: 50px;
+    font-size: 1rem;                    /* Fonte aumentada */
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- 12. BOTÕES --- */
+.cta-button {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(0, 240, 255, 0.4);
+}
+
+/* --- 13. RESPONSIVIDADE --- */
+.fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+    .timeline::before { left: 20px; }
+    .timeline-item { flex-direction: column !important; padding-left: 50px; align-items: flex-start; }
+    .timeline-content { width: 100%; }
+    .timeline-dot { left: 20px; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--green-subtitle); border-radius: 5px; }
+
+/* --- 14. AJUSTES FINOS DE CONTEÚDO --- */
+
+/* Estilo específico para a introdução da Solução */
+.solution-intro {
+    font-weight: 800 !important;    /* Negrito intenso solicitado */
+    font-size: 1.3rem !important;   /* Aumentado em 2 pontos (estava 1.1) */
+    margin-bottom: 2.5rem;          /* O "pulo de linha" até a lista abaixo */
+    text-align: center;             /* Centralização garantida */
+    color: #ffffff;                 /* Branco puro para destacar do esverdeado */
+    display: block;
+    width: 100%;
+}
+
+/* Centralização do bloco da lista dentro do card da solução */
+#solution .glass-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#solution ul {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+}
+
+/* --- 15. FORMULÁRIO E FOOTER (REVISÃO PROFISSIONAL) --- */
+
+/* Estilo Glass para os Campos */
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 1.1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03); /* Vidro bem sutil */
+    border: 1px solid var(--glass-border);
+    color: #ffffff;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(175, 227, 215, 0.1);
+}
+
+/* Divisores de linha elegantes (Gradiente desaparecendo) */
+.form-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(to right, transparent, var(--glass-border), transparent);
+    margin: 1.5rem 0;
+}
+
+/* Texto de Contato Direto */
+.contact-info-centered {
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--green-card-title);
+    letter-spacing: 1px;
+}
+
+/* Centralização e Limpeza do Rodapé */
+.footer-content {
+    text-align: center;
+}
+
+.footer-content p {
+    margin: 0 !important; /* Remove o espaço extra entre as linhas */
+    padding: 2px 0;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    color: #ffffff;
+}
+
+/* Ajuste no botão do form para não herdar centralização de lista */
+#contactForm .cta-button {
+    display: inline-block;
+    width: auto;
+    min-width: 250px;
+}
+
+/* --- AJUSTE 2: MENU SUPERIOR (LIMPEZA E COR) --- */
+/* Remove especificamente os checkmarks do menu */
+.nav-links li::before {
+    content: none !important;
+}
+
+.nav-links li {
+    padding-left: 0 !important; /* Remove o recuo do checkmark */
+    margin-bottom: 0 !important;
+}
+
+.nav-links a {
+    color: var(--green-subtitle) !important; /* Cor verde dos sub-títulos */
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 10px rgba(175, 227, 215, 0.4);
+}
+
+/* --- AJUSTE 3: MARKET OPPORTUNITY (3 BOXES EM LINHA) --- */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Força 3 colunas no Desktop */
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+/* Ajuste de responsividade para o Market Opportunity */
+@media (max-width: 900px) {
+    .stats {
+        grid-template-columns: 1fr; /* Volta para 1 coluna no celular */
+    }
+}
+
+.stat-card {
+    padding: 2rem 1.5rem; /* Diminui um pouco o padding interno */
+}
+
+.stat-number {
+    font-size: 2.8rem; /* Diminuído para caber melhor em 3 colunas */
+    font-weight: 900;
+    /* Cor compatível: Gradiente ciano/verde para ar futurista */
+    background: linear-gradient(135deg, var(--primary), var(--green-scroll));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1.1rem; /* Aumentado conforme solicitado */
+    color: var(--green-subtitle); /* Cor do sub-título */
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* --- ESTILO DO ÍCONE DE GLOBO (NAVBAR) --- */
+.nav-globe-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+}
+
+.nav-globe-link svg {
+    width: 22px; /* Tamanho proporcional ao texto do menu */
+    height: 22px;
+    fill: var(--green-subtitle); /* Mesma cor verde dos links do menu */
+    transition: all 0.3s ease;
+}
+
+.nav-globe-link:hover svg {
+    fill: var(--primary); /* Muda para o verde claro no hover */
+    filter: drop-shadow(0 0 8px var(--primary)); /* Efeito de brilho */
+    transform: rotate(20deg); /* Leve rotação ao passar o mouse */
+}
+
+/* --- BOTÃO RETORNAR AO TOPO (DENTRO DAS SEÇÕES) --- */
+.back-to-top-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    width: 100%;
+}
+
+.back-to-top-link {
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3); /* Cor discreta inicial */
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-to-top-link:hover {
+    color: var(--primary); /* Acende com a cor pastel */
+    text-shadow: 0 0 10px var(--primary);
+    transform: translateY(-3px);
+}
+
+/* Seta minimalista em CSS */
+.back-to-top-link::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-left: 2px solid currentColor;
+    border-top: 2px solid currentColor;
+    transform: rotate(45deg);
+}
