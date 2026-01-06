@@ -316,7 +316,7 @@ footer {
 
 /* Cria o espaçamento automático (linha em branco) entre parágrafos nos cards */
 .glass-card p {
-    margin-bottom: 1.5rem; /* Altura de aproximadamente uma linha e meia */
+    margin-bottom: 3.5rem; /* Altura de aproximadamente uma linha e meia */
 }
 
 /* Remove o espaço do último parágrafo para não sobrar um buraco no fim do card */
