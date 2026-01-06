@@ -44,7 +44,14 @@ section {
     padding: 80px 20px;
 }
 
-.container { max-width: 1100px; margin: 0 auto; width: 100%; }
+.container { 
+    max-width: 1100px; 
+    margin: 0 auto; 
+    width: 100%; 
+    display: flex;             /* ADICIONE */
+    flex-direction: column;    /* ADICIONE */
+    align-items: center;       /* ADICIONE - Força tudo ao centro */
+}
 
 /* Navegação - Cores Sincronizadas com o Globo */
 nav {
