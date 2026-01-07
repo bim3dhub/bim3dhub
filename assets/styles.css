@@ -594,3 +594,82 @@ li::before {
     filter: drop-shadow(0 0 5px var(--primary)); /* Reforça o brilho como no globo */
     transition: all 0.3s ease;
 }
+
+/* --- DROPDOWN SEGURO (NÃO AFETA OUTROS ELEMENTOS) --- */
+
+nav .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+nav .dropbtn {
+    cursor: pointer;
+}
+
+/* Nome único para a seta não conflitar com nada no site */
+nav .nav-drop-arrow {
+    font-size: 0.6rem;
+    margin-left: 5px;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    min-width: 190px; /* Largura levemente maior para o francês */
+    border: 1px solid var(--cobalt-border);
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    z-index: 10000;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+/* Ativação por Hover */
+nav .dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+nav .dropdown:hover .nav-drop-arrow {
+    transform: rotate(180deg);
+    color: var(--primary);
+}
+
+/* Estilo dos Links Internos */
+nav .dropdown-content li {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+nav .dropdown-content li a {
+    color: var(--green-subtitle) !important;
+    padding: 12px 15px !important;
+    display: block !important;
+    text-align: center !important;
+    font-size: 0.75rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+}
+
+nav .dropdown-content li a:hover {
+    background: rgba(0, 240, 255, 0.1) !important;
+    color: var(--primary) !important;
+    text-shadow: 0 0 10px var(--primary);
+}
