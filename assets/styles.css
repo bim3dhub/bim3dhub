@@ -673,3 +673,83 @@ nav .dropdown-content li a:hover {
     color: var(--primary) !important;
     text-shadow: 0 0 10px var(--primary);
 }
+
+/* ============================================================
+   BLINDAGEM DO MENU DE TOPO (DROPDOWN E LIMPEZA)
+   Não afeta o conteúdo interno das páginas.
+   ============================================================ */
+
+/* 1. Remove pontos, checkmarks e brilhos fantasmas apenas do Menu */
+.nav-links li::before, 
+.nav-links li::after {
+    content: none !important;
+    display: none !important;
+}
+
+.nav-links li {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* 2. Garante que o Dropdown comece invisível e não ocupe espaço */
+nav .dropdown-content {
+    display: none !important; 
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    min-width: 180px;
+    border: 1px solid var(--cobalt-border);
+    border-radius: 12px;
+    padding: 10px 0;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none; /* Evita que o mouse ative sem querer */
+}
+
+/* 3. Ativa o Dropdown apenas no Hover do item pai */
+nav .dropdown:hover .dropdown-content {
+    display: block !important;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+/* 4. Seta do Menu (Garante que ela gire e mude de cor) */
+nav .nav-drop-arrow {
+    display: inline-block !important; /* Essencial para a rotação funcionar */
+    font-size: 0.6rem;
+    margin-left: 6px;
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: var(--green-subtitle);
+    pointer-events: none;
+}
+
+nav .dropdown:hover .nav-drop-arrow {
+    transform: rotate(180deg);
+    color: var(--primary);
+}
+
+/* 5. Estilo dos links internos do Dropdown (Sem pontos ou bordas extras) */
+nav .dropdown-content li a {
+    color: var(--green-subtitle) !important;
+    padding: 12px 20px !important;
+    display: block !important;
+    font-size: 0.75rem !important;
+    text-align: center !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+nav .dropdown-content li:last-child a {
+    border-bottom: none;
+}
+
+nav .dropdown-content li a:hover {
+    background: rgba(0, 240, 255, 0.1) !important;
+    color: var(--primary) !important;
+}
