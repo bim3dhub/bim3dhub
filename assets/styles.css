@@ -193,6 +193,10 @@ nav {
     margin-left: auto;
     margin-right: auto;
     font-weight: 600;
+    width: 90%;
+    overflow-wrap: break-word; 
+    hyphens: auto;
+    line-height: 1.6; 
 }
 
 /* --- 8. REGRA GLOBAL DE CARDS (CENTRALIZAÇÃO INTERNA) --- */
