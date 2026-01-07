@@ -581,3 +581,25 @@ li::before {
     border-top: 2px solid currentColor;
     transform: rotate(45deg);
 }
+
+/* Botão Investor Circundado em Verde */
+.nav-investor-highlight {
+    color: var(--green-subtitle) !important;
+    border: 2px solid var(--green-subtitle) !important; /* Cria o círculo/borda verde */
+    padding: 6px 20px !important;            /* Espaçamento interno para o formato */
+    border-radius: 50px;                     /* Deixa as bordas arredondadas */
+    font-weight: 700 !important;             /* Um pouco mais de peso para destacar */
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+/* Efeito ao passar o mouse (Hover) */
+.nav-investor-highlight:hover {
+    background-color: var(--green-subtitle); /* Preenche com verde ao passar o mouse */
+    color: var(--dark) !important;           /* Texto fica escuro para contraste */
+    box-shadow: 0 0 15px rgba(77, 182, 172, 0.4); /* Brilho verde suave */
+    transform: scale(1.05);                  /* Leve aumento no tamanho */
+}
