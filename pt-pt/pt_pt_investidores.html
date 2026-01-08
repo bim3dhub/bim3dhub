@@ -24,35 +24,47 @@
             </a>
         </div>
         <ul class="nav-links">
-            <li><a href="#home">Início</a></li>
-                <li><a href="#summary">Sumário</a></li>
-                <li><a href="#problem">Problema</a></li>
-                <li><a href="#research">Inquérito</a></li>
-                <li><a href="#solution">Solução</a></li>
-                <li><a href="#roadmap">Roadmap</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            
-            <!-- ÍCONE DE GLOBO ADICIONADO AQUI -->
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="#summary">SUMÁRIO</a></li>
+            <li><a href="#problem">PROBLEMA</a></li>
+            <li><a href="#solution">SOLUÇÃO</a></li>
+                
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">VISÃO <span class="nav-drop-arrow">▼</span></a>
+                <ul class="dropdown-content">
+                    <li><a href="#market">MERCADO</a></li>
+                    <li><a href="#value">VALOR</a></li>
+                    <li><a href="#tech">TECNOLOGIA</a></li>
+                    <li><a href="#roadmap">ROADMAP</a></li>
+                    <li><a href="#barriers">BARREIRAS</a></li>
+                    <li><a href="#impact">IMPACTO</a></li>
+                </ul>
+            </li>
+
+            <!-- Em Portugal, escreve-se "CONTACTO" com 'c' -->
+            <li><a href="#contact">CONTACTO</a></li>
+    
             <li>
-                <a href="../index.html" class="nav-globe-link" title="Global Gateway / Language Selection">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                    </svg>
+                <!-- Título do ícone ajustado para o infinitivo, padrão em PT-PT -->
+                <a href="../index.html" class="nav-globe-link" title="Selecionar idioma">
+                    <svg viewBox="0 0 24 24" style="width:20px;">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                 </a>
             </li>
-        </ul>
+        </ul>  
     </div>
 </nav>
 
-    <!-- 1. Hero Section -->
+<!-- 1. Secção Hero -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1 class="fade-in">BIM3D Hub</h1>
             <p class="subtitle fade-in">A plataforma de interoperabilidade de objetos 3D<br>Máxima eficiência e resultados em escala global</p>
-            <a href="#summary" class="cta-button fade-in">Descubra o futuro</a>
+            <a href="#summary" class="cta-button fade-in">Descubra o Futuro</a>
         </div>
         <!-- Indicador de Scroll Centralizado -->
         <div class="scroll-indicator fade-in">
+            <!-- Em Portugal, "Deslize" é mais comum do que "Role" para interface -->
             <span>SCROLL PARA EXPLORAR</span>
             <div class="scroll-line"></div>
         </div>
