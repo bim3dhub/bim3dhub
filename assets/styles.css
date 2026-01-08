@@ -777,3 +777,93 @@ nav .dropdown-content li a:hover {
     font-size: 0.85rem; /* Texto levemente menor */
     line-height: 1.4;
 }
+
+/* ============================================================
+   LANGUAGE SWITCHER (COMBO DROPDOWN)
+   ============================================================ */
+
+.lang-switcher {
+    position: relative;
+    display: inline-block;
+    margin-left: 15px;
+    padding-left: 15px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    list-style: none !important;
+}
+
+/* Container do Idioma Atual */
+.lang-current {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.lang-current:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Caixa Suspensa (Escondida por padrão) */
+.lang-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--cobalt-border);
+    border-radius: 12px;
+    min-width: 180px;
+    padding: 10px 0;
+    z-index: 10001;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+}
+
+/* Mostrar ao passar o mouse */
+.lang-switcher:hover .lang-dropdown {
+    display: block;
+    animation: navSlideIn 0.3s ease forwards;
+}
+
+/* Itens de Idioma dentro da lista */
+.lang-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--green-subtitle) !important;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+.lang-option:hover {
+    background: rgba(0, 240, 255, 0.1);
+    color: var(--primary) !important;
+}
+
+/* Trava de tamanho das bandeiras */
+.lang-flag {
+    width: 22px !important;
+    height: 14px !important;
+    object-fit: cover !important;
+    border-radius: 2px;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
+}
+
+.lang-arrow {
+    font-size: 0.5rem;
+    opacity: 0.7;
+    transition: transform 0.3s;
+}
+
+.lang-switcher:hover .lang-arrow {
+    transform: rotate(180deg);
+}
