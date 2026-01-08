@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BIM3D Hub - Plataforma Universal de Interoperabilidade 3D</title>
+    <!-- Link para o CSS centralizado com controlo de versão -->
+    <link rel="stylesheet" href="../assets/styles.css?v=1.1">
+</head>
+<body>
+    <!-- Elementos Funcionais -->
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="bg-particles" id="particles"></div>
+    
+    <!-- Navegação Superior -->
+    <nav id="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="../index.html" title="Return to Global Menu">
+                <img src="../assets/Logo.png" alt="BIM3D Hub Logo" class="logo-img" />
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Início</a></li>
+                <li><a href="#summary">Sumário</a></li>
+                <li><a href="#problem">Problema</a></li>
+                <li><a href="#research">Inquérito</a></li>
+                <li><a href="#solution">Solução</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            
+            <!-- ÍCONE DE GLOBO ADICIONADO AQUI -->
+            <li>
+                <a href="../index.html" class="nav-globe-link" title="Global Gateway / Language Selection">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    <!-- 1. Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="fade-in">BIM3D Hub</h1>
+            <p class="subtitle fade-in">A plataforma de interoperabilidade de objetos 3D<br>Máxima eficiência e resultados em escala global</p>
+            <a href="#summary" class="cta-button fade-in">Descubra o futuro</a>
+        </div>
+        <!-- Indicador de Scroll Centralizado -->
+        <div class="scroll-indicator fade-in">
+            <span>SCROLL PARA EXPLORAR</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- 2. Sumário Executivo -->
+    <section id="summary">
+        <div class="container">
+            <h2 class="section-title fade-in">Sumário executivo</h2>
+            <div class="glass-card fade-in">
+                <p>O <strong>BIM3D Hub</strong> é uma tecnologia inovadora concebida para enfrentar um dos desafios mais profundos e dispendiosos nas indústrias da Arquitetura, Engenharia, Construção (AEC) e Design Industrial: o enorme desperdício de tempo, dinheiro e energia que profissionais e fabricantes enfrentam diariamente ao tentarem "corrigir" manualmente o que décadas de software incompatível nunca resolveram.</p>
+                <br>
+                <p>Durante anos, a produtividade do setor foi prejudicada não pela falta de capacidade técnica, mas pela ausência de um padrão operacional que permitisse que o mesmo objeto 3D funcionasse com qualidade e fidelidade em qualquer plataforma. A pressão atual por fluxos de trabalho BIM integrados, processos mais rápidos e redução de custos torna este problema ainda mais urgente.</p>
+                <br>
+                <p>O <strong>BIM3D Hub</strong> responde precisamente a esta necessidade crítica, atuando no ponto mais sensível da cadeia digital: a intercambiabilidade operacional de objetos 3D, garantindo que um único bloco completo com geometria (mesh), materiais, atributos e metadados BIM funcione de forma consistente em qualquer software, sem retrabalho ou perda de consistência.</p>
+            </div>
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <div class="icon">📦</div>
+                    <h3>Formato Universal</h3>
+                    <p>Formato de ficheiro inteligente .b3do com geometria completa,<br class="desktop-only"> materiais PBR e metadados BIM</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🔄</div>
+                    <h3>Conversor Multiplataforma</h3>
+                    <p>Conversão fluida: FBX, B3DO, SKP e outros</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">🔌</div>
+                    <h3>Plugins de Indústria</h3>
+                    <p>SketchUp, Blender, Rhino; em breve para Revit e ArchiCAD</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="icon">☁️</div>
+                    <h3>Biblioteca Cloud</h3>
+                    <p>Repositório centralizado de modelos 3D interoperáveis</p>
+                </div>
+            </div>
+        </div><div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Voltar ao topo</a>
+        </div>
+    </section>
+
+    <!-- 3. O Problema -->
+    <section id="problem">
+        <div class="container">
+            <h2 class="section-title fade-in">O Problema</h2>
+            <p class="section-subtitle fade-in">
+                A indústria AEC opera num ambiente fragmentado <br class="desktop-only"> 
+                com dezenas de formatos incompatíveis
+            </p>
+            <div class="glass-card fade-in">
+                <p><strong>A ausência de um formato universal atrasa a digitalização da construção<br class="desktop-only">
+                e gera custos significativos para fabricantes, projetistas e construtores.
+                </strong></p>
+                <br>
+                <h3>Consequências Críticas</h3>
+                <ul>
+                    <li>Retrabalho contínuo para gerar múltiplas versões do mesmo objeto</li>
+                    <li>Perda de informação durante as conversões entre softwares</li>
+                    <li>Projetos não normalizados e colaboração difícil</li>
+                    <li>Custos elevados de modelação e manutenção de bibliotecas</li>
+                    <li>Baixa qualidade ou inconsistência visual entre plataformas</li>
+                    <li>Adoção limitada de fluxos de trabalho BIM por incompatibilidades estruturais</li>
+                </ul>
+            </div>
+        </div>
+        </div><div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Voltar ao topo</a>
+        </div>
+    </section>
+
+    <!-- 4. Secção de Inquérito -->
+    <section id="research">
+        <div class="container">
+            <h2 class="section-title fade-in">Ajude a moldar o futuro</h2>
+            <p class="section-subtitle fade-in">Estamos a recolher opiniões de líderes da indústria para aperfeiçoar o BIM3D Hub.<br>Selecione o seu perfil para participar.</p>
+            <div class="grid">
+                <div class="glass-card fade-in">
+                    <div class="icon">📐</div>
+                    <h3>Para Arquitetos e Designers</h3>
+                    <p>Cansado de corrigir modelos 3D com erros? Ajude-nos a definir o fluxo de trabalho perfeito para as suas necessidades diárias.</p>
+                    <br>
+                    <a href="https://tally.so/r/rjBbMN" target="_blank" class="cta-button">Participar no Inquérito (2 min)</a>
+                </div>
+                <div class="glass-card fade-in">
+                    <div class="icon">🏭</div>
+                    <h3>Para Fabricantes</h3>
+                    <p>Deseja que os seus produtos sejam prescritos com mais frequência? Partilhe os seus desafios com catálogos digitais e ROI.</p>
+                    <br>
+                    <a href="https://tally.so/r/ja6aQ6" target="_blank" class="cta-button">Participar no Inquérito (3 min)</a>
+                </div>
+            </div>
+        </div>
+        </div><div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Voltar ao topo</a>
+        </div>
+    </section>
+
+    <!-- 5. A Solução -->
+    <section id="solution">
+        <div class="container">
+            <h2 class="section-title fade-in">A Solução BIM3D Hub</h2>
+            <div class="glass-card fade-in">
+                <div class="solution-content">
+                    <h3>Formato Universal .b3do</h3>
+                    <p class="solution-intro fade-in">Um contentor 3D inteligente que combina:</p>
+                    <ul>
+                        <li><strong>Geometria Optimizada:</strong> Dados de malha limpos e eficientes</li>
+                        <li><strong>Materiais PBR:</strong> Materiais de renderização fisicamente realistas</li>
+                        <li><strong>Hierarquia de Objetos:</strong> Organização estruturada de componentes</li>
+                        <li><strong>Níveis de Detalhe (LOD):</strong> Múltiplas opções de resolução</li>
+                        <li><strong>Metadados IFC:</strong> Integração com Industry Foundation Classes</li>
+                        <li><strong>Propriedades Paramétricas:</strong> Atributos específicos do fabricante</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div><div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Voltar ao topo</a>
+        </div>
+    </section>
+
+    <!-- 6. Mercado -->
+    <section id="market">
+        <div class="container">
+            <h2 class="section-title fade-in">Oportunidade de Mercado</h2>
+            <p class="section-subtitle fade-in">A interoperabilidade 3D é uma tendência tecnológica global, impulsionada pela crescente adoção do BIM.</p>
+            <div class="stats">
+                <div class="stat-card fade-in">
+                    <div class="stat-number">12 Mil M€</div>
+                    <div class="stat-label">Mercado global de software AEC (CAD/BIM) 2025</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">8,1 Mil M€</div>
+                    <div class="stat-label">Mercado global de BIM (Software + Serviços) 2024</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">19 Mil M€</div>
+                    <div class="stat-label">Projeção de software de projeto e construção para 2030</div>
+                </div>
+            </div>
+        </div>
+        </div><div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Voltar ao topo</a>
+        </div>
+    </section>
+
+    <!-- 7. Proposta de Valor -->
+    <section id="value">
+        <div class="container">
+            <h2 class="section-title fade-in">Proposta de Valor</h2>
+            <div class="grid">
+                <div class="glass-card fade-in">
+                    <h3>🏭 Para Fabricantes</h3>
+                    <ul>
+                        <li>Modelação única para múltiplas plataformas</li>
+                        <li>Redução até <strong>90%</strong> nos custos de criação de catálogo</li>
+                        <li>Distribuição simplificada via API</li>
+                        <li>Atualizações automáticas para todos os formatos</li>
+                    </ul>
+                </div>
+                <div class="glass-card fade-in">
+                    <h3>🏢 Para Gabinetes AEC</h3>
+                    <ul>
+                        <li>Conversões limpas sem perda de dados</li>
+                        <li>Modelos normalizados e fiáveis</li>
+                        <li>Produtividade ampliada</li>
+                        <li>Compatibilidade garantida com fluxos BIM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div><div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Voltar ao topo</a>
+        </div>
+    </section>
+
+    <!-- 9. Roadmap -->
+    <section id="roadmap">
+        <div class="container">
+            <h2 class="section-title fade-in">Roadmap de 12 meses</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="phase">Fase 1 - MVP</span>
+                        <h3>Meses 0-3</h3>
+                        <ul>
+                            <li>Estrutura do formato B3DO finalizada</li>
+                            <li>Conversor FBX para B3DO funcional</li>
+                            <li>Testes de qualidade e estabilidade</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="phase">Fase 2 - Expansão</span>
+                        <h3>Meses 4-6</h3>
+                        <ul>
+                            <li>Plugins para SketchUp, Blender e Rhino</li>
+                            <li>Integração de GLTF e OBJ</li>
+                            <li>Lançamento da API pública</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="phase">Fase 3 - Consolidação</span>
+                        <h3>Meses 7-12</h3>
+                        <ul>
+                            <li>Primeira parceria com fabricante</li>
+                            <li>Conversores avançados com IFC parcial</li>
+                            <li>Integração alargada com Revit/ArchiCAD</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div><div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Voltar ao topo</a>
+        </div>
+    </section>
+
+    <!-- 10. Vantagens Competitivas -->
+    <section id="barriers">
+        <div class="container">
+            <h2 class="section-title fade-in">Vantagens Competitivas</h2>
+            <div class="grid">
+                <div class="feature-card fade-in">
+                    <h3>Alta Complexidade Técnica</h3>
+                    <p>Startups focadas em formatos universais podem inovar mais depressa do que gigantes com estruturas rígidas.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3>Efeito de Rede</h3>
+                    <p>À medida que mais fabricantes adotam o B3DO, o suporte de software cresce, gerindo um ciclo de adoção contínuo.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3>Independência Estratégica</h3>
+                    <p>Os grandes players preferem ecossistemas fechados; nós oferecemos a ponte neutra de que a indústria necessita.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3>Integridade de Dados</h3>
+                    <p>A nossa tecnologia preserva os metadados BIM críticos, eliminando a perda de inteligência durante as conversões.</p>
+                </div>
+            </div>
+        </div>
+        </div><div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Voltar ao topo</a>
+        </div>
+    </section>
+
+    <!-- 12. Contactos -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Contacte-nos</h2>
+            <div class="glass-card fade-in" style="max-width: 800px; margin: 0 auto;">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label">Nome</label>
+                        <input type="text" name="name" class="form-input" required placeholder="O seu nome completo">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">E-mail</label>
+                        <input type="email" name="email" class="form-input" required placeholder="nome@empresa.pt">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mensagem</label>
+                        <textarea name="message" class="form-textarea" required placeholder="Como podemos ajudar?"></textarea>
+                    </div>
+
+                    <div class="form-divider"></div>
+                    <p class="contact-info-centered">
+                        Contacto direto: contact@bim3dhub.com | (873) 973-2220
+                    </p>
+                    <div class="form-divider"></div>
+
+                    <div style="text-align: center; margin-top: 2.5rem;">
+                        <button type="submit" class="cta-button">Enviar Mensagem</button>
+                    </div>
+                </form>
+                <div id="formResponse"></div>
+            </div>
+        </div>
+        </div><div class="back-to-top-container fade-in">
+            <a href="#home" class="back-to-top-link">Voltar ao topo</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 BIM3D Hub - Plataforma Universal de Interoperabilidade 3D. Todos os direitos reservados.</p>
+            <p>Gatineau, Outaouais, Québec, Canadá</p>
+        </div>
+    </footer>
+    
+    <script src="../assets/main.js"></script>
+</body>
+</html>
