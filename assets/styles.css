@@ -779,7 +779,7 @@ nav .dropdown-content li a:hover {
 }
 
 /* ============================================================
-   LANGUAGE SWITCHER (COMBO DROPDOWN)
+   LANGUAGE SWITCHER - VERSÃO FINAL (FIX DE CLIQUE E TAMANHO)
    ============================================================ */
 
 .lang-switcher {
@@ -791,7 +791,6 @@ nav .dropdown-content li a:hover {
     list-style: none !important;
 }
 
-/* Container do Idioma Atual */
 .lang-current {
     display: flex;
     align-items: center;
@@ -802,46 +801,49 @@ nav .dropdown-content li a:hover {
     transition: background 0.3s;
 }
 
-.lang-current:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* Caixa Suspensa (Escondida por padrão) */
+/* O segredo para não sumir: adicionamos um "espaço de segurança" no topo */
 .lang-dropdown {
     display: none;
     position: absolute;
-    top: 100%;
+    top: 100%; 
     right: 0;
     background: var(--glass);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     border: 1px solid var(--cobalt-border);
     border-radius: 12px;
-    min-width: 180px;
-    padding: 10px 0;
+    min-width: 190px; /* Aumentado para acomodar o texto */
+    padding: 8px 0;
     z-index: 10001;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    margin-top: 10px;
+    
+    /* Removemos o margin-top e usamos uma borda invisível para colar no botão */
+    margin-top: 0; 
+    border-top: 10px solid transparent; 
+    background-clip: padding-box; 
 }
 
-/* Mostrar ao passar o mouse */
+/* Ponte de hover: garante que o mouse não saia do estado ativo */
 .lang-switcher:hover .lang-dropdown {
     display: block;
-    animation: navSlideIn 0.3s ease forwards;
+    animation: navSlideIn 0.2s ease forwards;
 }
 
-/* Itens de Idioma dentro da lista */
 .lang-option {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 10px 20px;
+    gap: 10px;
+    padding: 10px 15px;
     text-decoration: none;
     color: var(--green-subtitle) !important;
-    font-size: 0.75rem;
+    
+    /* AJUSTES DE TEXTO SOLICITADOS */
+    font-size: 0.68rem; /* Reduzido para caber na linha */
     font-weight: 700;
-    transition: all 0.3s;
+    white-space: nowrap; /* IMPEDE QUE O TEXTO QUEBRE EM DUAS LINHAS */
+    
     text-transform: uppercase;
+    transition: all 0.2s;
 }
 
 .lang-option:hover {
@@ -849,13 +851,12 @@ nav .dropdown-content li a:hover {
     color: var(--primary) !important;
 }
 
-/* Trava de tamanho das bandeiras */
 .lang-flag {
-    width: 22px !important;
-    height: 14px !important;
+    width: 20px !important;
+    height: 13px !important;
     object-fit: cover !important;
     border-radius: 2px;
-    filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
+    flex-shrink: 0; /* Impede a bandeira de esmagar */
 }
 
 .lang-arrow {
