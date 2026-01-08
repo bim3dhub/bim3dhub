@@ -134,3 +134,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+/* ==========================================
+   LÓGICA DO MENU MOBILE (HAMBÚRGUER)
+   ========================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('#mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    // Verifica se os elementos existem na página antes de aplicar o clique
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            // Alterna a classe 'active' para mostrar/esconder o menu
+            navLinks.classList.toggle('active');
+            // Alterna uma animação no próprio botão hambúrguer (opcional)
+            menuToggle.classList.toggle('is-active');
+        });
+
+        // Fecha o menu automaticamente ao clicar em qualquer link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('is-active');
+            });
+        });
+    }
+});
