@@ -753,3 +753,27 @@ nav .dropdown-content li a:hover {
     background: rgba(0, 240, 255, 0.1) !important;
     color: var(--primary) !important;
 }
+
+/* --- AJUSTE PARA CARDS COMPACTOS (SEÇÃO IMPACT) --- */
+#impact .grid {
+    gap: 1.2rem; /* Reduz o espaço entre os cards */
+}
+
+#impact .feature-card {
+    padding: 1.5rem; /* Reduz o preenchimento interno de 3rem para 1.5rem */
+}
+
+#impact .icon {
+    font-size: 2.2rem; /* Ícone um pouco menor */
+    margin-bottom: 0.8rem;
+}
+
+#impact h3 {
+    font-size: 1.3rem; /* Título menor para economizar altura */
+    margin-bottom: 0.6rem;
+}
+
+#impact p {
+    font-size: 0.85rem; /* Texto levemente menor */
+    line-height: 1.4;
+}
