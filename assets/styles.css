@@ -779,29 +779,9 @@ nav .dropdown-content li a:hover {
 }
 
 /* ============================================================
-   LANGUAGE SWITCHER - VERSÃO FINAL (FIX DE CLIQUE E TAMANHO)
+   LANGUAGE SWITCHER - CORREÇÃO VISUAL DO TOPO E PONTE
    ============================================================ */
 
-.lang-switcher {
-    position: relative;
-    display: inline-block;
-    margin-left: 15px;
-    padding-left: 15px;
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
-    list-style: none !important;
-}
-
-.lang-current {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    padding: 6px 12px;
-    border-radius: 8px;
-    transition: background 0.3s;
-}
-
-/* O segredo para não sumir: adicionamos um "espaço de segurança" no topo */
 .lang-dropdown {
     display: none;
     position: absolute;
@@ -810,22 +790,29 @@ nav .dropdown-content li a:hover {
     background: var(--glass);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    border: 1px solid var(--cobalt-border);
+    border: 1px solid var(--cobalt-border); /* Borda azul agora em todos os lados */
     border-radius: 12px;
-    min-width: 190px; /* Aumentado para acomodar o texto */
+    min-width: 200px; /* Ajustado para garantir espaço */
     padding: 8px 0;
     z-index: 10001;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    
-    /* Removemos o margin-top e usamos uma borda invisível para colar no botão */
-    margin-top: 0; 
-    border-top: 10px solid transparent; 
-    background-clip: padding-box; 
+    margin-top: 12px; /* Espaço visual igual ao do menu VISION */
 }
 
-/* Ponte de hover: garante que o mouse não saia do estado ativo */
+/* A PONTE INVISÍVEL: Cria um campo de toque entre o botão e a caixa */
+.lang-dropdown::before {
+    content: "";
+    position: absolute;
+    top: -15px; /* Cobre o buraco de 12px de margin + um pouco de segurança */
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+}
+
+/* Ativação por hover */
 .lang-switcher:hover .lang-dropdown {
-    display: block;
+    display: block !important;
     animation: navSlideIn 0.2s ease forwards;
 }
 
@@ -836,12 +823,9 @@ nav .dropdown-content li a:hover {
     padding: 10px 15px;
     text-decoration: none;
     color: var(--green-subtitle) !important;
-    
-    /* AJUSTES DE TEXTO SOLICITADOS */
-    font-size: 0.68rem; /* Reduzido para caber na linha */
+    font-size: 0.68rem; /* Tamanho reduzido para caber */
     font-weight: 700;
-    white-space: nowrap; /* IMPEDE QUE O TEXTO QUEBRE EM DUAS LINHAS */
-    
+    white-space: nowrap; /* Força tudo em uma linha só */
     text-transform: uppercase;
     transition: all 0.2s;
 }
@@ -856,13 +840,17 @@ nav .dropdown-content li a:hover {
     height: 13px !important;
     object-fit: cover !important;
     border-radius: 2px;
-    flex-shrink: 0; /* Impede a bandeira de esmagar */
+    flex-shrink: 0;
 }
 
 .lang-arrow {
     font-size: 0.5rem;
     opacity: 0.7;
     transition: transform 0.3s;
+}
+
+.lang-switcher:hover .lang-arrow {
+    transform: rotate(180deg);
 }
 
 .lang-switcher:hover .lang-arrow {
