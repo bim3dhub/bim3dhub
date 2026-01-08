@@ -856,3 +856,64 @@ nav .dropdown-content li a:hover {
 .lang-switcher:hover .lang-arrow {
     transform: rotate(180deg);
 }
+
+/* ==========================================
+   RESPONSIVIDADE (MENU MOBILE)
+   ========================================== */
+
+@media (max-width: 768px) {
+    /* 1. Diminui o logo para caber na linha */
+    .logo-img {
+        height: 32px !important;
+    }
+
+    /* 2. Esconde o menu original e o transforma em uma lista vertical */
+    .nav-links {
+        position: fixed;
+        top: 80px; /* Altura da sua navbar */
+        left: -100%; /* Começa fora da tela */
+        flex-direction: column;
+        background: rgba(10, 10, 15, 0.95);
+        backdrop-filter: blur(20px);
+        width: 100%;
+        height: calc(100vh - 80px);
+        text-align: center;
+        transition: 0.3s;
+        gap: 1.5rem !important;
+        padding-top: 2rem;
+        z-index: 999;
+    }
+
+    /* Quando clicar, o menu entra na tela */
+    .nav-links.active {
+        left: 0;
+    }
+
+    /* 3. Estiliza o botão Hambúrguer */
+    .menu-toggle {
+        display: block !important;
+        cursor: pointer;
+    }
+
+    .menu-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: var(--primary);
+        transition: 0.3s;
+    }
+
+    /* Esconde o seletor de idiomas ou o coloca no fim da lista vertical */
+    .lang-switcher {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none;
+        margin-top: 1rem;
+    }
+}
+
+/* Esconde o botão hambúrguer no Desktop */
+.menu-toggle {
+    display: none;
+}
