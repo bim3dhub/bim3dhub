@@ -919,7 +919,7 @@ nav .dropdown-content li a:hover {
     display: none;
 }
 
-/* --- ÍCONE SOCIAL NO MENU (LINKEDIN) --- */
+/* --- ÍCONE SOCIAL NO MENU (LINKEDIN - VERSÃO PNG) --- */
 
 .nav-social-item {
     display: flex !important;
@@ -930,36 +930,31 @@ nav .dropdown-content li a:hover {
     list-style: none !important;
 }
 
+/* Remove qualquer interferência de bolinhas ou checkmarks */
 .nav-social-item::before {
-    display: none !important; /* Garante que não apareça bolinha/check */
+    content: none !important;
+    display: none !important;
 }
 
-.nav-social-icon {
+.nav-social-img {
+    /* TRAVA O TAMANHO REAL DA IMAGEM */
     width: 20px !important;
     height: 20px !important;
     min-width: 20px !important;
     min-height: 20px !important;
-    object-fit: contain;
-    fill: var(--green-subtitle) !important; /* Cor verde original do menu */
+    
+    object-fit: contain !important;
     display: block !important;
     transition: all 0.3s ease-in-out;
-    opacity: 0.8; 
+    opacity: 0.8; /* Começa um pouco mais discreto */
 }
 
-.nav-social-link:hover .nav-social-icon {
-    fill: var(--primary) !important; /* Acende em Ciano */
-    filter: drop-shadow(0 0 10px var(--primary)) !important;
-}
-
-/* Efeito de destaque ao passar o mouse */
+/* Efeito de destaque ao passar o mouse (Hover) */
 .nav-social-link:hover .nav-social-img {
     opacity: 1;
-    transform: scale(1.15);
-    /* Cria uma aura azul ao redor do ícone no hover */
-    filter: drop-shadow(0 0 8px #0077B5); 
+    transform: scale(1.15); /* Aumenta levemente */
+    
+    /* Cria o efeito de brilho azul oficial do LinkedIn no fundo do ícone */
+    filter: drop-shadow(0 0 8px #0077B5) !important; 
 }
 
-/* Remove pontos/bolinhas do menu */
-.nav-social-item::before {
-    content: none !important;
-}
