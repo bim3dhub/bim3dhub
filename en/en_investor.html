@@ -14,38 +14,73 @@
     <!-- Elementos Funcionais -->
     <div class="progress-bar" id="progressBar"></div>
     <div class="bg-particles" id="particles"></div>
-    
-    <!-- Navegação Superior -->
-    <nav id="navbar">
+
+<!-- Navegação Superior -->
+<nav id="navbar">
     <div class="nav-container">
         <div class="logo">
-            <a href="../index.html" title="Return to Global Menu">
-                <img src="../assets/Logo.png" alt="BIM3D Hub Logo" class="logo-img" />
+<!--           <a href="../index.html" title="Return to Global Menu">   -->
+               <img src="../assets/Logo.png" alt="BIM3D Hub Logo" class="logo-img" />
             </a>
         </div>
+        
+        <!-- 2. Botão do Menu Mobile (Hambúrguer) -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
 
+        <!-- 3. Links de Navegação (Devem estar DENTRO da nav-container) -->
         <ul class="nav-links">
+
             <li><a href="../index.html">Main</a></li>
             <li><a href="#summary">Summary</a></li>
             <li><a href="#problem">Problem</a></li>
+            <li><a href="#research">Research</a></li>
             <li><a href="#solution">Solution</a></li>
-                
-    <li class="dropdown">
-        <a href="javascript:void(0)" class="dropbtn">Vision <span class="nav-drop-arrow">▼</span></a>
-        <ul class="dropdown-content">
-            <li><a href="#market">Market</a></li>
-            <li><a href="#value">Value Prop</a></li>
-            <li><a href="#tech">Technology</a></li>
-            <li><a href="#roadmap">Roadmap</a></li>
-            <li><a href="#barriers">Barriers</a></li>
-            <li><a href="#impact">Impact</a></li>
-        </ul>
-            </li>
 
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Vision <span class="nav-drop-arrow">▼</span></a>
+                <ul class="dropdown-content">
+                    <li><a href="#market">Market</a></li>
+                    <li><a href="#value">Value Prop</a></li>
+                    <li><a href="#tech">Technology</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#barriers">Barriers</a></li>
+                    <li><a href="#impact">Impact</a></li>
+                </ul>
+            </li>
+            
             <li><a href="#contact">Contact</a></li>
-    
-        </ul>  
-    </div>
+            
+            <li class="lang-switcher">
+                <div class="lang-current">
+                    <img src="en/canadaflag.png" class="lang-flag" alt="EN">
+                    <span class="nav-lang-label">EN</span>
+                    <span class="lang-arrow">▼</span>
+                </div>
+
+                <div class="lang-dropdown">
+                    <a href="fr-ca/index.html" class="lang-option">
+                        <img src="fr-ca/quebecflag.png" class="lang-flag"> Français (QC)
+                    </a>
+                    <a href="es-us/index.html" class="lang-option">
+                        <img src="es-us/usaflag.png" class="lang-flag"> Español (US)
+                    </a>
+                    <a href="pt-br/index.html" class="lang-option">
+                        <img src="pt-br/brazilflag.png" class="lang-flag"> Português (BR)
+                    </a>
+                    <a href="pt-pt/index.html" class="lang-option">
+                        <img src="pt-pt/portugalflag.png" class="lang-flag"> Português (PT)
+                    </a>
+                    <a href="it/index.html" class="lang-option">
+                        <img src="it/italyflag.png" class="lang-flag"> Italiano
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div> <!-- AQUI fecha a nav-container, englobando Logo, Hambúrguer e Links -->
 </nav>
 
     <!-- 1. Hero Section -->
