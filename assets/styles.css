@@ -958,3 +958,42 @@ nav .dropdown-content li a:hover {
     filter: drop-shadow(0 0 8px #0077B5) !important; 
 }
 
+/* --- BANDEIRA SIMPLES NO MENU (VERSÃO DEFINITIVA) --- */
+.nav-lang-simple {
+    display: flex !important;
+    align-items: center;
+    margin-left: 15px;
+    padding-left: 15px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2); /* Divisória elegante */
+    list-style: none !important;
+}
+
+.nav-lang-simple a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--green-subtitle) !important;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.nav-lang-simple a:hover {
+    color: var(--primary) !important;
+    text-shadow: 0 0 10px var(--primary);
+}
+
+.nav-flag-sm {
+    width: 22px !important;
+    height: 14px !important;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+}
+
+/* Remove qualquer checkmark ou bolinha residual do menu */
+.nav-lang-simple::before {
+    content: none !important;
+    display: none !important;
+}
