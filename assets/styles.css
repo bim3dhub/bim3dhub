@@ -77,12 +77,12 @@ nav {
 }
 
 .nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .logo-img {
@@ -93,10 +93,11 @@ nav {
 }
 
 .nav-links {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important; /* Força ficar na horizontal no desktop */
     gap: 1.5rem;
-    list-style: none;
-    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 /* Estilo dos links (em minúsculas conforme solicitado) */
