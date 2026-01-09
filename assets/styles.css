@@ -920,39 +920,31 @@ nav .dropdown-content li a:hover {
 }
 
 /* --- ÍCONE SOCIAL NO MENU (LINKEDIN) --- */
+
 .nav-social-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: 15px !important;
+    padding: 0 !important;
     list-style: none !important;
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
 }
 
-.nav-social-link {
-    display: flex;
-    align-items: center;
-    transition: all 0.3s ease-in-out;
-    opacity: 0.8;
+.nav-social-item::before {
+    display: none !important; /* Garante que não apareça bolinha/check */
 }
 
 .nav-social-icon {
-    width: 18px; /* Tamanho discreto e elegante */
-    height: 18px;
-    fill: var(--green-subtitle); /* Começa com o verde do menu */
-    transition: all 0.3s ease;
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    fill: var(--green-subtitle) !important; /* Cor verde original do menu */
+    display: block !important;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Efeito Glow idêntico ao do Globo/Bandeira */
 .nav-social-link:hover .nav-social-icon {
-    fill: var(--primary) !important; /* Muda para Ciano */
-    filter: drop-shadow(0 0 8px var(--primary)) !important;
-    transform: scale(1.1);
-}
-
-.nav-social-link:hover {
-    opacity: 1;
-}
-
-/* Remove qualquer checkmark ou ponto indesejado */
-.nav-social-item::before {
-    content: none !important;
+    fill: var(--primary) !important; /* Acende em Ciano */
+    filter: drop-shadow(0 0 10px var(--primary)) !important;
 }
