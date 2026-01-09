@@ -625,13 +625,13 @@ nav .dropdown-content {
     background: var(--glass);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    min-width: 190px; /* Largura levemente maior para o francês */
+    min-width: 150px !important; /* Largura levemente maior para o francês */
     border: 1px solid var(--cobalt-border);
     border-radius: 12px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
     z-index: 10000;
     list-style: none;
-    padding: 10px 0;
+    padding: 8px 15px !important;
     margin: 0;
 }
 
@@ -793,7 +793,7 @@ nav .dropdown-content li a:hover {
     -webkit-backdrop-filter: blur(25px);
     border: 1px solid var(--cobalt-border); /* Borda azul agora em todos os lados */
     border-radius: 12px;
-    min-width: 175px; /* Ajustado para garantir espaço */
+    min-width: 175px !important; /* Ajustado para garantir espaço */
     padding: 8px 0;
     z-index: 10001;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
