@@ -793,7 +793,7 @@ nav .dropdown-content li a:hover {
     -webkit-backdrop-filter: blur(25px);
     border: 1px solid var(--cobalt-border); /* Borda azul agora em todos os lados */
     border-radius: 12px;
-    min-width: 200px; /* Ajustado para garantir espaço */
+    min-width: 175px; /* Ajustado para garantir espaço */
     padding: 8px 0;
     z-index: 10001;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
