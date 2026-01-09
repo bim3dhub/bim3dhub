@@ -939,12 +939,27 @@ nav .dropdown-content li a:hover {
     height: 20px !important;
     min-width: 20px !important;
     min-height: 20px !important;
+    object-fit: contain;
     fill: var(--green-subtitle) !important; /* Cor verde original do menu */
     display: block !important;
     transition: all 0.3s ease-in-out;
+    opacity: 0.8; 
 }
 
 .nav-social-link:hover .nav-social-icon {
     fill: var(--primary) !important; /* Acende em Ciano */
     filter: drop-shadow(0 0 10px var(--primary)) !important;
+}
+
+/* Efeito de destaque ao passar o mouse */
+.nav-social-link:hover .nav-social-img {
+    opacity: 1;
+    transform: scale(1.15);
+    /* Cria uma aura azul ao redor do ícone no hover */
+    filter: drop-shadow(0 0 8px #0077B5); 
+}
+
+/* Remove pontos/bolinhas do menu */
+.nav-social-item::before {
+    content: none !important;
 }
