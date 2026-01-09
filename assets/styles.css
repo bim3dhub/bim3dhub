@@ -961,10 +961,10 @@ nav .dropdown-content li a:hover {
 /* --- BANDEIRA SIMPLES NO MENU (VERSÃO DEFINITIVA) --- */
 .nav-lang-simple {
     display: flex !important;
-    align-items: center;
-    margin-left: 15px;
-    padding-left: 15px;
-    border-left: 1px solid rgba(255, 255, 255, 0.2); /* Divisória elegante */
+    align-items: center !important;
+    margin-left: 15px !important;
+    padding-left: 5px !important;
+    border-left: none !important;
     list-style: none !important;
 }
 
