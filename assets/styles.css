@@ -616,6 +616,7 @@ nav .nav-drop-arrow {
 }
 
 nav .dropdown-content {
+    text-transform: none !important;
     display: none;
     position: absolute;
     top: 100%;
