@@ -15,24 +15,24 @@
     <div class="progress-bar" id="progressBar"></div>
     <div class="bg-particles" id="particles"></div>
     
-    <!-- Navegação Superior -->
-    <nav id="navbar">
+<!-- Navegação Superior -->
+<nav id="navbar">
     <div class="nav-container">
+        <!-- 1. Logo -->
         <div class="logo">
-                <img src="../assets/Logo.png" class="logo-img">
-            </div>
+            <a href="en_index.html">
+                <img src="../assets/Logo.png" class="logo-img" alt="BIM3D Hub">
+            </a>
+        </div>
 
-    <!-- Botão do Menu Mobile -->
+        <!-- 2. Botão do Menu Mobile (Hambúrguer) -->
         <div class="menu-toggle" id="mobile-menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </div>
 
-    <ul class="nav-links">
-        <!-- Seus links aqui... -->
-    </ul>
-</div>
+        <!-- 3. Links de Navegação (Devem estar DENTRO da nav-container) -->
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#summary">Summary</a></li>
@@ -43,14 +43,12 @@
             <li><a href="en_investor.html">Investor</a></li>
             
             <li class="lang-switcher">
-                <!-- Idioma Atual (EN) -->
                 <div class="lang-current">
                     <img src="en/canadaflag.png" class="lang-flag" alt="EN">
                     <span class="nav-lang-label">EN</span>
                     <span class="lang-arrow">▼</span>
                 </div>
 
-                <!-- Opções para Trocar -->
                 <div class="lang-dropdown">
                     <a href="fr-ca/index.html" class="lang-option">
                         <img src="fr-ca/quebecflag.png" class="lang-flag"> Français (QC)
@@ -70,9 +68,9 @@
                 </div>
             </li>
         </ul>
-    </div>
+    </div> <!-- AQUI fecha a nav-container, englobando Logo, Hambúrguer e Links -->
 </nav>
-
+    
     <!-- 1. Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
