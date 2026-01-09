@@ -118,104 +118,68 @@ nav {
 .dropdown, .lang-switcher {
     position: relative;
     display: inline-block;
+    list-style: none !important;
 }
 
+/* Remove as bolinhas brancas que aparecem na foto */
+.nav-links li, .dropdown-content li, .lang-dropdown li {
+    list-style: none !important;
+}
+
+.nav-links li::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* Esconde a caixa por padrão */
 .dropdown-content, .lang-dropdown {
-    display: none;
+    display: none !important; 
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 0; /* Alinha pela direita para não vazar da tela */
     background: var(--glass);
     backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     border: 1px solid var(--cobalt-border);
     border-radius: 12px;
-    padding: 8px 0;
+    min-width: 180px;
+    padding: 10px 0;
     z-index: 10001;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    margin-top: 12px;
+    margin-top: 10px;
 }
 
-/* A "Ponte Invisível" para o mouse não perder o foco */
-.dropdown-content::before, .lang-dropdown::before {
-    content: "";
-    position: absolute;
-    top: -15px; left: 0; width: 100%; height: 20px;
-    background: transparent;
-}
-
-/* Ativação */
+/* Ativação por Hover */
 .dropdown:hover .dropdown-content, 
 .lang-switcher:hover .lang-dropdown {
-    display: block;
-    animation: navSlideIn 0.2s ease forwards;
+    display: block !important;
+    opacity: 1 !important;
 }
 
-/* Estilo dos itens internos */
+/* Itens internos */
 .dropdown-content li a, .lang-option {
     color: var(--green-subtitle) !important;
-    padding: 10px 20px !important;
-    display: flex !important;
-    align-items: center;
-    gap: 10px;
+    padding: 12px 20px !important;
+    display: block !important;
     font-size: 0.75rem !important;
-    white-space: nowrap;
-    /* Linha divisória escura entre opções */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3) !important; 
-    transition: 0.2s;
-}
-
-.dropdown-content li:last-child a, .lang-option:last-child {
-    border-bottom: none !important;
-}
-
-.dropdown-content li a:hover, .lang-option:hover {
-    background: rgba(0, 240, 255, 0.1);
-    color: var(--primary) !important;
-}
-
-/* Seta e Bandeiras */
-.nav-drop-arrow, .lang-arrow {
-    font-size: 0.6rem;
-    margin-left: 5px;
-    transition: 0.3s;
-}
-
-.lang-flag {
-    width: 20px; height: 13px; object-fit: cover; border-radius: 2px;
+    text-decoration: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3) !important;
+    text-align: left;
 }
 
 /* 5. TIPOGRAFIA E TÍTULOS */
-.section-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+.section-title, .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 800;
     margin-bottom: 1.5rem;
     text-align: center;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    
+    /* Força o Gradiente */
+    background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
-    width: 100%;
-}
-
-.section-subtitle {
-    font-size: 1.4rem;
-    color: var(--green-subtitle) !important;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 3rem;
-    max-width: 850px;
-    line-height: 1.4;
-}
-
-/* Textos dentro de parágrafos do Summary */
-.glass-card p {
-    margin-bottom: 1.5rem;
-}
-
-.glass-card p:last-child {
-    margin-bottom: 0;
 }
 
 /* 6. COMPONENTES (GLASS CARDS) E GRIDS */
